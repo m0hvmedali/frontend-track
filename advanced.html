@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced CSS Features - شرح مفصل</title>
+  <style>
+    /* CSS Variables */
+    :root {
+      --main-color: teal;
+      --text-size: 18px;
+      --highlight: gold;
+    }
+
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      background: #f4f4f4;
+    }
+
+    section {
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      margin-top: 0;
+      color: var(--main-color);
+    }
+
+    /* Multiple Columns */
+    .multi-column {
+      column-count: 3;
+      column-gap: 30px;
+      column-rule: 1px solid #ccc;
+    }
+
+    /* CSS Variables Example */
+    .variables-box {
+      background-color: var(--main-color);
+      color: white;
+      padding: 20px;
+      font-size: var(--text-size);
+      border-radius: 8px;
+    }
+
+    /* @property Feature */
+    @property --angle {
+      syntax: '<angle>';
+      inherits: false;
+      initial-value: 0deg;
+    }
+
+    .property-box {
+      --angle: 0deg;
+      width: 200px;
+      height: 200px;
+      background: conic-gradient(from var(--angle), red, yellow, lime, red);
+      animation: spin 5s linear infinite;
+      border-radius: 50%;
+      margin: auto;
+    }
+
+    @keyframes spin {
+      0%   { --angle: 0deg; }
+      100% { --angle: 360deg; }
+    }
+
+    /* Media Queries */
+    .media-query-box {
+      width: 100%;
+      padding: 20px;
+      background: lightgray;
+      text-align: center;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    @media (max-width: 800px) {
+      .media-query-box {
+        background: var(--highlight);
+        color: black;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .media-query-box {
+        background: crimson;
+        color: white;
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section>
+    <h2>1. Multiple Columns</h2>
+    <p>تُستخدم خاصية <code>column-count</code> لتقسيم النص داخل العنصر إلى عدة أعمدة. يمكن تعديل المسافة بين الأعمدة باستخدام <code>column-gap</code>، ويمكن إضافة خط فاصل بين الأعمدة باستخدام <code>column-rule</code>:</p>
+    <div class="multi-column">
+      CSS multiple columns تسمح لك بعرض المحتوى في أعمدة متعددة بسهولة دون استخدام Flex أو Grid. هذا يفيد في المقالات أو النصوص الطويلة بحيث يُقرأ النص بسهولة أكثر. يتم تحديد عدد الأعمدة باستخدام column-count، والفاصل column-gap، ويمكنك أيضًا إضافة خط فاصل بين الأعمدة عبر column-rule.
+    </div>
+  </section>
+
+  <section>
+    <h2>2. CSS Variables</h2>
+    <p>المتغيرات في CSS تُعرف باستخدام <code>:root</code> وتُستخدم لاحقًا بنفس الاسم. هذا يسهل التعديل على القيم العامة مثل الألوان أو الأحجام بدون تغييرها يدويًا في كل مكان.</p>
+    <div class="variables-box">
+      هذا الصندوق يستخدم اللون والخط من متغيرات CSS.
+    </div>
+    <pre><code>:root {
+  --main-color: teal;
+  --text-size: 18px;
+}
+
+.box {
+  background-color: var(--main-color);
+  font-size: var(--text-size);
+}</code></pre>
+  </section>
+
+  <section>
+    <h2>3. @property</h2>
+    <p>تُستخدم <code>@property</code> لتعريف متغيرات CSS قابلة للأنيميشن، وهي مفيدة جدًا مع CSS Houdini. في المثال التالي، يتم تحريك زاوية التدرج اللوني <code>--angle</code> لإنشاء تأثير دوران ناعم ومستمر:</p>
+    <div class="property-box"></div>
+    <pre><code>@property --angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes spin {
+  0%   { --angle: 0deg; }
+  100% { --angle: 360deg; }
+}</code></pre>
+  </section>
+
+  <section>
+    <h2>4. Media Queries</h2>
+    <p>Media Queries تتيح لك تغيير التنسيق بناءً على حجم الشاشة أو نوع الجهاز. مفيدة لجعل التصميم متجاوبًا:</p>
+    <ul>
+      <li><code>max-width: 800px</code>: عندما تقل الشاشة عن 800px</li>
+      <li><code>max-width: 500px</code>: عندما تقل الشاشة عن 500px</li>
+    </ul>
+    <div class="media-query-box">
+      غيّر حجم نافذة المتصفح لرؤية التأثيرات المختلفة حسب حجم الشاشة.
+    </div>
+    <pre><code>@media (max-width: 800px) {
+  .box {
+    background: gold;
+  }
+}
+
+@media (max-width: 500px) {
+  .box {
+    background: crimson;
+    color: white;
+  }
+}</code></pre>
+  </section>
+
+</body>
+</html>

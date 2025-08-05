@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خطة تعلم CSS من الصفر حتى الاحتراف</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fab fa-css3-alt"></i>
+                <span>CSS Academy</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#intro" class="nav-link">المقدمة</a></li>
+                <li><a href="#basics" class="nav-link">الأساسيات</a></li>
+                <li><a href="#layout" class="nav-link">التخطيط</a></li>
+                <li><a href="#advanced" class="nav-link">المتقدم</a></li>
+                <li><a href="#modern" class="nav-link">الحديث</a></li>
+                <li><a href="#playground" class="nav-link">ساحة التجريب</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- القسم الرئيسي -->
+    <header class="hero" id="intro">
+        <div class="hero-background">
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+                <div class="shape shape-5"></div>
+            </div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    تعلم
+                    <span class="gradient-text">CSS</span>
+                    <br>من الصفر حتى
+                    <br>الاحتراف
+                </h1>
+                <p class="hero-subtitle">
+                    رحلتك الشاملة لإتقان أقوى لغات التصميم في العالم
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToSection('basics')">
+                        <i class="fas fa-play"></i>
+                        ابدأ الرحلة
+                    </button>
+                    <button class="btn btn-secondary" onclick="scrollToSection('playground')">
+                        <i class="fas fa-code"></i>
+                        ساحة التجريب
+                    </button>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="code-window">
+                    <div class="window-header">
+                        <div class="window-controls">
+                            <span class="control close"></span>
+                            <span class="control minimize"></span>
+                            <span class="control maximize"></span>
+                        </div>
+                        <span class="window-title">style.css</span>
+                    </div>
+                    <div class="code-content">
+                        <div class="code-line">
+                            <span class="comment">/* مرحباً بك في عالم CSS */</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="selector">.welcome</span> <span class="bracket">{</span>
+                        </div>
+                        <div class="code-line indent">
+                            <span class="property">color:</span> <span class="value">#6366f1;</span>
+                        </div>
+                        <div class="code-line indent">
+                            <span class="property">font-size:</span> <span class="value">2rem;</span>
+                        </div>
+                        <div class="code-line indent">
+                            <span class="property">animation:</span> <span class="value">fadeIn 1s ease;</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="bracket">}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </header>
+
+    <!-- لماذا CSS؟ -->
+    <section class="why-css">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-lightbulb"></i>
+                لماذا CSS؟
+            </h2>
+            <p class="section-subtitle">اكتشف قوة اللغة التي تجعل الويب جميلاً</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>التحكم الكامل في التصميم</h3>
+                    <p>CSS تمنحك السيطرة الكاملة على شكل ومظهر صفحات الويب</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>التصميم المتجاوب</h3>
+                    <p>إنشاء مواقع تعمل بشكل مثالي على جميع الأجهزة والشاشات</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>الرسوم المتحركة</h3>
+                    <p>إضافة حركات وتأثيرات بصرية مذهلة بدون JavaScript</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>مجتمع ضخم</h3>
+                    <p>مجتمع نشط ومكتبات لا حصر لها لتسريع التطوير</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- تاريخ CSS وتطورها -->
+    <section class="css-timeline">
+        <div class="container">
+            <h2 class="section-title">تاريخ CSS وتطورها</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">1996</div>
+                    <div class="timeline-content">
+                        <h3>البداية</h3>
+                        <p>إطلاق CSS1 بواسطة W3C لفصل المحتوى عن التصميم</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">1998</div>
+                    <div class="timeline-content">
+                        <h3>CSS2</h3>
+                        <p>إضافة الموضعة المطلقة والنسبية وأنواع الوسائط</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2011</div>
+                    <div class="timeline-content">
+                        <h3>CSS3</h3>
+                        <p>ثورة حقيقية مع الرسوم المتحركة والتدرجات والظلال</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2024</div>
+                    <div class="timeline-content">
+                        <h3>العصر الحديث</h3>
+                        <p>CSS Grid, Flexbox, Custom Properties والمزيد</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الأساسيات -->
+    <section class="learning-content" id="basics">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-graduation-cap"></i>
+                الأساسيات
+            </h2>
+            <p class="section-subtitle">ابدأ رحلتك مع المفاهيم الأساسية</p>
+            
+            <div class="weeks-container">
+                <!-- الأسبوع الأول -->
+                <div class="week-container">
+                    <div class="week-header">
+                        <h3 class="week-title">
+                            <span class="week-number">01</span>
+                            مقدمة CSS والمحددات
+                        </h3>
+                    </div>
+
+                    <!-- ما هو CSS -->
+                    <div class="topic-container">
+                        <div class="topic-header">
+                            <h4 class="topic-title">
+                                <i class="fas fa-info-circle"></i>
+                                ما هو CSS؟
+                            </h4>
+                        </div>
+                        
+                        <div class="topic-content">
+                            <div class="explanation">
+                                <p>CSS (Cascading Style Sheets) هي لغة تصميم تستخدم لتحديد شكل ومظهر صفحات الويب. تعمل مع HTML لإنشاء مواقع جميلة وتفاعلية.</p>
+                            </div>
+
+                            <div class="examples-container">
+                                <div class="example-item">
+                                    <div class="example-header">
+                                        <h5>مثال: CSS الأساسي</h5>
+                                        <button class="run-btn" onclick="runCSSExample('css-basic')">
+                                            <i class="fas fa-play"></i>
+                                            تشغيل
+                                        </button>
+                                    </div>
+                                    <div class="code-block">
+                                        <div class="code-tabs">
+                                            <button class="tab-btn active" onclick="switchTab(this, 'html')">HTML</button>
+                                            <button class="tab-btn" onclick="switchTab(this, 'css')">CSS</button>
+                                        </div>
+                                        <div class="tab-content html-tab active">
+                                            <pre><code class="language-html" id="css-basic-html">&lt;div class="welcome-box"&gt;
+    &lt;h1&gt;مرحباً بك في عالم CSS!&lt;/h1&gt;
+    &lt;p&gt;هذا مثال بسيط على قوة CSS&lt;/p&gt;
+    &lt;button class="btn"&gt;ابدأ التعلم&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                                        </div>
+                                        <div class="tab-content css-tab">
+                                            <pre><code class="language-css" id="css-basic-css">.welcome-box {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.welcome-box h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    animation: fadeInUp 1s ease;
+}
+
+.welcome-box p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.btn {
+    background: #ff6b6b;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background: #ff5252;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255,107,107,0.4);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}</code></pre>
+                                        </div>
+                                    </div>
+                                    <div class="output" id="output-css-basic"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- المحددات -->
+                    <div class="topic-container">
+                        <div class="topic-header">
+                            <h4 class="topic-title">
+                                <i class="fas fa-crosshairs"></i>
+                                المحددات (Selectors)
+                            </h4>
+                        </div>
+                        
+                        <div class="topic-content">
+                            <div class="explanation">
+                                <p>المحددات تخبر CSS أي عناصر HTML يجب تطبيق الأنماط عليها. هناك أنواع مختلفة من المحددات لاستهداف العناصر بطرق متنوعة.</p>
+                            </div>
+
+                            <div class="examples-container">
+                                <div class="example-item">
+                                    <div class="example-header">
+                                        <h5>مثال: أنواع المحددات</h5>
+                                        <button class="run-btn" onclick="runCSSExample('css-selectors')">
+                                            <i class="fas fa-play"></i>
+                                            تشغيل
+                                        </button>
+                                    </div>
+                                    <div class="code-block">
+                                        <div class="code-tabs">
+                                            <button class="tab-btn active" onclick="switchTab(this, 'html')">HTML</button>
+                                            <button class="tab-btn" onclick="switchTab(this, 'css')">CSS</button>
+                                        </div>
+                                        <div class="tab-content html-tab active">
+                                            <pre><code class="language-html" id="css-selectors-html">&lt;div class="container"&gt;
+    &lt;h1&gt;عنوان رئيسي&lt;/h1&gt;
+    &lt;h2 class="subtitle"&gt;عنوان فرعي&lt;/h2&gt;
+    &lt;p id="intro"&gt;هذه فقرة مقدمة مهمة&lt;/p&gt;
+    &lt;p&gt;فقرة عادية&lt;/p&gt;
+    &lt;ul&gt;
+        &lt;li&gt;العنصر الأول&lt;/li&gt;
+        &lt;li class="special"&gt;العنصر المميز&lt;/li&gt;
+        &lt;li&gt;العنصر الثالث&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;button&gt;زر عادي&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                                        </div>
+                                        <div class="tab-content css-tab">
+                                            <pre><code class="language-css" id="css-selectors-css">/* محدد العنصر */
+h1 {
+    color: #2c3e50;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+/* محدد الفئة */
+.subtitle {
+    color: #3498db;
+    font-size: 1.8rem;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 0.5rem;
+}
+
+/* محدد المعرف */
+#intro {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-left: 4px solid #e74c3c;
+    font-weight: bold;
+}
+
+/* محدد الطفل */
+ul li {
+    padding: 0.5rem;
+    margin: 0.25rem 0;
+    background: #ecf0f1;
+    border-radius: 5px;
+}
+
+/* محدد الفئة المتداخل */
+li.special {
+    background: #f39c12;
+    color: white;
+    font-weight: bold;
+}
+
+/* محدد الحالة */
+button:hover {
+    background: #27ae60;
+    color: white;
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
+
+/* محدد الطفل المباشر */
+.container > p {
+    line-height: 1.6;
+    margin: 1rem 0;
+}</code></pre>
+                                        </div>
+                                    </div>
+                                    <div class="output" id="output-css-selectors"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- الأسبوع الثاني -->
+                <div class="week-container">
+                    <div class="week-header">
+                        <h3 class="week-title">
+                            <span class="week-number">02</span>
+                            الألوان والخطوط والنصوص
+                        </h3>
+                    </div>
+
+                    <!-- الألوان -->
+                    <div class="topic-container">
+                        <div class="topic-header">
+                            <h4 class="topic-title">
+                                <i class="fas fa-palette"></i>
+                                الألوان والخلفيات
+                            </h4>
+                        </div>
+                        
+                        <div class="topic-content">
+                            <div class="explanation">
+                                <p>الألوان هي أساس التصميم الجذاب. CSS توفر طرق متعددة لتحديد الألوان والخلفيات المتقدمة.</p>
+                            </div>
+
+                            <div class="examples-container">
+                                <div class="example-item">
+                                    <div class="example-header">
+                                        <h5>مثال: الألوان والتدرجات</h5>
+                                        <button class="run-btn" onclick="runCSSExample('css-colors')">
+                                            <i class="fas fa-play"></i>
+                                            تشغيل
+                                        </button>
+                                    </div>
+                                    <div class="code-block">
+                                        <div class="code-tabs">
+                                            <button class="tab-btn active" onclick="switchTab(this, 'html')">HTML</button>
+                                            <button class="tab-btn" onclick="switchTab(this, 'css')">CSS</button>
+                                        </div>
+                                        <div class="tab-content html-tab active">
+                                            <pre><code class="language-html" id="css-colors-html">&lt;div class="color-showcase"&gt;
+    &lt;div class="color-box solid"&gt;لون صلب&lt;/div&gt;
+    &lt;div class="color-box gradient"&gt;تدرج خطي&lt;/div&gt;
+    &lt;div class="color-box radial"&gt;تدرج دائري&lt;/div&gt;
+    &lt;div class="color-box pattern"&gt;نمط متكرر&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                                        </div>
+                                        <div class="tab-content css-tab">
+                                            <pre><code class="language-css" id="css-colors-css">.color-showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.color-box {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.color-box:hover {
+    transform: translateY(-5px);
+}
+
+.solid {
+    background-color: #e74c3c;
+}
+
+.gradient {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+}
+
+.radial {
+    background: radial-gradient(circle, #667eea, #764ba2);
+}
+
+.pattern {
+    background: 
+        linear-gradient(45deg, #ff9a9e 25%, transparent 25%),
+        linear-gradient(-45deg, #ff9a9e 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #fecfef 75%),
+        linear-gradient(-45deg, transparent 75%, #fecfef 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}</code></pre>
+                                        </div>
+                                    </div>
+                                    <div class="output" id="output-css-colors"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- الخطوط والنصوص -->
+                    <div class="topic-container">
+                        <div class="topic-header">
+                            <h4 class="topic-title">
+                                <i class="fas fa-font"></i>
+                                الخطوط والنصوص
+                            </h4>
+                        </div>
+                        
+                        <div class="topic-content">
+                            <div class="explanation">
+                                <p>الخطوط والنصوص هي وسيلة التواصل الأساسية في الويب. CSS توفر تحكماً كاملاً في مظهر النصوص.</p>
+                            </div>
+
+                            <div class="examples-container">
+                                <div class="example-item">
+                                    <div class="example-header">
+                                        <h5>مثال: تنسيق النصوص</h5>
+                                        <button class="run-btn" onclick="runCSSExample('css-typography')">
+                                            <i class="fas fa-play"></i>
+                                            تشغيل
+                                        </button>
+                                    </div>
+                                    <div class="code-block">
+                                        <div class="code-tabs">
+                                            <button class="tab-btn active" onclick="switchTab(this, 'html')">HTML</button>
+                                            <button class="tab-btn" onclick="switchTab(this, 'css')">CSS</button>
+                                        </div>
+                                        <div class="tab-content html-tab active">
+                                            <pre><code class="language-html" id="css-typography-html">&lt;div class="typography-demo"&gt;
+    &lt;h1 class="main-title"&gt;عنوان رئيسي أنيق&lt;/h1&gt;
+    &lt;h2 class="sub-title"&gt;عنوان فرعي مميز&lt;/h2&gt;
+    &lt;p class="intro-text"&gt;
+        هذا نص مقدمة يوضح كيفية تنسيق النصوص بطريقة جميلة ومقروءة.
+        يمكن استخدام خصائص مختلفة لتحسين مظهر النص.
+    &lt;/p&gt;
+    &lt;p class="highlight-text"&gt;نص مميز بتأثيرات خاصة&lt;/p&gt;
+    &lt;blockquote class="quote"&gt;
+        "التصميم ليس فقط كيف يبدو الشيء، بل كيف يعمل أيضاً"
+        &lt;cite&gt;- ستيف جوبز&lt;/cite&gt;
+    &lt;/blockquote&gt;
+&lt;/div&gt;</code></pre>
+                                        </div>
+                                        <div class="tab-content css-tab">
+                                            <pre><code class="language-css" id="css-typography-css">.typography-demo {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: 'Cairo', sans-serif;
+}
+
+.main-title {
+    font-size: 3rem;
+    font-weight: 900;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.sub-title {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.sub-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    border-radius: 2px;
+}
+
+.intro-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #34495e;
+    text-align: justify;
+    margin-bottom: 2rem;
+}
+
+.highlight-text {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #e74c3c;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    margin: 2rem 0;
+    animation: pulse 2s infinite;
+}
+
+.quote {
+    background: #f8f9fa;
+    border-left: 5px solid #3498db;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    font-size: 1.2rem;
+    border-radius: 0 10px 10px 0;
+}
+
+.quote cite {
+    display: block;
+    text-align: right;
+    margin-top: 1rem;
+    font-weight: bold;
+    color: #7f8c8d;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}</code></pre>
+                                        </div>
+                                    </div>
+                                    <div class="output" id="output-css-typography"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ساحة التجريب -->
+    <section class="playground" id="playground">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-code"></i>
+                ساحة التجريب
+            </h2>
+            <p class="section-subtitle">اكتب كودك وشاهد النتيجة فوراً</p>
+            
+            <div class="playground-container">
+                <div class="editor-section">
+                    <div class="editor-tabs">
+                        <button class="editor-tab active" onclick="switchEditorTab('html')">
+                            <i class="fab fa-html5"></i>
+                            HTML
+                        </button>
+                        <button class="editor-tab" onclick="switchEditorTab('css')">
+                            <i class="fab fa-css3-alt"></i>
+                            CSS
+                        </button>
+                        <button class="editor-tab" onclick="switchEditorTab('js')">
+                            <i class="fab fa-js"></i>
+                            JavaScript
+                        </button>
+                    </div>
+                    
+                    <div class="editor-controls">
+                        <button class="control-btn" onclick="clearEditor()">
+                            <i class="fas fa-trash"></i>
+                            مسح
+                        </button>
+                        <button class="control-btn" onclick="formatCode()">
+                            <i class="fas fa-magic"></i>
+                            تنسيق
+                        </button>
+                        <button class="control-btn run-btn" onclick="runPlaygroundCode()">
+                            <i class="fas fa-play"></i>
+                            تشغيل
+                        </button>
+                    </div>
+                    
+                    <div class="editor-content">
+                        <textarea id="html-editor" class="code-editor active" placeholder="<!-- اكتب HTML هنا -->
+&lt;div class=&quot;demo&quot;&gt;
+    &lt;h1&gt;مرحباً بالعالم!&lt;/h1&gt;
+    &lt;p&gt;هذا مثال على CSS&lt;/p&gt;
+&lt;/div&gt;"></textarea>
+                        
+                        <textarea id="css-editor" class="code-editor" placeholder="/* اكتب CSS هنا */
+.demo {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.demo h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}"></textarea>
+                        
+                        <textarea id="js-editor" class="code-editor" placeholder="// اكتب JavaScript هنا
+console.log('مرحباً من ساحة التجريب!');
+
+// مثال بسيط
+document.addEventListener('DOMContentLoaded', function() {
+    const demo = document.querySelector('.demo');
+    if (demo) {
+        demo.addEventListener('click', function() {
+            this.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 200);
+        });
+    }
+});"></textarea>
+                    </div>
+                </div>
+                
+                <div class="preview-section">
+                    <div class="preview-header">
+                        <span>النتيجة</span>
+                        <button class="fullscreen-btn" onclick="toggleFullscreen()">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                    <iframe id="preview-frame" class="preview-frame"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- أمثلة سريعة للتجريب -->
+    <section class="quick-examples">
+        <div class="container">
+            <h2 class="section-title">أمثلة سريعة للتجريب</h2>
+            
+            <div class="examples-grid">
+                <div class="quick-example" onclick="loadQuickExample('button-effects')">
+                    <div class="example-icon">
+                        <i class="fas fa-mouse-pointer"></i>
+                    </div>
+                    <h3>تأثيرات الأزرار</h3>
+                    <p>أزرار تفاعلية مع تأثيرات hover مذهلة</p>
+                    <span class="example-badge">11</span>
+                </div>
+                
+                <div class="quick-example" onclick="loadQuickExample('card-designs')">
+                    <div class="example-icon">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <h3>تصاميم البطاقات</h3>
+                    <p>بطاقات أنيقة مع ظلال وتأثيرات</p>
+                    <span class="example-badge">8</span>
+                </div>
+                
+                <div class="quick-example" onclick="loadQuickExample('animations')">
+                    <div class="example-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>الرسوم المتحركة</h3>
+                    <p>حركات CSS مذهلة بدون JavaScript</p>
+                    <span class="example-badge">15</span>
+                </div>
+                
+                <div class="quick-example" onclick="loadQuickExample('layouts')">
+                    <div class="example-icon">
+                        <i class="fas fa-th-large"></i>
+                    </div>
+                    <h3>تخطيطات متقدمة</h3>
+                    <p>Grid و Flexbox في العمل</p>
+                    <span class="example-badge">12</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CSS Academy</h3>
+                    <p>رحلتك الشاملة لإتقان CSS من الصفر حتى الاحتراف</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="#intro">المقدمة</a></li>
+                        <li><a href="#basics">الأساسيات</a></li>
+                        <li><a href="#playground">ساحة التجريب</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>تواصل معنا</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 CSS Academy. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="css-script.js"></script>
+</body>
+</html>
+

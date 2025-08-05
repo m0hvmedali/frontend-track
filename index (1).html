@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خطة تعلم JavaScript من الصفر حتى الاحتراف</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fab fa-js-square"></i>
+                <span>JavaScript Academy</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#intro" class="nav-link">المقدمة</a>
+                <a href="#basics" class="nav-link">الأساسيات</a>
+                <a href="#interactive" class="nav-link">التفاعل</a>
+                <a href="#advanced" class="nav-link">المتقدم</a>
+                <a href="#modern" class="nav-link">الحديث</a>
+                <a href="#playground" class="nav-link">ساحة التجريب</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- الصفحة الرئيسية -->
+    <header class="hero">
+        <div class="hero-background">
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+                <div class="shape shape-5"></div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="title-line">تعلم</span>
+                    <span class="title-line highlight">JavaScript</span>
+                    <span class="title-line">من الصفر حتى الاحتراف</span>
+                </h1>
+                <p class="hero-subtitle">
+                    رحلتك الشاملة لإتقان أقوى لغات البرمجة في العالم
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToSection('intro')">
+                        <i class="fas fa-rocket"></i>
+                        ابدأ الرحلة
+                    </button>
+                    <button class="btn btn-secondary" onclick="scrollToSection('playground')">
+                        <i class="fas fa-code"></i>
+                        ساحة التجريب
+                    </button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="code-window">
+                    <div class="window-header">
+                        <div class="window-controls">
+                            <span class="control close"></span>
+                            <span class="control minimize"></span>
+                            <span class="control maximize"></span>
+                        </div>
+                        <div class="window-title">script.js</div>
+                    </div>
+                    <div class="code-content">
+                        <pre><code class="language-javascript" id="hero-code"></code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </header>
+
+    <!-- شريط التقدم -->
+    <div class="progress-bar">
+        <div class="progress-fill"></div>
+    </div>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="main-content">
+        <!-- المقدمة -->
+        <section id="intro" class="section intro-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-lightbulb"></i>
+                        لماذا JavaScript؟
+                    </h2>
+                    <p class="section-subtitle">
+                        اكتشف قوة اللغة التي تحكم الويب الحديث
+                    </p>
+                </div>
+                
+                <div class="intro-grid">
+                    <div class="intro-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3>لغة الويب الأولى</h3>
+                        <p>JavaScript هي اللغة الوحيدة التي تعمل في جميع المتصفحات بشكل أصلي</p>
+                    </div>
+                    
+                    <div class="intro-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>تطبيقات متعددة المنصات</h3>
+                        <p>من الويب إلى الهاتف المحمول وحتى تطبيقات سطح المكتب</p>
+                    </div>
+                    
+                    <div class="intro-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="card-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>نمو مستمر</h3>
+                        <p>الطلب على مطوري JavaScript في نمو مستمر في سوق العمل</p>
+                    </div>
+                    
+                    <div class="intro-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="card-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>مجتمع ضخم</h3>
+                        <p>مجتمع نشط ومكتبات لا حصر لها لتسريع التطوير</p>
+                    </div>
+                </div>
+
+                <div class="timeline-container">
+                    <h3 class="timeline-title">تاريخ JavaScript وتطورها</h3>
+                    <div class="timeline">
+                        <div class="timeline-item" data-aos="fade-right">
+                            <div class="timeline-year">1995</div>
+                            <div class="timeline-content">
+                                <h4>البداية</h4>
+                                <p>إنشاء JavaScript بواسطة Brendan Eich في Netscape</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" data-aos="fade-left">
+                            <div class="timeline-year">2009</div>
+                            <div class="timeline-content">
+                                <h4>Node.js</h4>
+                                <p>إمكانية تشغيل JavaScript خارج المتصفح</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" data-aos="fade-right">
+                            <div class="timeline-year">2015</div>
+                            <div class="timeline-content">
+                                <h4>ES6/ES2015</h4>
+                                <p>ثورة حقيقية في JavaScript مع ميزات جديدة قوية</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" data-aos="fade-left">
+                            <div class="timeline-year">2023</div>
+                            <div class="timeline-content">
+                                <h4>العصر الحديث</h4>
+                                <p>JavaScript تهيمن على تطوير الويب والتطبيقات</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- الأساسيات -->
+        <section id="basics" class="section basics-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-building"></i>
+                        الأساسيات
+                    </h2>
+                    <p class="section-subtitle">
+                        ابدأ رحلتك مع المفاهيم الأساسية
+                    </p>
+                </div>
+
+                <!-- الأسبوع الأول -->
+                <div class="week-container">
+                    <div class="week-header">
+                        <h3 class="week-title">
+                            <span class="week-number">01</span>
+                            المتغيرات وأنواع البيانات
+                        </h3>
+                    </div>
+
+                    <!-- المتغيرات -->
+                    <div class="topic-container">
+                        <div class="topic-header">
+                            <h4 class="topic-title">
+                                <i class="fas fa-box"></i>
+                                المتغيرات: var, let, const
+                            </h4>
+                        </div>
+                        
+                        <div class="topic-content">
+                            <div class="explanation">
+                                <p>المتغيرات هي حاويات لتخزين البيانات. في JavaScript الحديثة، نستخدم <code>let</code> و <code>const</code> بدلاً من <code>var</code>.</p>
+                                
+                                <div class="comparison-table">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>النوع</th>
+                                                <th>النطاق</th>
+                                                <th>إعادة التعريف</th>
+                                                <th>التحديث</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><code>var</code></td>
+                                                <td>وظيفي</td>
+                                                <td>✅</td>
+                                                <td>✅</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>let</code></td>
+                                                <td>كتلي</td>
+                                                <td>❌</td>
+                                                <td>✅</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>const</code></td>
+                                                <td>كتلي</td>
+                                                <td>❌</td>
+                                                <td>❌</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="examples-container">
+                                <div class="example-item">
+                                    <div class="example-header">
+                                        <h5>مثال: استخدام let</h5>
+                                        <button class="run-btn" onclick="runExample('variables-let')">
+                                            <i class="fas fa-play"></i>
+                                            تشغيل
+                                        </button>
+                                    </div>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript" id="variables-let">let name = 'أحمد';
+console.log(name); // أحمد
+
+name = 'محمد'; // يمكن تحديث القيمة
+console.log(name); // محمد
+
+// let name = 'علي'; // خطأ! لا يمكن إعادة التعريف</code></pre>
+                                    </div>
+                                    <div class="output" id="output-variables-let"></div>
+                                </div>
+
+                                <div class="example-item">
+                                    <div class="example-header">
+                                        <h5>مثال: استخدام const</h5>
+                                        <button class="run-btn" onclick="runExample('variables-const')">
+                                            <i class="fas fa-play"></i>
+                                            تشغيل
+                                        </button>
+                                    </div>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript" id="variables-const">const PI = 3.14159;
+console.log(PI); // 3.14159
+
+// PI = 3.14; // خطأ! لا يمكن تحديث القيمة
+
+const user = {
+    name: 'سارة',
+    age: 25
+};
+
+user.age = 26; // يمكن تعديل خصائص الكائن
+console.log(user);</code></pre>
+                                    </div>
+                                    <div class="output" id="output-variables-const"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- أنواع البيانات -->
+                    <div class="topic-container">
+                        <div class="topic-header">
+                            <h4 class="topic-title">
+                                <i class="fas fa-tags"></i>
+                                أنواع البيانات
+                            </h4>
+                        </div>
+                        
+                        <div class="topic-content">
+                            <div class="explanation">
+                                <p>JavaScript لديها أنواع بيانات بدائية وكائنية:</p>
+                                
+                                <div class="data-types-grid">
+                                    <div class="data-type-card primitive">
+                                        <h5>البدائية (Primitive)</h5>
+                                        <ul>
+                                            <li><code>string</code> - النصوص</li>
+                                            <li><code>number</code> - الأرقام</li>
+                                            <li><code>boolean</code> - true/false</li>
+                                            <li><code>null</code> - قيمة فارغة</li>
+                                            <li><code>undefined</code> - غير معرف</li>
+                                            <li><code>symbol</code> - رمز فريد</li>
+                                            <li><code>bigint</code> - أرقام كبيرة</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="data-type-card object">
+                                        <h5>الكائنية (Object)</h5>
+                                        <ul>
+                                            <li><code>object</code> - الكائنات</li>
+                                            <li><code>array</code> - المصفوفات</li>
+                                            <li><code>function</code> - الدوال</li>
+                                            <li><code>date</code> - التواريخ</li>
+                                            <li><code>regexp</code> - التعبيرات النمطية</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="examples-container">
+                                <div class="example-item">
+                                    <div class="example-header">
+                                        <h5>مثال: أنواع البيانات المختلفة</h5>
+                                        <button class="run-btn" onclick="runExample('data-types')">
+                                            <i class="fas fa-play"></i>
+                                            تشغيل
+                                        </button>
+                                    </div>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript" id="data-types">// النصوص
+let message = 'مرحباً بالعالم!';
+console.log(typeof message); // string
+
+// الأرقام
+let age = 25;
+let price = 99.99;
+console.log(typeof age); // number
+
+// القيم المنطقية
+let isActive = true;
+console.log(typeof isActive); // boolean
+
+// الكائنات
+let person = {
+    name: 'أحمد',
+    age: 30
+};
+console.log(typeof person); // object
+
+// المصفوفات
+let colors = ['أحمر', 'أخضر', 'أزرق'];
+console.log(Array.isArray(colors)); // true</code></pre>
+                                    </div>
+                                    <div class="output" id="output-data-types"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- الأسبوع الثاني -->
+                <div class="week-container">
+                    <div class="week-header">
+                        <h3 class="week-title">
+                            <span class="week-number">02</span>
+                            الجمل الشرطية والحلقات والدوال
+                        </h3>
+                    </div>
+
+                    <!-- الجمل الشرطية -->
+                    <div class="topic-container">
+                        <div class="topic-header">
+                            <h4 class="topic-title">
+                                <i class="fas fa-code-branch"></i>
+                                الجمل الشرطية: if, else, switch
+                            </h4>
+                        </div>
+                        
+                        <div class="topic-content">
+                            <div class="explanation">
+                                <p>الجمل الشرطية تسمح لك بتنفيذ كود معين بناءً على شروط محددة. هي أساس اتخاذ القرارات في البرمجة.</p>
+                            </div>
+
+                            <div class="examples-container">
+                                <div class="example-item">
+                                    <div class="example-header">
+                                        <h5>مثال: if, else if, else</h5>
+                                        <button class="run-btn" onclick="runExample('conditionals-if')">
+                                            <i class="fas fa-play"></i>
+                                            تشغيل
+                                        </button>
+                                    </div>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript" id="conditionals-if">let temperature = 25;
+
+if (temperature > 30) {
+    console.log("الجو حار جداً 🔥");
+} else if (temperature > 20) {
+    console.log("الجو معتدل 🌤️");
+} else if (temperature > 10) {
+    console.log("الجو بارد 🌥️");
+} else {
+    console.log("الجو بارد جداً ❄️");
+}
+
+// مثال آخر: التحقق من العمر
+let age = 20;
+let hasLicense = true;
+
+if (age >= 18 && hasLicense) {
+    console.log("يمكنك القيادة! 🚗");
+} else if (age >= 18 && !hasLicense) {
+    console.log("تحتاج إلى رخصة قيادة أولاً 📄");
+} else {
+    console.log("أنت صغير على القيادة 👶");
+}</code></pre>
+                                    </div>
+                                    <div class="output" id="output-conditionals-if"></div>
+                                </div>
+
+                                <div class="example-item">
+                                    <div class="example-header">
+                                        <h5>مثال: switch statement</h5>
+                                        <button class="run-btn" onclick="runExample('conditionals-switch')">
+                                            <i class="fas fa-play"></i>
+                                            تشغيل
+                                        </button>
+                                    </div>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript" id="conditionals-switch">let day = "الاثنين";
+
+switch (day) {
+    case "السبت":
+    case "الأحد":
+        console.log("عطلة نهاية الأسبوع! 🎉");
+        break;
+    case "الاثنين":
+        console.log("بداية أسبوع العمل 💼");
+        break;
+    case "الجمعة":
+        console.log("يوم الجمعة المبارك 🕌");
+        break;
+    default:
+        console.log("يوم عمل عادي 📅");
+}
+
+// مثال: آلة حاسبة بسيطة
+function calculator(num1, num2, operation) {
+    switch (operation) {
+        case '+':
+            return num1 + num2;
+        case '-':
+            return num1 - num2;
+        case '*':
+            return num1 * num2;
+        case '/':
+            return num2 !== 0 ? num1 / num2 : "لا يمكن القسمة على صفر!";
+        default:
+            return "عملية غير صحيحة";
+    }
+}
+
+console.log("10 + 5 =", calculator(10, 5, '+'));
+console.log("10 - 5 =", calculator(10, 5, '-'));
+console.log("10 * 5 =", calculator(10, 5, '*'));
+console.log("10 / 5 =", calculator(10, 5, '/'));</code></pre>
+                                    </div>
+                                    <div class="output" id="output-conditionals-switch"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- الحلقات التكرارية -->
+                    <div class="topic-container">
+                        <div class="topic-header">
+                            <h4 class="topic-title">
+                                <i class="fas fa-sync-alt"></i>
+                                الحلقات التكرارية: for, while, forEach
+                            </h4>
+                        </div>
+                        
+                        <div class="topic-content">
+                            <div class="explanation">
+                                <p>الحلقات التكرارية تسمح لك بتنفيذ كتلة من الكود عدة مرات، مما يوفر الوقت ويقلل تكرار الكود.</p>
+                            </div>
+
+                            <div class="examples-container">
+                                <div class="example-item">
+                                    <div class="example-header">
+                                        <h5>مثال: حلقة for</h5>
+                                        <button class="run-btn" onclick="runExample('loops-for')">
+                                            <i class="fas fa-play"></i>
+                                            تشغيل
+                                        </button>
+                                    </div>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript" id="loops-for">// طباعة الأرقام من 1 إلى 5
+console.log("العد من 1 إلى 5:");
+for (let i = 1; i <= 5; i++) {
+    console.log(`العدد: ${i}`);
+}
+
+// حساب مجموع الأرقام من 1 إلى 10
+let sum = 0;
+for (let i = 1; i <= 10; i++) {
+    sum += i;
+}
+console.log(`مجموع الأرقام من 1 إلى 10: ${sum}`);
+
+// التكرار على مصفوفة
+let fruits = ["تفاح", "برتقال", "موز", "عنب"];
+console.log("الفواكه المتوفرة:");
+for (let i = 0; i < fruits.length; i++) {
+    console.log(`${i + 1}. ${fruits[i]}`);
+}</code></pre>
+                                    </div>
+                                    <div class="output" id="output-loops-for"></div>
+                                </div>
+
+                                <div class="example-item">
+                                    <div class="example-header">
+                                        <h5>مثال: حلقة while و for...of</h5>
+                                        <button class="run-btn" onclick="runExample('loops-while')">
+                                            <i class="fas fa-play"></i>
+                                            تشغيل
+                                        </button>
+                                    </div>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript" id="loops-while">// حلقة while - العد التنازلي
+let countdown = 5;
+console.log("العد التنازلي:");
+while (countdown > 0) {
+    console.log(countdown);
+    countdown--;
+}
+console.log("انطلق! 🚀");
+
+// for...of للتكرار على المصفوفات
+let colors = ["أحمر", "أخضر", "أزرق", "أصفر"];
+console.log("\nالألوان المفضلة:");
+for (let color of colors) {
+    console.log(`🎨 ${color}`);
+}
+
+// for...in للتكرار على خصائص الكائن
+let person = {
+    name: "أحمد",
+    age: 25,
+    city: "الرياض",
+    job: "مطور"
+};
+
+console.log("\nمعلومات الشخص:");
+for (let key in person) {
+    console.log(`${key}: ${person[key]}`);
+}</code></pre>
+                                    </div>
+                                    <div class="output" id="output-loops-while"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- الدوال -->
+                    <div class="topic-container">
+                        <div class="topic-header">
+                            <h4 class="topic-title">
+                                <i class="fas fa-cogs"></i>
+                                الدوال: Functions & Arrow Functions
+                            </h4>
+                        </div>
+                        
+                        <div class="topic-content">
+                            <div class="explanation">
+                                <p>الدوال هي كتل من الكود قابلة لإعادة الاستخدام. تساعد في تنظيم الكود وتجنب التكرار.</p>
+                            </div>
+
+                            <div class="examples-container">
+                                <div class="example-item">
+                                    <div class="example-header">
+                                        <h5>مثال: الدوال العادية</h5>
+                                        <button class="run-btn" onclick="runExample('functions-regular')">
+                                            <i class="fas fa-play"></i>
+                                            تشغيل
+                                        </button>
+                                    </div>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript" id="functions-regular">// دالة بسيطة بدون معاملات
+function sayHello() {
+    console.log("مرحباً بالعالم! 👋");
+}
+
+// دالة مع معاملات
+function greet(name, time) {
+    console.log(`${time} يا ${name}! 😊`);
+}
+
+// دالة ترجع قيمة
+function add(a, b) {
+    return a + b;
+}
+
+// دالة لحساب مساحة المستطيل
+function calculateRectangleArea(width, height) {
+    const area = width * height;
+    return area;
+}
+
+// دالة للتحقق من الرقم الزوجي
+function isEven(number) {
+    return number % 2 === 0;
+}
+
+// استدعاء الدوال
+sayHello();
+greet("أحمد", "صباح الخير");
+greet("فاطمة", "مساء الخير");
+
+let sum = add(15, 25);
+console.log(`المجموع: ${sum}`);
+
+let area = calculateRectangleArea(5, 8);
+console.log(`مساحة المستطيل: ${area}`);
+
+console.log(`هل 4 زوجي؟ ${isEven(4)}`);
+console.log(`هل 7 زوجي؟ ${isEven(7)}`);</code></pre>
+                                    </div>
+                                    <div class="output" id="output-functions-regular"></div>
+                                </div>
+
+                                <div class="example-item">
+                                    <div class="example-header">
+                                        <h5>مثال: Arrow Functions</h5>
+                                        <button class="run-btn" onclick="runExample('functions-arrow')">
+                                            <i class="fas fa-play"></i>
+                                            تشغيل
+                                        </button>
+                                    </div>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript" id="functions-arrow">// دالة سهم بسيطة
+const square = (num) => num * num;
+
+// دالة سهم بدون معاملات
+const getCurrentTime = () => {
+    return new Date().toLocaleTimeString('ar-SA');
+};
+
+// دالة سهم مع عدة معاملات
+const multiply = (a, b) => a * b;
+
+// دالة سهم مع كتلة كود
+const getGrade = (score) => {
+    if (score >= 90) return "ممتاز";
+    if (score >= 80) return "جيد جداً";
+    if (score >= 70) return "جيد";
+    if (score >= 60) return "مقبول";
+    return "راسب";
+};
+
+// دالة سهم للتحقق من كلمة المرور
+const isStrongPassword = (password) => {
+    return password.length >= 8 && 
+           /[A-Z]/.test(password) && 
+           /[0-9]/.test(password);
+};
+
+// استخدام الدوال
+console.log(`مربع العدد 7: ${square(7)}`);
+console.log(`الوقت الحالي: ${getCurrentTime()}`);
+console.log(`6 × 9 = ${multiply(6, 9)}`);
+console.log(`تقدير درجة 85: ${getGrade(85)}`);
+console.log(`تقدير درجة 55: ${getGrade(55)}`);
+
+console.log(`هل "Pass123" كلمة مرور قوية؟ ${isStrongPassword("Pass123")}`);
+console.log(`هل "weak" كلمة مرور قوية؟ ${isStrongPassword("weak")}`);</code></pre>
+                                    </div>
+                                    <div class="output" id="output-functions-arrow"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- الأسبوع الثالث -->
+                <div class="week-container">
+                    <div class="week-header">
+                        <h3 class="week-title">
+                            <span class="week-number">03</span>
+                            المصفوفات والكائنات
+                        </h3>
+                    </div>
+
+                    <!-- المصفوفات -->
+                    <div class="topic-container">
+                        <div class="topic-header">
+                            <h4 class="topic-title">
+                                <i class="fas fa-list"></i>
+                                المصفوفات: Arrays وطرق التعامل معها
+                            </h4>
+                        </div>
+                        
+                        <div class="topic-content">
+                            <div class="explanation">
+                                <p>المصفوفات هي قوائم مرتبة من القيم. تستخدم لتخزين مجموعات من البيانات المترابطة.</p>
+                            </div>
+
+                            <div class="examples-container">
+                                <div class="example-item">
+                                    <div class="example-header">
+                                        <h5>مثال: أساسيات المصفوفات</h5>
+                                        <button class="run-btn" onclick="runExample('arrays-basics')">
+                                            <i class="fas fa-play"></i>
+                                            تشغيل
+                                        </button>
+                                    </div>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript" id="arrays-basics">// إنشاء المصفوفات
+let fruits = ["تفاح", "برتقال", "موز"];
+let numbers = [1, 2, 3, 4, 5];
+let mixed = ["نص", 123, true, null];
+
+console.log("المصفوفات الأساسية:");
+console.log("الفواكه:", fruits);
+console.log("الأرقام:", numbers);
+console.log("مختلطة:", mixed);
+
+// الوصول للعناصر
+console.log("\nالوصول للعناصر:");
+console.log("أول فاكهة:", fruits[0]);
+console.log("آخر فاكهة:", fruits[fruits.length - 1]);
+
+// إضافة وحذف العناصر
+fruits.push("عنب"); // إضافة في النهاية
+console.log("بعد إضافة العنب:", fruits);
+
+fruits.unshift("فراولة"); // إضافة في البداية
+console.log("بعد إضافة الفراولة:", fruits);
+
+let lastFruit = fruits.pop(); // حذف من النهاية
+console.log("تم حذف:", lastFruit);
+console.log("المصفوفة الآن:", fruits);
+
+let firstFruit = fruits.shift(); // حذف من البداية
+console.log("تم حذف:", firstFruit);
+console.log("المصفوفة النهائية:", fruits);</code></pre>
+                                    </div>
+                                    <div class="output" id="output-arrays-basics"></div>
+                                </div>
+
+                                <div class="example-item">
+                                    <div class="example-header">
+                                        <h5>مثال: دوال المصفوفات المتقدمة</h5>
+                                        <button class="run-btn" onclick="runExample('arrays-methods')">
+                                            <i class="fas fa-play"></i>
+                                            تشغيل
+                                        </button>
+                                    </div>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript" id="arrays-methods">let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// map - تحويل كل عنصر
+let doubled = numbers.map(num => num * 2);
+console.log("الأرقام مضاعفة:", doubled);
+
+// filter - تصفية العناصر
+let evenNumbers = numbers.filter(num => num % 2 === 0);
+console.log("الأرقام الزوجية:", evenNumbers);
+
+// reduce - تجميع القيم
+let sum = numbers.reduce((total, num) => total + num, 0);
+console.log("مجموع الأرقام:", sum);
+
+// find - البحث عن عنصر
+let found = numbers.find(num => num > 5);
+console.log("أول رقم أكبر من 5:", found);
+
+// some & every - التحقق من الشروط
+let hasEven = numbers.some(num => num % 2 === 0);
+let allPositive = numbers.every(num => num > 0);
+console.log("يحتوي على أرقام زوجية:", hasEven);
+console.log("جميع الأرقام موجبة:", allPositive);
+
+// مثال عملي: إدارة قائمة طلاب
+let students = [
+    { name: "أحمد", grade: 85 },
+    { name: "فاطمة", grade: 92 },
+    { name: "محمد", grade: 78 },
+    { name: "نور", grade: 96 }
+];
+
+let topStudents = students
+    .filter(student => student.grade >= 90)
+    .map(student => student.name);
+
+console.log("الطلاب المتفوقون:", topStudents);</code></pre>
+                                    </div>
+                                    <div class="output" id="output-arrays-methods"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- الكائنات -->
+                    <div class="topic-container">
+                        <div class="topic-header">
+                            <h4 class="topic-title">
+                                <i class="fas fa-cube"></i>
+                                الكائنات: Objects وخصائصها
+                            </h4>
+                        </div>
+                        
+                        <div class="topic-content">
+                            <div class="explanation">
+                                <p>الكائنات تسمح بتجميع البيانات المترابطة في هيكل واحد باستخدام أزواج مفتاح-قيمة.</p>
+                            </div>
+
+                            <div class="examples-container">
+                                <div class="example-item">
+                                    <div class="example-header">
+                                        <h5>مثال: أساسيات الكائنات</h5>
+                                        <button class="run-btn" onclick="runExample('objects-basics')">
+                                            <i class="fas fa-play"></i>
+                                            تشغيل
+                                        </button>
+                                    </div>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript" id="objects-basics">// إنشاء كائن
+let person = {
+    firstName: "أحمد",
+    lastName: "محمد",
+    age: 28,
+    city: "الرياض",
+    isMarried: false,
+    hobbies: ["قراءة", "رياضة", "برمجة"]
+};
+
+console.log("معلومات الشخص:");
+console.log(person);
+
+// الوصول للخصائص
+console.log("\nالوصول للخصائص:");
+console.log("الاسم الأول:", person.firstName);
+console.log("العمر:", person["age"]);
+
+// إضافة خصائص جديدة
+person.email = "ahmed@example.com";
+person.phone = "0501234567";
+console.log("\nبعد إضافة البريد والهاتف:");
+console.log(person);
+
+// تعديل الخصائص
+person.age = 29;
+person.city = "جدة";
+console.log("\nبعد التعديل:");
+console.log(`العمر الجديد: ${person.age}`);
+console.log(`المدينة الجديدة: ${person.city}`);
+
+// حذف خصائص
+delete person.isMarried;
+console.log("\nبعد حذف حالة الزواج:");
+console.log(person);</code></pre>
+                                    </div>
+                                    <div class="output" id="output-objects-basics"></div>
+                                </div>
+
+                                <div class="example-item">
+                                    <div class="example-header">
+                                        <h5>مثال: طرق التعامل مع الكائنات</h5>
+                                        <button class="run-btn" onclick="runExample('objects-methods')">
+                                            <i class="fas fa-play"></i>
+                                            تشغيل
+                                        </button>
+                                    </div>
+                                    <div class="code-block">
+                                        <pre><code class="language-javascript" id="objects-methods">let car = {
+    brand: "تويوتا",
+    model: "كامري",
+    year: 2023,
+    color: "أبيض",
+    price: 120000,
+    
+    // دوال داخل الكائن (methods)
+    getInfo: function() {
+        return `${this.brand} ${this.model} ${this.year}`;
+    },
+    
+    start: function() {
+        return "تم تشغيل السيارة! 🚗";
+    },
+    
+    calculateAge: function() {
+        return new Date().getFullYear() - this.year;
+    }
+};
+
+console.log("معلومات السيارة:");
+console.log(car.getInfo());
+console.log(car.start());
+console.log(`عمر السيارة: ${car.calculateAge()} سنة`);
+
+// Object.keys, Object.values, Object.entries
+console.log("\nمفاتيح الكائن:", Object.keys(car));
+console.log("قيم الكائن:", Object.values(car));
+
+// التكرار على الكائن
+console.log("\nجميع خصائص السيارة:");
+for (let key in car) {
+    if (typeof car[key] !== 'function') {
+        console.log(`${key}: ${car[key]}`);
+    }
+}
+
+// مثال: مصفوفة من الكائنات
+let products = [
+    { id: 1, name: "لابتوب", price: 3000, category: "إلكترونيات" },
+    { id: 2, name: "هاتف", price: 1500, category: "إلكترونيات" },
+    { id: 3, name: "كتاب", price: 50, category: "تعليم" }
+];
+
+console.log("\nالمنتجات الإلكترونية:");
+let electronics = products.filter(product => product.category === "إلكترونيات");
+electronics.forEach(product => {
+    console.log(`${product.name}: ${product.price} ريال`);
+});</code></pre>
+                                    </div>
+                                    <div class="output" id="output-objects-methods"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ساحة التجريب -->
+        <section id="playground" class="section playground-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-code"></i>
+                        ساحة التجريب
+                    </h2>
+                    <p class="section-subtitle">
+                        اكتب كودك وشاهد النتيجة فوراً
+                    </p>
+                </div>
+
+                <div class="playground-container">
+                    <div class="editor-container">
+                        <div class="editor-header">
+                            <div class="editor-tabs">
+                                <button class="tab-btn active" data-tab="js">
+                                    <i class="fab fa-js-square"></i>
+                                    JavaScript
+                                </button>
+                                <button class="tab-btn" data-tab="html">
+                                    <i class="fab fa-html5"></i>
+                                    HTML
+                                </button>
+                                <button class="tab-btn" data-tab="css">
+                                    <i class="fab fa-css3-alt"></i>
+                                    CSS
+                                </button>
+                            </div>
+                            <div class="editor-actions">
+                                <button class="action-btn" onclick="clearEditor()">
+                                    <i class="fas fa-trash"></i>
+                                    مسح
+                                </button>
+                                <button class="action-btn" onclick="formatCode()">
+                                    <i class="fas fa-magic"></i>
+                                    تنسيق
+                                </button>
+                                <button class="action-btn primary" onclick="runPlaygroundCode()">
+                                    <i class="fas fa-play"></i>
+                                    تشغيل
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="editor-content">
+                            <div class="tab-content active" id="js-tab">
+                                <textarea id="js-editor" placeholder="اكتب كود JavaScript هنا...">// مرحباً! اكتب كودك هنا
+console.log('مرحباً بك في ساحة التجريب!');
+
+// مثال بسيط
+let name = 'المطور';
+let greeting = `أهلاً وسهلاً ${name}!`;
+console.log(greeting);
+
+// جرب إنشاء دالة
+function calculateArea(radius) {
+    return Math.PI * radius * radius;
+}
+
+let area = calculateArea(5);
+console.log(`مساحة الدائرة: ${area.toFixed(2)}`);</textarea>
+                            </div>
+                            
+                            <div class="tab-content" id="html-tab">
+                                <textarea id="html-editor" placeholder="اكتب كود HTML هنا..."><!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>تجربة HTML</title>
+</head>
+<body>
+    <h1>مرحباً بالعالم!</h1>
+    <p>هذا مثال على HTML</p>
+    <button onclick="alert('تم النقر!')">اضغط هنا</button>
+</body>
+</html></textarea>
+                            </div>
+                            
+                            <div class="tab-content" id="css-tab">
+                                <textarea id="css-editor" placeholder="اكتب كود CSS هنا...">body {
+    font-family: 'Cairo', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+    padding: 50px;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+button {
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 25px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+}</textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="output-container">
+                        <div class="output-header">
+                            <h4>
+                                <i class="fas fa-terminal"></i>
+                                النتيجة
+                            </h4>
+                            <button class="clear-output-btn" onclick="clearOutput()">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div class="output-content">
+                            <div id="console-output" class="console-output"></div>
+                            <div id="preview-output" class="preview-output"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- أمثلة سريعة -->
+                <div class="quick-examples">
+                    <h3>أمثلة سريعة للتجريب</h3>
+                    <div class="examples-grid">
+                        <div class="quick-example" onclick="loadExample('calculator')">
+                            <i class="fas fa-calculator"></i>
+                            <h4>آلة حاسبة</h4>
+                            <p>مثال على العمليات الحسابية</p>
+                        </div>
+                        
+                        <div class="quick-example" onclick="loadExample('todo')">
+                            <i class="fas fa-list-check"></i>
+                            <h4>قائمة مهام</h4>
+                            <p>إدارة المهام بـ JavaScript</p>
+                        </div>
+                        
+                        <div class="quick-example" onclick="loadExample('clock')">
+                            <i class="fas fa-clock"></i>
+                            <h4>ساعة رقمية</h4>
+                            <p>عرض الوقت الحالي</p>
+                        </div>
+                        
+                        <div class="quick-example" onclick="loadExample('colors')">
+                            <i class="fas fa-palette"></i>
+                            <h4>مولد الألوان</h4>
+                            <p>توليد ألوان عشوائية</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- تذييل الصفحة -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>JavaScript Academy</h4>
+                    <p>رحلتك الشاملة لإتقان JavaScript من الصفر حتى الاحتراف</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="#intro">المقدمة</a></li>
+                        <li><a href="#basics">الأساسيات</a></li>
+                        <li><a href="#playground">ساحة التجريب</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>تواصل معنا</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 JavaScript Academy. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- المكتبات الخارجية -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <!-- ملف JavaScript الرئيسي -->
+    <script src="script.js"></script>
+</body>
+</html>
+

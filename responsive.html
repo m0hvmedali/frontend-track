@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>احتراف CSS Responsive من الصفر حتى الإتقان</title>
+  <style>
+    :root {
+      --main-color: #34495e;
+      --highlight-color: #e67e22;
+      --light-gray: #ecf0f1;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--light-gray);
+      padding: 20px;
+      direction: rtl;
+      line-height: 1.8;
+    }
+
+    h1, h2 {
+      color: var(--main-color);
+    }
+
+    section {
+      background: white;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    pre {
+      background: #f4f4f4;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+      direction: ltr;
+    }
+
+    .demo-box {
+      background: var(--highlight-color);
+      color: white;
+      padding: 15px;
+      text-align: center;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+
+    .flex-demo, .grid-demo {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .flex-demo > div, .grid-demo > div {
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      flex: 1 1 200px;
+      text-align: center;
+      border-radius: 5px;
+    }
+    .grid-demo {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .img-demo img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    @media (max-width: 900px) {
+      .demo-box {
+        background: #2980b9;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .demo-box {
+        background: #c0392b;
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>📱 احتراف CSS Responsive من الصفر حتى الإتقان</h1>
+
+  <section>
+    <h2>1. ما هو التصميم المتجاوب؟</h2>
+    <p>هو أسلوب تصميم يجعل الموقع مناسبًا لجميع الأجهزة مهما كان حجم شاشتها، من الموبايل الصغير إلى شاشات 4K. الهدف هو تقديم تجربة مستخدم مرنة وسلسة.</p>
+  </section>
+
+  <section>
+    <h2>2. إعداد وسم Viewport</h2>
+    <p>هذا الوسم يُكتب داخل &lt;head&gt; ليُخبر المتصفح أن يتعامل مع عرض الشاشة كما هو فعليًا:</p>
+    <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+  </section>
+
+  <section>
+    <h2>3. Media Queries</h2>
+    <p>تُستخدم لتغيير شكل وتصميم العناصر بناءً على حجم الشاشة:</p>
+    <pre><code>@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+}</code></pre>
+    <div class="demo-box">قم بتصغير المتصفح لترى تأثير Media Queries</div>
+  </section>
+
+  <section>
+    <h2>4. Flexbox - المرونة</h2>
+    <p>يسمح بتوزيع العناصر أفقيًا أو عموديًا، ويتكيف تلقائيًا حسب عرض الشاشة:</p>
+    <div class="flex-demo">
+      <div>مربع 1</div>
+      <div>مربع 2</div>
+      <div>مربع 3</div>
+    </div>
+    <pre><code>.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}</code></pre>
+  </section>
+
+  <section>
+    <h2>5. CSS Grid - التخطيط الشبكي</h2>
+    <p>أداة قوية لبناء تخطيطات متجاوبة بطريقة ديناميكية:</p>
+    <div class="grid-demo">
+      <div>عمود A</div>
+      <div>عمود B</div>
+      <div>عمود C</div>
+    </div>
+    <pre><code>.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}</code></pre>
+  </section>
+
+  <section>
+    <h2>6. وحدات القياس المتجاوبة</h2>
+    <p>استخدم <code>vw</code> و <code>em</code> و <code>%</code> بدلاً من <code>px</code> لتكبير وتصغير العناصر تلقائيًا حسب عرض الشاشة:</p>
+    <pre><code>font-size: 2vw;
+width: 90%;
+padding: 1.5em;</code></pre>
+  </section>
+
+  <section>
+    <h2>7. الصور المتجاوبة</h2>
+    <p>الصورة التالية تتغير تلقائيًا حسب الشاشة:</p>
+    <div class="img-demo">
+      <img src="https://via.placeholder.com/600x300" alt="صورة تجريبية">
+    </div>
+    <pre><code>img {
+  max-width: 100%;
+  height: auto;
+}</code></pre>
+  </section>
+
+  <section>
+    <h2>8. إظهار/إخفاء عناصر حسب الجهاز</h2>
+    <p>مثلاً إخفاء زر أو قائمة على الشاشات الصغيرة:</p>
+    <pre><code>@media (max-width: 600px) {
+  .desktop-menu {
+    display: none;
+  }
+}</code></pre>
+  </section>
+
+  <section>
+    <h2>9. نقاط التوقف (Breakpoints)</h2>
+    <p>هي نقاط تُحدد عندها تبدأ أو تتغير القواعد داخل Media Queries، أشهرها:</p>
+    <ul>
+      <li>Extra small (موبايل): 0 - 576px</li>
+      <li>Small (تابلت عمودي): 577px - 768px</li>
+      <li>Medium (تابلت أفقي): 769px - 992px</li>
+      <li>Large (لابتوب): 993px - 1200px</li>
+      <li>Extra Large (شاشات ضخمة): +1200px</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>10. نصائح احترافية:</h2>
+    <ul>
+      <li>ابدأ من التصميم للجوال أولاً (Mobile First)</li>
+      <li>اجعل النصوص والصور مرنة</li>
+      <li>اختبر موقعك على أجهزة مختلفة</li>
+      <li>استخدم أدوات DevTools لتجربة الشاشات المختلفة</li>
+      <li>اجمع بين Flex وGrid بذكاء</li>
+    </ul>
+  </section>
+</body>
+</html>
