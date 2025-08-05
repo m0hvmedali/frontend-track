@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل مرجع تطوير الويب - HTML, CSS, JavaScript</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-code"></i>
+                <h1>Front-end dictionary
+                </h1>
+                <small class="small">
+                    (CSS, HTML, JavaScript)
+
+                </small>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <button class="nav-btn active" data-tab="html">
+                            <i class="fab fa-html5"></i>
+                            <span>HTML</span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-btn" data-tab="css">
+                            <i class="fab fa-css3-alt"></i>
+                            <span>CSS</span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-btn" data-tab="javascript">
+                            <i class="fab fa-js-square"></i>
+                            <span>JavaScript</span>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <div class="welcome-content">
+                    <h2>مرحباً بك في دليل مرجع تطوير الويب الشامل</h2>
+                    <p>اكتشف جميع أوامر وخصائص HTML وCSS وJavaScript مع أمثلة تطبيقية كاملة وإمكانية نسخ الكود بسهولة</p>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <span class="stat-number" id="html-count">0</span>
+                            <span class="stat-label"> HTML element</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="css-count">0</span>
+                            <span class="stat-label">CSS property</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="js-count">0</span>
+                            <span class="stat-label">JavaScript functions</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Search Section -->
+            <section class="search-section">
+                <div class="search-container">
+                    <div class="search-box">
+
+
+                        <input type="text" id="search-input" placeholder="Search">
+
+                        <button id="clear-search" class="clear-btn">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="filter-options">
+                        <select id="type-filter">
+                            <option value="">جميع الأنواع</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Content Tabs -->
+            <section class="content-section">
+                <!-- HTML Tab -->
+                <div class="tab-content active" id="html-tab">
+                    <div class="tab-header">
+                        <h3><i class="fab fa-html5"></i> عناصر HTML</h3>
+                        <p>جميع عناصر HTML مع شرح مفصل وأمثلة تطبيقية</p>
+                    </div>
+                    <div class="commands-grid" id="html-commands">
+                        <!-- HTML commands will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- CSS Tab -->
+                <div class="tab-content" id="css-tab">
+                    <div class="tab-header">
+                        <h3><i class="fab fa-css3-alt"></i> خصائص CSS</h3>
+                        <p>جميع خصائص CSS مع شرح مفصل وأمثلة تطبيقية</p>
+                    </div>
+                    <div class="commands-grid" id="css-commands">
+                        <!-- CSS commands will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- JavaScript Tab -->
+                <div class="tab-content" id="javascript-tab">
+                    <div class="tab-header">
+                        <h3><i class="fab fa-js-square"></i> دوال JavaScript</h3>
+                        <p>جميع دوال JavaScript مع شرح مفصل وأمثلة تطبيقية</p>
+                    </div>
+                    <div class="commands-grid" id="javascript-commands">
+                        <!-- JavaScript commands will be loaded here -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modal for Code Examples -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="modal-title"></h3>
+                <button class="modal-close" id="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="command-info">
+                    <div class="command-type" id="modal-type"></div>
+                    <div class="command-syntax">
+                        <h4>الصيغة:</h4>
+                        <code id="modal-syntax"></code>
+                    </div>
+                    <div class="command-description">
+                        <h4>الوصف:</h4>
+                        <p id="modal-description"></p>
+                    </div>
+                    <div class="command-example">
+                        <h4>مثال تطبيقي:</h4>
+                        <div class="code-container">
+                            <pre><code id="modal-example"></code></pre>
+                            <button class="copy-btn" id="copy-btn">
+                                <i class="fas fa-copy"></i>
+                                نسخ الكود
+                            </button>
+                        </div>
+                    </div>
+                    <div class="command-explanation">
+                        <h4>الشرح:</h4>
+                        <p id="modal-explanation"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div class="loading-spinner" id="loading-spinner">
+        <div class="spinner"></div>
+        <p>جاري تحميل البيانات...</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 دليل مرجع تطوير الويب. جميع الحقوق محفوظة.</p>
+            <div class="footer-links">
+                <a href="#" class="footer-link">الرئيسية</a>
+                <a href="#" class="footer-link">من نحن</a>
+                <a href="#" class="footer-link">اتصل بنا</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,704 @@
+{
+  "css_commands": [
+    {
+      "name": "color",
+      "type": "Property",
+      "description": "تحدد لون النص.",
+      "syntax": "color: value;",
+      "example": "p {\n    color: #336699; /* لون أزرق داكن */\n}\nh1 {\n    color: rgb(255, 0, 0); /* لون أحمر */\n}\n.highlight {\n    color: green; /* لون أخضر */\n}",
+      "explanation": "يمكن تحديد اللون باستخدام أسماء الألوان، قيم RGB، قيم HEX، أو HSL."
+    },
+    {
+      "name": "background-color",
+      "type": "Property",
+      "description": "تحدد لون خلفية العنصر.",
+      "syntax": "background-color: value;",
+      "example": "div {\n    background-color: #f0f0f0; /* رمادي فاتح */\n    padding: 20px;\n}\n.header {\n    background-color: navy; /* أزرق داكن */\n    color: white;\n    text-align: center;\n}\nbutton {\n    background-color: #4CAF50; /* أخضر */\n    color: white;\n    padding: 10px 15px;\n    border: none;\n    cursor: pointer;\n}",
+      "explanation": "تستخدم لتلوين خلفية أي عنصر HTML."
+    },
+    {
+      "name": "font-size",
+      "type": "Property",
+      "description": "تحدد حجم الخط.",
+      "syntax": "font-size: value;",
+      "example": "body {\n    font-size: 16px; /* حجم افتراضي */\n}\nh1 {\n    font-size: 2.5em; /* 2.5 ضعف حجم الخط الأساسي */\n}\n.small-text {\n    font-size: 0.8rem; /* 0.8 ضعف حجم الخط الأساسي للعنصر الجذر */\n}\n.large-text {\n    font-size: 24pt; /* 24 نقطة */\n}",
+      "explanation": "يمكن استخدام وحدات مختلفة مثل px, em, rem, pt."
+    },
+    {
+      "name": "font-family",
+      "type": "Property",
+      "description": "تحدد نوع الخط المستخدم.",
+      "syntax": "font-family: value;",
+      "example": "body {\n    font-family: 'Arial', sans-serif; /* Arial أو أي خط sans-serif آخر */\n}\nh1 {\n    font-family: 'Times New Roman', serif; /* Times New Roman أو أي خط serif آخر */\n}\n.code {\n    font-family: 'Courier New', monospace; /* خط أحادي المسافة */\n}",
+      "explanation": "يجب تحديد عدة خطوط كاحتياطي في حال عدم توفر الخط الأول."
+    },
+    {
+      "name": "text-align",
+      "type": "Property",
+      "description": "تحدد محاذاة النص داخل العنصر.",
+      "syntax": "text-align: value;",
+      "example": "h1 {\n    text-align: center; /* توسيط النص */\n}\np {\n    text-align: justify; /* ضبط النص على عرض السطر */\n}\n.left-aligned {\n    text-align: left; /* محاذاة لليسار */\n}\n.right-aligned {\n    text-align: right; /* محاذاة لليمين */\n}",
+      "explanation": "القيم الشائعة هي left, right, center, justify."
+    },
+    {
+      "name": "margin",
+      "type": "Property",
+      "description": "تحدد الهامش الخارجي حول العنصر.",
+      "syntax": "margin: value;",
+      "example": "div {\n    margin: 10px; /* هامش 10px من جميع الجهات */\n}\np {\n    margin: 20px 0; /* 20px من الأعلى والأسفل، 0 من اليمين واليسار */\n}\nh1 {\n    margin-top: 30px;\n    margin-bottom: 15px;\n    margin-left: auto;\n    margin-right: auto; /* توسيط العنصر */\n    width: 50%;\n}",
+      "explanation": "يمكن تحديد الهوامش لجميع الجهات أو لجهات محددة (top, right, bottom, left). auto يستخدم للتوسيط."
+    },
+    {
+      "name": "padding",
+      "type": "Property",
+      "description": "تحدد المساحة الداخلية بين محتوى العنصر وحدوده.",
+      "syntax": "padding: value;",
+      "example": "div {\n    padding: 15px; /* مساحة داخلية 15px من جميع الجهات */\n    border: 1px solid black;\n}\nbutton {\n    padding: 10px 20px; /* 10px أعلى وأسفل، 20px يمين ويسار */\n    background-color: blue;\n    color: white;\n}\n.card {\n    padding-top: 10px;\n    padding-right: 20px;\n    padding-bottom: 10px;\n    padding-left: 20px;\n}",
+      "explanation": "يمكن تحديد المساحة الداخلية لجميع الجهات أو لجهات محددة (top, right, bottom, left)."
+    },
+    {
+      "name": "border",
+      "type": "Property",
+      "description": "تحدد حدود العنصر (السمك، النمط، اللون).",
+      "syntax": "border: width style color;",
+      "example": "div {\n    border: 1px solid black; /* حدود صلبة سوداء بسمك 1px */\n    padding: 10px;\n}\nimg {\n    border: 5px dashed red; /* حدود متقطعة حمراء بسمك 5px */\n}\n.card {\n    border-top: 2px dotted blue;\n    border-bottom: 2px solid green;\n    border-radius: 8px; /* حواف دائرية */\n}",
+      "explanation": "يمكن تحديد الحدود لجميع الجهات أو لجهات محددة (top, right, bottom, left)."
+    },
+    {
+      "name": "display",
+      "type": "Property",
+      "description": "تحدد كيفية عرض العنصر (block, inline, inline-block, flex, grid, none).",
+      "syntax": "display: value;",
+      "example": "li {\n    display: inline-block; /* عرض العناصر بجانب بعضها البعض */\n    margin-right: 10px;\n}\n.hidden {\n    display: none; /* إخفاء العنصر تماماً */\n}\n.container {\n    display: flex; /* استخدام Flexbox للتخطيط */\n    justify-content: space-between;\n}\n.grid-container {\n    display: grid; /* استخدام Grid للتخطيط */\n    grid-template-columns: auto auto auto;\n}",
+      "explanation": "خاصية أساسية للتحكم في تخطيط الصفحة."
+    },
+    {
+      "name": "width",
+      "type": "Property",
+      "description": "تحدد عرض العنصر.",
+      "syntax": "width: value;",
+      "example": "div {\n    width: 300px; /* عرض ثابت */\n    background-color: lightblue;\n}\nimg {\n    width: 100%; /* عرض كامل العنصر الأب */\n    max-width: 600px; /* لا يتجاوز 600px */\n    height: auto; /* للحفاظ على نسبة العرض إلى الارتفاع */\n}\n.sidebar {\n    width: 25%; /* 25% من عرض العنصر الأب */\n}",
+      "explanation": "يمكن استخدام وحدات ثابتة (px) أو نسب مئوية (%)."
+    },
+    {
+      "name": "height",
+      "type": "Property",
+      "description": "تحدد ارتفاع العنصر.",
+      "syntax": "height: value;",
+      "example": "div {\n    height: 200px; /* ارتفاع ثابت */\n    background-color: lightgreen;\n}\n.full-height {\n    height: 100vh; /* ارتفاع كامل نافذة العرض */\n    background-color: #eee;\n}\nimg {\n    width: 100%;\n    height: auto; /* للحفاظ على نسبة العرض إلى الارتفاع */\n}",
+      "explanation": "يمكن استخدام وحدات ثابتة (px) أو نسب مئوية (%). vh تعني viewport height."
+    },
+    {
+      "name": "float",
+      "type": "Property",
+      "description": "تحدد ما إذا كان العنصر يجب أن يطفو (float) إلى اليسار أو اليمين.",
+      "syntax": "float: value;",
+      "example": "img {\n    float: left; /* تطفو الصورة لليسار ويحيط بها النص */\n    margin-right: 15px;\n}\n.clearfix::after {\n    content: \"\";\n    clear: both;\n    display: table;\n}",
+      "explanation": "تستخدم لوضع العناصر بجانب بعضها البعض. يجب استخدام clearfix لمسح الـ float."
+    },
+    {
+      "name": "position",
+      "type": "Property",
+      "description": "تحدد نوع تحديد الموضع للعنصر (static, relative, absolute, fixed, sticky).",
+      "syntax": "position: value;",
+      "example": "/* static (افتراضي) */\n.static-box {\n    position: static;\n    top: 10px; /* لا يؤثر */\n}\n\n/* relative */\n.relative-box {\n    position: relative;\n    top: 20px;\n    left: 30px;\n    background-color: lightblue;\n}\n\n/* absolute */\n.parent {\n    position: relative;\n    width: 300px;\n    height: 200px;\n    border: 1px solid red;\n}\n.absolute-box {\n    position: absolute;\n    top: 10px;\n    right: 10px;\n    background-color: lightgreen;\n}\n\n/* fixed */\n.fixed-header {\n    position: fixed;\n    top: 0;\n    width: 100%;\n    background-color: #333;\n    color: white;\n    padding: 10px;\n    z-index: 1000;\n}\n\n/* sticky */\n.sticky-nav {\n    position: sticky;\n    top: 0;\n    background-color: #f8f8f8;\n    padding: 10px;\n    border-bottom: 1px solid #ccc;\n}",
+      "explanation": "تتحكم في كيفية وضع العنصر بالنسبة للعناصر الأخرى أو نافذة العرض."
+    },
+    {
+      "name": "top, right, bottom, left",
+      "type": "Property",
+      "description": "تحدد إزاحة العنصر من حافة العنصر الأب أو نافذة العرض.",
+      "syntax": "top: value;",
+      "example": "/* مع position: relative */\n.box-relative {\n    position: relative;\n    top: 20px;\n    left: 30px;\n}\n\n/* مع position: absolute */\n.parent {\n    position: relative;\n}\n.box-absolute {\n    position: absolute;\n    top: 0;\n    right: 0;\n}\n\n/* مع position: fixed */\n.fixed-footer {\n    position: fixed;\n    bottom: 0;\n    left: 0;\n    width: 100%;\n    background-color: #222;\n    color: white;\n    padding: 10px;\n}",
+      "explanation": "تستخدم مع خصائص position (relative, absolute, fixed, sticky) لتحديد موضع العنصر."
+    },
+    {
+      "name": "z-index",
+      "type": "Property",
+      "description": "تحدد ترتيب تكديس العناصر المتداخلة (من الأعلى للأدنى).",
+      "syntax": "z-index: value;",
+      "example": "/* عنصر فوق الآخر */\n.box1 {\n    position: absolute;\n    background-color: red;\n    z-index: 1;\n}\n.box2 {\n    position: absolute;\n    background-color: blue;\n    z-index: 2; /* هذا العنصر سيكون فوق box1 */\n    top: 10px;\n    left: 10px;\n}",
+      "explanation": "يعمل فقط على العناصر ذات position غير static."
+    },
+    {
+      "name": "overflow",
+      "type": "Property",
+      "description": "تحدد كيفية التعامل مع المحتوى الذي يتجاوز حدود العنصر.",
+      "syntax": "overflow: value;",
+      "example": "div {\n    width: 200px;\n    height: 100px;\n    border: 1px solid black;\n    overflow: scroll; /* إضافة أشرطة تمرير عند الحاجة */\n}\n.hidden-overflow {\n    overflow: hidden; /* إخفاء المحتوى الزائد */\n    white-space: nowrap; /* منع التفاف النص */\n    text-overflow: ellipsis; /* إضافة نقاط (...) للنص المخفي */\n}",
+      "explanation": "القيم الشائعة: visible (افتراضي), hidden, scroll, auto."
+    },
+    {
+      "name": "opacity",
+      "type": "Property",
+      "description": "تحدد شفافية العنصر (من 0 إلى 1).",
+      "syntax": "opacity: value;",
+      "example": "img {\n    opacity: 0.5; /* نصف شفاف */\n}\n.hover-effect:hover {\n    opacity: 1; /* يصبح مرئياً بالكامل عند التمرير */\n}",
+      "explanation": "0 يعني شفاف تماماً، 1 يعني معتم تماماً."
+    },
+    {
+      "name": "transition",
+      "type": "Property",
+      "description": "تضيف تأثيرات انتقال سلسة عند تغيير خصائص CSS.",
+      "syntax": "transition: property duration timing-function delay;",
+      "example": "button {\n    background-color: blue;\n    color: white;\n    padding: 10px 20px;\n    transition: background-color 0.3s ease-in-out; /* انتقال سلس للون الخلفية */\n}\nbutton:hover {\n    background-color: darkblue;\n}\n\n.box {\n    width: 100px;\n    height: 100px;\n    background-color: red;\n    transition: width 0.5s, height 0.5s, background-color 0.5s; /* انتقال لعدة خصائص */\n}\n.box:hover {\n    width: 150px;\n    height: 150px;\n    background-color: orange;\n}",
+      "explanation": "تستخدم لإنشاء حركات بسيطة وجميلة دون JavaScript."
+    },
+    {
+      "name": "transform",
+      "type": "Property",
+      "description": "تطبق تحويلات ثنائية أو ثلاثية الأبعاد على العنصر (تدوير، تغيير حجم، إزاحة).",
+      "syntax": "transform: function();",
+      "example": "/* تدوير */\n.rotate {\n    transform: rotate(45deg); /* تدوير 45 درجة */\n}\n\n/* تغيير حجم */\n.scale {\n    transform: scale(1.2); /* تكبير 1.2 مرة */\n}\n\n/* إزاحة */\n.translate {\n    transform: translateX(50px); /* إزاحة 50px لليمين */\n}\n\n/* دمج تحويلات */\n.combined {\n    transform: rotate(10deg) scale(1.1) translateX(20px);\n}",
+      "explanation": "تستخدم لإنشاء تأثيرات بصرية ديناميكية."
+    },
+    {
+      "name": "@media",
+      "type": "At-rule",
+      "description": "تطبق أنماط CSS بناءً على خصائص الجهاز (مثل حجم الشاشة).",
+      "syntax": "@media screen and (max-width: 600px) { ... }",
+      "example": "/* أنماط للشاشات الصغيرة (أقل من 600px) */\n@media screen and (max-width: 600px) {\n    body {\n        font-size: 14px;\n    }\n    .sidebar {\n        display: none; /* إخفاء الشريط الجانبي */\n    }\n    .main-content {\n        width: 100%;\n    }\n}\n\n/* أنماط للطباعة */\n@media print {\n    nav, footer {\n        display: none; /* إخفاء التنقل والتذييل عند الطباعة */\n    }\n    a {\n        text-decoration: none;\n        color: black;\n    }\n}",
+      "explanation": "أساسية لتصميم المواقع المتجاوبة (Responsive Web Design)."
+    },
+    {
+      "name": "flexbox",
+      "type": "Layout Module",
+      "description": "نظام تخطيط أحادي البعد لتوزيع العناصر داخل حاوية.",
+      "syntax": "display: flex;",
+      "example": "/* حاوية Flex */\n.flex-container {\n    display: flex;\n    justify-content: space-around; /* توزيع العناصر بالتساوي مع مسافات حولها */\n    align-items: center; /* محاذاة العناصر عمودياً في المنتصف */\n    height: 200px;\n    border: 1px solid #ccc;\n}\n\n/* عناصر Flex */\n.flex-item {\n    background-color: lightcoral;\n    padding: 10px;\n    margin: 5px;\n}",
+      "explanation": "مثالي لتخطيط الأشرطة التنقلية، البطاقات، أو أي مجموعة عناصر في صف أو عمود."
+    },
+    {
+      "name": "grid",
+      "type": "Layout Module",
+      "description": "نظام تخطيط ثنائي الأبعاد لتوزيع العناصر في صفوف وأعمدة.",
+      "syntax": "display: grid;",
+      "example": "/* حاوية Grid */\n.grid-container {\n    display: grid;\n    grid-template-columns: 1fr 2fr 1fr; /* ثلاث أعمدة بنسب 1:2:1 */\n    grid-template-rows: auto 100px; /* صف تلقائي و صف بارتفاع 100px */\n    gap: 10px; /* مسافة بين الخلايا */\n    height: 300px;\n    border: 1px solid #ccc;\n}\n\n/* عناصر Grid */\n.grid-item {\n    background-color: lightseagreen;\n    padding: 10px;\n    text-align: center;\n}\n\n.item1 {\n    grid-column: 1 / 3; /* يمتد من العمود 1 إلى 3 */\n    grid-row: 1;\n}\n.item2 {\n    grid-column: 3;\n    grid-row: 1 / 3; /* يمتد من الصف 1 إلى 3 */\n}",
+      "explanation": "مثالي لتخطيطات الصفحات المعقدة، مثل تخطيطات المجلات أو لوحات التحكم."
+    },
+    {
+      "name": "box-sizing",
+      "type": "Property",
+      "description": "تحدد كيفية حساب عرض وارتفاع العنصر (content-box, border-box).",
+      "syntax": "box-sizing: value;",
+      "example": "/* الافتراضي */\n.content-box {\n    box-sizing: content-box;\n    width: 100px;\n    padding: 20px; /* العرض الكلي سيكون 100 + 20*2 = 140px */\n    border: 5px solid black; /* العرض الكلي سيكون 140 + 5*2 = 150px */\n}\n\n/* الموصى به */\n.border-box {\n    box-sizing: border-box;\n    width: 100px;\n    padding: 20px; /* العرض الكلي سيبقى 100px */\n    border: 5px solid black; /* العرض الكلي سيبقى 100px */\n}",
+      "explanation": "`border-box` يجعل التعامل مع الأبعاد أسهل بكثير لأنه يشمل padding و border ضمن العرض والارتفاع المحددين."
+    },
+    {
+      "name": "text-decoration",
+      "type": "Property",
+      "description": "تحدد خطوط النص (تحته، فوقه، يتوسطه).",
+      "syntax": "text-decoration: value;",
+      "example": "a {\n    text-decoration: none; /* إزالة الخط تحت الروابط */\n}\nh2 {\n    text-decoration: underline; /* إضافة خط تحت العنوان */\n}\n.strike {\n    text-decoration: line-through; /* إضافة خط يتوسط النص */\n}",
+      "explanation": "تستخدم لتنسيق الروابط والنصوص بشكل عام."
+    },
+    {
+      "name": "list-style-type",
+      "type": "Property",
+      "description": "تحدد نوع علامة القائمة (مثل النقاط أو الأرقام).",
+      "syntax": "list-style-type: value;",
+      "example": "ul {\n    list-style-type: square; /* مربعات */\n}\nol {\n    list-style-type: upper-roman; /* أرقام رومانية كبيرة */\n}\n.no-bullets {\n    list-style-type: none; /* إزالة علامات القائمة */\n    padding-left: 0;\n}",
+      "explanation": "تستخدم لتغيير شكل علامات القائمة في القوائم المرتبة وغير المرتبة."
+    },
+    {
+      "name": "cursor",
+      "type": "Property",
+      "description": "تحدد شكل مؤشر الماوس عند التمرير فوق العنصر.",
+      "syntax": "cursor: value;",
+      "example": "button {\n    cursor: pointer; /* مؤشر اليد */\n}\n.draggable {\n    cursor: grab; /* مؤشر اليد المفتوحة */\n}\n.text-input {\n    cursor: text; /* مؤشر النص */\n}",
+      "explanation": "تستخدم لتحسين تجربة المستخدم بإعطاء إشارات بصرية."
+    },
+    {
+      "name": "box-shadow",
+      "type": "Property",
+      "description": "تضيف ظلًا حول إطار العنصر.",
+      "syntax": "box-shadow: h-offset v-offset blur spread color inset;",
+      "example": "div {\n    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); /* ظل بسيط */\n    padding: 20px;\n    margin: 20px;\n}\n.card {\n    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); /* ظل متعدد */\n    transition: 0.3s;\n    border-radius: 5px;\n}\n.card:hover {\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n}",
+      "explanation": "يمكن تحديد إزاحة الظل، ضبابيته، انتشاره، لونه، وما إذا كان داخلياً."
+    },
+    {
+      "name": "border-radius",
+      "type": "Property",
+      "description": "تضيف حواف دائرية للعنصر.",
+      "syntax": "border-radius: value;",
+      "example": "div {\n    border-radius: 8px; /* حواف دائرية 8px */\n    background-color: lightblue;\n    padding: 20px;\n}\nimg {\n    border-radius: 50%; /* لجعل الصورة دائرية */\n    width: 100px;\n    height: 100px;\n    object-fit: cover;\n}",
+      "explanation": "يمكن تحديد قيمة واحدة لجميع الزوايا أو قيم مختلفة لكل زاوية."
+    },
+    {
+      "name": "@import",
+      "type": "At-rule",
+      "description": "تستخدم لاستيراد ملفات CSS أخرى داخل ملف CSS الحالي.",
+      "syntax": "@import url('path/to/style.css');",
+      "example": "@import url('reset.css');\n@import url('typography.css');\n@import url('components.css');\n\nbody {\n    font-family: Arial, sans-serif;\n}",
+      "explanation": "يجب أن توضع في بداية ملف CSS قبل أي قواعد أخرى."
+    },
+    {
+      "name": "@font-face",
+      "type": "At-rule",
+      "description": "تستخدم لاستيراد خطوط مخصصة (Custom Fonts) إلى صفحة الويب.",
+      "syntax": "@font-face { font-family: 'MyFont'; src: url('myfont.woff2') format('woff2'); }",
+      "example": "@font-face {\n    font-family: 'Open Sans';\n    src: url('fonts/OpenSans-Regular.woff2') format('woff2'),\n         url('fonts/OpenSans-Regular.woff') format('woff');\n    font-weight: normal;\n    font-style: normal;\n}\n\nbody {\n    font-family: 'Open Sans', sans-serif;\n}",
+      "explanation": "تسمح باستخدام خطوط غير متوفرة بشكل افتراضي على أجهزة المستخدمين."
+    },
+    {
+      "name": "!important",
+      "type": "Keyword",
+      "description": "تزيد من خصوصية القاعدة لتجاوز أي قواعد أخرى.",
+      "syntax": "property: value !important;",
+      "example": "/* هذا اللون سيتم تطبيقه بغض النظر عن أي قواعد أخرى */\n.my-element {\n    color: red !important;\n}\n\n/* بدون !important، قد يتم تجاوزها بقواعد أكثر خصوصية */\np {\n    color: blue;\n}\n#myParagraph {\n    color: green; /* هذا سيتجاوز اللون الأزرق */\n}\n.my-element {\n    color: purple; /* هذا لن يتجاوز اللون الأحمر */\n}",
+      "explanation": "يجب استخدامها بحذر شديد لأنها تجعل CSS أصعب في الصيانة والتصحيح."
+    },
+    {
+      "name": ":hover",
+      "type": "Pseudo-class",
+      "description": "تطبق أنماطاً عندما يمر مؤشر الماوس فوق العنصر.",
+      "syntax": "selector:hover { property: value; }",
+      "example": "button {\n    background-color: #007bff;\n    color: white;\n    padding: 10px 15px;\n    border: none;\n    transition: background-color 0.3s ease;\n}\n\nbutton:hover {\n    background-color: #0056b3; /* يتغير اللون عند التمرير */\n    cursor: pointer;\n}\n\na:hover {\n    text-decoration: underline;\n}",
+      "explanation": "تستخدم لإنشاء تأثيرات تفاعلية بسيطة."
+    },
+    {
+      "name": ":active",
+      "type": "Pseudo-class",
+      "description": "تطبق أنماطاً عندما يتم النقر على العنصر (أثناء الضغط).",
+      "syntax": "selector:active { property: value; }",
+      "example": "button:active {\n    background-color: #004085; /* يتغير اللون عند الضغط */\n    transform: translateY(1px); /* يعطي إحساساً بالضغط */\n}",
+      "explanation": "تستخدم لإعطاء رد فعل بصري عند تفاعل المستخدم."
+    },
+    {
+      "name": ":focus",
+      "type": "Pseudo-class",
+      "description": "تطبق أنماطاً عندما يكون العنصر في حالة التركيز (مثلاً عند النقر عليه أو التنقل إليه باستخدام Tab).",
+      "syntax": "selector:focus { property: value; }",
+      "example": "input:focus {\n    border-color: #007bff;\n    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);\n    outline: none; /* إزالة الإطار الافتراضي للمتصفح */\n}",
+      "explanation": "مهمة جداً للوصولية، خاصة لمستخدمي لوحة المفاتيح."
+    },
+    {
+      "name": "::before, ::after",
+      "type": "Pseudo-elements",
+      "description": "تنشئ محتوى زائف قبل أو بعد محتوى العنصر.",
+      "syntax": "selector::before { content: \"text\"; }",
+      "example": "/* إضافة أيقونة قبل الروابط الخارجية */\na[target=\"_blank\"]::after {\n    content: \" \u2197\"; /* رمز سهم */\n    font-size: 0.8em;\n    vertical-align: super;\n}\n\n/* إضافة زخرفة */\nh2::before {\n    content: \"\";\n    display: inline-block;\n    width: 20px;\n    height: 2px;\n    background-color: blue;\n    margin-right: 10px;\n}",
+      "explanation": "تستخدم لإضافة محتوى زخرفي أو أيقونات دون تعديل HTML."
+    },
+    {
+      "name": "@keyframes",
+      "type": "At-rule",
+      "description": "تحدد تسلسل الأنماط في الرسوم المتحركة (Animations).",
+      "syntax": "@keyframes animationname { from { ... } to { ... } }",
+      "example": "@keyframes fade-in {\n    from { opacity: 0; }\n    to { opacity: 1; }\n}\n\n.element-to-animate {\n    animation-name: fade-in;\n    animation-duration: 2s;\n    animation-timing-function: ease-in-out;\n    animation-delay: 0.5s;\n    animation-iteration-count: infinite;\n    animation-direction: alternate;\n}",
+      "explanation": "تستخدم لإنشاء رسوم متحركة معقدة عن طريق تحديد نقاط رئيسية (keyframes) في التسلسل."
+    },
+    {
+      "name": "animation",
+      "type": "Property",
+      "description": "خاصية مختصرة لتطبيق الرسوم المتحركة المحددة بواسطة @keyframes.",
+      "syntax": "animation: name duration timing-function delay iteration-count direction fill-mode play-state;",
+      "example": "@keyframes slidein {\n    from {\n        margin-left: 100%;\n        width: 300%;\n    }\n    to {\n        margin-left: 0%;\n        width: 100%;\n    }\n}\n\ndiv {\n    animation-name: slidein;\n    animation-duration: 3s;\n    animation-iteration-count: infinite;\n    animation-direction: alternate;\n}",
+      "explanation": "تجمع جميع خصائص الرسوم المتحركة في سطر واحد."
+    },
+ 
+        {
+          "name": "direction",
+          "type": "Property",
+          "description": "تحدد اتجاه النص والمحتوى (يمين-لليسار أو يسار-لليمين).",
+          "syntax": "direction: rtl;",
+          "example": "body.arabic {\n    direction: rtl; /* نصوص من اليمين لليسار */\n    text-align: right;\n}\nbody.english {\n    direction: ltr; /* نصوص من اليسار لليمين */\n    text-align: left;\n}",
+          "explanation": "أساسية للدعم الكامل للغات العربية والعبرية والفارسية."
+        },
+        {
+          "name": "unicode-bidi",
+          "type": "Property",
+          "description": "تتحكم في كيفية معالجة النصوص ثنائية الاتجاه.",
+          "syntax": "unicode-bidi: bidi-override;",
+          "example": "bdo {\n    unicode-bidi: bidi-override;\n    direction: rtl;\n}",
+          "explanation": "تستخدم مع عناصر <bdo> لفرض اتجاه نص معين."
+        },
+        {
+          "name": "background-image",
+          "type": "Property",
+          "description": "تعيين صورة كخلفية للعنصر.",
+          "syntax": "background-image: url('path/to/image.jpg');",
+          "example": "header {\n    background-image: linear-gradient(to right, #4e54c8, #8f94fb), \n                     url('pattern.png');\n    background-blend-mode: overlay;\n    background-size: cover;\n}",
+          "explanation": "تدعم الصور والتدرجات اللونية. يمكن دمج عدة خلفيات."
+        },
+        {
+          "name": "background-position",
+          "type": "Property",
+          "description": "تحدد موضع الصورة الخلفية.",
+          "syntax": "background-position: center top;",
+          "example": ".hero {\n    background-image: url('hero.jpg');\n    background-position: center 30%;\n    background-repeat: no-repeat;\n}",
+          "explanation": "تتحكم في محاذاة الصورة الخلفية داخل العنصر."
+        },
+        {
+          "name": "background-attachment",
+          "type": "Property",
+          "description": "تحدد ما إذا كانت الخلفية تثبت مكانها أو تتحرك مع الصفحة.",
+          "syntax": "background-attachment: fixed;",
+          "example": "section.parallax {\n    background-image: url('mountains.jpg');\n    background-attachment: fixed; /* تأثير بارالاكس */\n    height: 100vh;\n}",
+          "explanation": "تستخدم لإنشاء تأثيرات بارالاكس جذابة."
+        },
+        {
+          "name": "background-clip",
+          "type": "Property",
+          "description": "تحدد منطقة انتشار الخلفية (المحتوى، الحشوة، الحدود).",
+          "syntax": "background-clip: text;",
+          "example": "h1 {\n    background-image: linear-gradient(45deg, #f3ec78, #af4261);\n    background-clip: text; /* خلفية داخل النص فقط */\n    color: transparent;\n    -webkit-background-clip: text; /* دعم للمتصفحات القديمة */\n}",
+          "explanation": "تستخدم لتأثيرات النص الإبداعية مع الخلفيات."
+        },
+        {
+          "name": "font-weight",
+          "type": "Property",
+          "description": "تحدد سماكة الخط (عادي، غامق، قيم رقمية).",
+          "syntax": "font-weight: 700;",
+          "example": "h1 {\n    font-weight: 900; /* غامق جداً */\n}\np {\n    font-weight: normal; /* سماكة عادية */\n}",
+          "explanation": "القيم الشائعة: 400 (عادي)، 700 (غامق)."
+        },
+        {
+          "name": "line-height",
+          "type": "Property",
+          "description": "تحدد ارتفاع السطر للنص.",
+          "syntax": "line-height: 1.6;",
+          "example": "body {\n    line-height: 1.8; /* مسافة مريحة بين الأسطر */\n}\n.title {\n    line-height: 1.2; /* مسافة ضيقة للعناوين */\n}",
+          "explanation": "تؤثر بشكل كبير على سهولة قراءة النصوص."
+        },
+        {
+          "name": "letter-spacing",
+          "type": "Property",
+          "description": "تتحكم في المسافة بين الحروف.",
+          "syntax": "letter-spacing: 0.1em;",
+          "example": "h1 {\n    letter-spacing: 2px; /* مسافة أكبر بين الحروف */\n}\n.monospace {\n    letter-spacing: -0.5px; /* تقليل المسافة للخطوط أحادية المسافة */\n}",
+          "explanation": "تستخدم لتحسين مظهر العناوين أو النصوص الخاصة."
+        },
+        {
+          "name": "word-spacing",
+          "type": "Property",
+          "description": "تتحكم في المسافة بين الكلمات.",
+          "syntax": "word-spacing: 0.2em;",
+          "example": "p.justify {\n    text-align: justify;\n    word-spacing: 0.3em; /* تحسين مظهر النصوص المنسقة */\n}",
+          "explanation": "مفيدة بشكل خاص مع النصوص العربية المنسقة."
+        },
+        {
+          "name": "text-overflow",
+          "type": "Property",
+          "description": "تحدد كيفية إظهار النص الزائد.",
+          "syntax": "text-overflow: ellipsis;",
+          "example": "truncate {\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis; /* إظهار نقاط (...) عند تجاوز النص */\n    max-width: 200px;\n}",
+          "explanation": "تستخدم مع white-space: nowrap و overflow: hidden."
+        },
+        {
+          "name": "vertical-align",
+          "type": "Property",
+          "description": "تتحكم في المحاذاة العمودية للعناصر المضمنة.",
+          "syntax": "vertical-align: middle;",
+          "example": "img.icon {\n    vertical-align: middle; /* محاذاة الأيقونات مع النص */\n}\ntable td {\n    vertical-align: top; /* محاذاة محتوى الجداول للأعلى */\n}",
+          "explanation": "مهمة لمحاذاة الصور والأيقونات مع النص."
+        },
+        {
+          "name": "white-space",
+          "type": "Property",
+          "description": "تتحكم في كيفية معالجة المساحات البيضاء والتفاف النص.",
+          "syntax": "white-space: nowrap;",
+          "example": "pre {\n    white-space: pre-wrap; /* الحفاظ على المسافات مع التفاف النص */\n}\n.nowrap {\n    white-space: nowrap; /* منع التفاف النص */\n}",
+          "explanation": "تحدد سلوك المسافات البيضاء وبداية الأسطر الجديدة."
+        },
+        {
+          "name": "visibility",
+          "type": "Property",
+          "description": "تتحكم في رؤية العنصر مع الحفاظ على مكانه في التخطيط.",
+          "syntax": "visibility: hidden;",
+          "example": "hidden-element {\n    visibility: hidden; /* إخفاء مع الحفاظ على المساحة */\n}\n.visible-element {\n    visibility: visible; /* إظهار العنصر */\n}",
+          "explanation": "تختلف عن display: none حيث تحافظ على مساحة العنصر."
+        },
+        {
+          "name": "clip-path",
+          "type": "Property",
+          "description": "تقطع العنصر إلى شكل معين.",
+          "syntax": "clip-path: circle(50%);",
+          "example": "img.circular {\n    clip-path: circle(50% at 50% 50%); /* قص الصورة بشكل دائري */\n}\n.polygon {\n    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%); /* شكل متعدد الأضلاع */\n}",
+          "explanation": "تستخدم لإنشاء أشكال إبداعية للصور والعناصر."
+        },
+        {
+          "name": "filter",
+          "type": "Property",
+          "description": "تطبق تأثيرات بصرية مثل التمويه وتعديل الألوان.",
+          "syntax": "filter: blur(5px);",
+          "example": "img.grayscale {\n    filter: grayscale(100%); /* تحويل الصورة لأبيض وأسود */\n}\n.blurred {\n    filter: blur(4px) brightness(1.2); /* تمويه مع زيادة سطوع */\n}",
+          "explanation": "تأثيرات في الوقت الحقيقي دون تعديل ملفات الصور."
+        },
+        {
+          "name": "backdrop-filter",
+          "type": "Property",
+          "description": "تطبق تأثيرات على المنطقة خلف العنصر.",
+          "syntax": "backdrop-filter: blur(10px);",
+          "example": ".modal {\n    backdrop-filter: blur(8px) saturate(180%); /* تأثير زجاجي */\n    background-color: rgba(255, 255, 255, 0.5);\n}",
+          "explanation": "تستخدم لإنشاء تأثيرات زجاجية حديثة."
+        },
+        {
+          "name": "mix-blend-mode",
+          "type": "Property",
+          "description": "تحدد كيفية مزج العنصر مع المحتوى تحته.",
+          "syntax": "mix-blend-mode: multiply;",
+          "example": "overlay-text {\n    mix-blend-mode: difference; /* مزج النص مع الخلفية */\n    color: white;\n    position: absolute;\n}",
+          "explanation": "تأثيرات إبداعية لدمج العناصر المركبة."
+        },
+        {
+          "name": "object-fit",
+          "type": "Property",
+          "description": "تحدد كيفية ضبط المحتوى (الصور/الفيديو) داخل حاوية.",
+          "syntax": "object-fit: cover;",
+          "example": "img.thumbnail {\n    width: 200px;\n    height: 200px;\n    object-fit: cover; /* تغطية المساحة مع الحفاظ على النسبة */\n    object-position: center;\n}",
+          "explanation": "بديل فعال لـ background-size: cover للصور في المحتوى."
+        },
+        {
+          "name": "resize",
+          "type": "Property",
+          "description": "تسمح للمستخدم بتغيير حجم العنصر.",
+          "syntax": "resize: both;",
+          "example": "textarea {\n    resize: vertical; /* السماح بتغيير الحجم عمودياً فقط */\n    min-height: 100px;\n}",
+          "explanation": "مفيدة لحقول النصوص الكبيرة ومناطق المحتوى القابلة للتعديل."
+        },
+        {
+          "name": "scroll-behavior",
+          "type": "Property",
+          "description": "تحدد سلوك التمرير عند التنقل داخل الصفحة.",
+          "syntax": "scroll-behavior: smooth;",
+          "example": "html {\n    scroll-behavior: smooth; /* تمرير سلس عند النقر على الروابط الداخلية */\n}",
+          "explanation": "تحسن تجربة المستخدم دون الحاجة لجافاسكريبت."
+        },
+        {
+          "name": "gap",
+          "type": "Property",
+          "description": "تحدد المسافة بين العناصر في تخطيطات Flexbox وGrid.",
+          "syntax": "gap: 20px;",
+          "example": ".grid-container {\n    display: grid;\n    grid-template-columns: repeat(3, 1fr);\n    gap: 30px; /* مسافة بين جميع العناصر */\n}\n\n.flex-container {\n    display: flex;\n    flex-wrap: wrap;\n    gap: 15px 10px; /* صفوف | أعمدة */\n}",
+          "explanation": "بديل أنظف للهوامش في التخطيطات الحديثة."
+        },
+        {
+          "name": "aspect-ratio",
+          "type": "Property",
+          "description": "تحدد النسبة بين عرض العنصر وارتفاعه.",
+          "syntax": "aspect-ratio: 16/9;",
+          "example": "video {\n    aspect-ratio: 16/9; /* نسبة فيديو قياسية */\n    width: 100%;\n}\n.square {\n    aspect-ratio: 1/1; /* مربع كامل */\n}",
+          "explanation": "تضمن الحفاظ على نسب العناصر عند تغيير الحجم."
+        },
+        {
+          "name": "counter-reset",
+          "type": "Property",
+          "description": "تهيئة أو إعادة تعيين عداد CSS.",
+          "syntax": "counter-reset: section;",
+          "example": "body {\n    counter-reset: chapter;\n}\nh1::before {\n    counter-increment: chapter;\n    content: 'الفصل ' counter(chapter) ': ';\n}",
+          "explanation": "تستخدم مع counter-increment لإنشاء ترقيم تلقائي."
+        },
+        {
+          "name": "all",
+          "type": "Property",
+          "description": "إعادة تعيين جميع خصائص العنصر إلى قيمها الافتراضية أو الموروثة.",
+          "syntax": "all: unset;",
+          "example": ".reset-styles {\n    all: unset; /* إعادة التعيين الكامل للأنماط */\n}",
+          "explanation": "مفيدة عند إنشاء مكونات معزولة الأنماط."
+        },
+        {
+          "name": "isolation",
+          "type": "Property",
+          "description": "تعزل العنصر لإنشاء سياق تكديس جديد.",
+          "syntax": "isolation: isolate;",
+          "example": ".modal {\n    isolation: isolate; /* منع تأثيرات المزج من العناصر الخارجية */\n    z-index: 1000;\n}",
+          "explanation": "مهمة عند استخدام mix-blend-mode لتجنب التأثيرات غير المرغوبة."
+        },
+        {
+          "name": "user-select",
+          "type": "Property",
+          "description": "تتحكم في إمكانية تحديد النص من قبل المستخدم.",
+          "syntax": "user-select: none;",
+          "example": ".non-selectable {\n    user-select: none; /* منع نسخ النص */\n    cursor: default;\n}",
+          "explanation": "مفيدة للعناصر التفاعلية التي لا يجب نسخ محتواها."
+        },
+        {
+          "name": "caret-color",
+          "type": "Property",
+          "description": "تحدد لون مؤشر الكتابة في حقول الإدخال.",
+          "syntax": "caret-color: red;",
+          "example": "input:focus {\n    caret-color: #3498db; /* لون أزرق للمؤشر */\n}",
+          "explanation": "تحسين تجربة المستخدم في النماذج التفاعلية."
+        },
+        {
+          "name": "@supports",
+          "type": "At-rule",
+          "description": "تطبق أنماط فقط إذا كان المتصفح يدعم خاصية معينة.",
+          "syntax": "@supports (display: grid) { ... }",
+          "example": "@supports (display: grid) {\n    .container {\n        display: grid;\n        grid-template-columns: 1fr 1fr;\n    }\n}\n@supports not (display: grid) {\n    .container {\n        display: flex;\n        flex-wrap: wrap;\n    }\n}",
+          "explanation": "توفير حلول بديلة للمتصفحات القديمة."
+        },
+        {
+          "name": "::selection",
+          "type": "Pseudo-element",
+          "description": "تنسيق النص عند تحديده بالمؤشر.",
+          "syntax": "::selection { background: yellow; }",
+          "example": "::selection {\n    background-color: #4a90e2;\n    color: white;\n    text-shadow: none;\n}",
+          "explanation": "تحسين المظهر البصري عند تحديد النصوص."
+        },
+        {
+          "name": ":root",
+          "type": "Pseudo-class",
+          "description": "تمثل العنصر الجذر للوثيقة (html).",
+          "syntax": ":root { ... }",
+          "example": ":root {\n    --primary-color: #3498db;\n    --secondary-color: #2ecc71;\n    --font-size: 16px;\n}\n\nbody {\n    color: var(--primary-color);\n    font-size: var(--font-size);\n}",
+          "explanation": "المكان المثالي لتعريف متغيرات CSS العامة."
+        },
+        {
+          "name": "var()",
+          "type": "Function",
+          "description": "تستخدم متغيرات CSS المخصصة.",
+          "syntax": "color: var(--main-color);",
+          "example": ":root {\n    --main-bg: #f8f9fa;\n    --text-color: #212529;\n}\n\ndark-mode {\n    background-color: var(--main-bg);\n    color: var(--text-color);\n}",
+          "explanation": "تمكين إعادة استخدام القيم وإنشاء أنماط قابلة للتخصيص."
+        },
+        {
+          "name": "calc()",
+          "type": "Function",
+          "description": "إجراء عمليات حسابية في قيم الخصائص.",
+          "syntax": "width: calc(100% - 40px);",
+          "example": ".sidebar {\n    width: calc(25% - 20px); /* حساب عرض مع مراعاة الهوامش */\n    margin-right: 20px;\n}\n\n.responsive-box {\n    height: calc(100vh - 80px); /* ارتفاع ديناميكي */\n}",
+          "explanation": "دمج الوحدات المختلفة (مثل % و px) في حسابات ديناميكية."
+        },
+        {
+          "name": "min()",
+          "type": "Function",
+          "description": "تحدد أصغر قيمة من قيم متعددة.",
+          "syntax": "width: min(100%, 600px);",
+          "example": "img.responsive {\n    width: min(100%, 800px); /* لا يتجاوز 800px ولا 100% من الحاوية */\n    height: auto;\n}",
+          "explanation": "مفيدة للتحكم في الحجم الأقصى للعناصر."
+        },
+        {
+          "name": "max()",
+          "type": "Function",
+          "description": "تحدد أكبر قيمة من قيم متعددة.",
+          "syntax": "width: max(50%, 300px);",
+          "example": "aside {\n    width: max(200px, 20%); /* لا يقل عن 200px */\n}",
+          "explanation": "ضمان حد أدنى لأبعاد العناصر."
+        },
+        {
+          "name": "clamp()",
+          "type": "Function",
+          "description": "تحدد قيمة بين حد أدنى وحد أقصى.",
+          "syntax": "font-size: clamp(1rem, 2vw, 1.5rem);",
+          "example": "h1 {\n    font-size: clamp(1.5rem, 4vw, 2.5rem); /* حجم خط متجاوب */\n}",
+          "explanation": "أداة قوية لإنشاء تصاميم متجاوبة بدون وسائط استعلام."
+        },
+        {
+          "name": "conic-gradient",
+          "type": "Function",
+          "description": "تخلق تدرجاً دائرياً حول نقطة مركزية.",
+          "syntax": "background: conic-gradient(red, yellow, green);",
+          "example": "div.pie-chart {\n    background: conic-gradient(\n        #4CAF50 0% 30%,\n        #FFC107 30% 70%,\n        #F44336 70% 100%\n    );\n    border-radius: 50%;\n}",
+          "explanation": "تستخدم لإنشاء مخططات دائرية وتأثيرات زاوية."
+        },
+        {
+          "name": "radial-gradient",
+          "type": "Function",
+          "description": "تخلق تدرجاً يشع من نقطة مركزية.",
+          "syntax": "background: radial-gradient(circle, red, yellow, green);",
+          "example": "div.sunset {\n    background: radial-gradient(\n        circle at center,\n        #ff7e5f,\n        #feb47b\n    );\n}",
+          "explanation": "تأثيرات إضاءة وخلفيات طبيعية المظهر."
+        },
+        {
+          "name": "repeat()",
+          "type": "Function",
+          "description": "تكرر نمط في تخطيطات Grid.",
+          "syntax": "grid-template-columns: repeat(4, 1fr);",
+          "example": "grid-container {\n    display: grid;\n    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));\n    gap: 20px;\n}",
+          "explanation": "تبسيط إنشاء تخطيطات شبكية متكررة."
+        },
+        {
+          "name": "minmax()",
+          "type": "Function",
+          "description": "تحدد نطاقاً بين حد أدنى وأقصى في تخطيطات Grid.",
+          "syntax": "grid-template-columns: minmax(100px, 1fr);",
+          "example": "grid-container {\n    display: grid;\n    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));\n}",
+          "explanation": "أساسية لإنشاء تخطيطات متجاوبة مع Grid."
+        },
+        {
+          "name": "fit-content()",
+          "type": "Function",
+          "description": "تحدد حجم عنصر بناءً على محتواه مع قيود.",
+          "syntax": "width: fit-content(500px);",
+          "example": "div.card {\n    width: fit-content(100%);\n    max-width: 600px;\n    margin: 0 auto;\n}",
+          "explanation": "مثالية للعناصر التي يجب أن تتوسع مع محتواها ولكن ضمن حدود."
+        },
+        {
+          "name": ":nth-child",
+          "type": "Pseudo-class",
+          "description": "تحديد عناصر بناءً على موقعها ضمن العناصر الشقيقة.",
+          "syntax": "li:nth-child(2n) { ... }",
+          "example": "tr:nth-child(even) {\n    background-color: #f2f2f2; /* تظليل أسطر الجدول الزوجية */\n}\nli:nth-child(3n+1) {\n    color: red; /* كل عنصر ثالث يبدأ من الأول */\n}",
+          "explanation": "تنسيق متقدم للقوائم والجداول والعناصر المتكررة."
+        },
+        {
+          "name": ":first-child",
+          "type": "Pseudo-class",
+          "description": "تحديد العنصر الأول ضمن العناصر الشقيقة.",
+          "syntax": "li:first-child { ... }",
+          "example": "ul li:first-child {\n    font-weight: bold; /* تنسيق خاص لأول عنصر في القائمة */\n    border-top: none;\n}",
+          "explanation": "تنسيق مميز للعنصر الأول في مجموعة."
+        },
+        {
+          "name": ":last-child",
+          "type": "Pseudo-class",
+          "description": "تحديد العنصر الأخير ضمن العناصر الشقيقة.",
+          "syntax": "div:last-child { ... }",
+          "example": "nav a:last-child {\n    margin-right: 0; /* إزالة الهامش من آخر رابط */\n    border-radius: 0 5px 5px 0;\n}",
+          "explanation": "تنسيق مميز للعنصر الأخير في مجموعة."
+        },
+        {
+          "name": ":only-child",
+          "type": "Pseudo-class",
+          "description": "تحديد العناصر التي ليس لها أشقاء.",
+          "syntax": "div:only-child { ... }",
+          "example": "div:only-child {\n    width: 100%; /* توسيع العنصر إذا كان الوحيد */\n}",
+          "explanation": "تنسيق خاص للعناصر المنفردة."
+        },
+        {
+          "name": ":empty",
+          "type": "Pseudo-class",
+          "description": "تحديد العناصر التي لا تحتوي على محتوى.",
+          "syntax": "div:empty { display: none; }",
+          "example": "div:empty {\n    display: none; /* إخفاء العناصر الفارغة */\n}",
+          "explanation": "تنظيف التخطيط من العناصر الفارغة."
+        },
+        {
+          "name": ":not()",
+          "type": "Pseudo-class",
+          "description": "تحديد العناصر التي لا تطابق محدد معين.",
+          "syntax": "div:not(.special) { ... }",
+          "example": "input:not([type='submit']) {\n    border: 1px solid #ccc; /* تنسيق جميع الحقول عدا زر الإرسال */\n}",
+          "explanation": "استثناءات متقدمة في التحديد."
+        },
+        {
+          "name": "will-change",
+          "type": "Property",
+          "description": "تخبر المتصفح عن الخصائص التي سيتغير العنصر.",
+          "syntax": "will-change: transform;",
+          "example": "animated-element {\n    will-change: transform, opacity;\n    transition: transform 0.3s, opacity 0.3s;\n}",
+          "explanation": "تحسين أداء التحريك عن طريق تحضير المتصفح مسبقاً."
+        },
+        {
+          "name": "content",
+          "type": "Property",
+          "description": "تستخدم مع ::before و ::after لتحديد المحتوى.",
+          "syntax": "content: '→';",
+          "example": "a.external::after {\n    content: ' \u2197';\n    font-size: 0.8em;\n}",
+          "explanation": "إضافة محتوى زائف دون تعديل HTML."
+        },
+        {
+          "name": "quotes",
+          "type": "Property",
+          "description": "تحدد شكل علامات الاقتباس.",
+          "syntax": "quotes: '«' '»' '‹' '›';",
+          "example": "q {\n    quotes: '«' '»' '‹' '›'; /* علامات اقتباس عربية */\n}",
+          "explanation": "تخصيص علامات الاقتباس للغات المختلفة."
+        }
+      
+    
+  ]
+}
+

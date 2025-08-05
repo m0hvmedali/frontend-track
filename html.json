@@ -1,0 +1,100 @@
+[
+  {
+    "name": "<!DOCTYPE>",
+    "type": "Declaration",
+    "description": "يُستخدم لتحديد نوع مستند HTML.",
+    "example": "<!DOCTYPE html>",
+    "explanation": "هذا السطر يُكتب في أعلى كل مستند HTML لتحديد أنه يستخدم HTML5."
+  },
+  {
+    "name": "<html>",
+    "type": "Tag",
+    "description": "العنصر الجذر لمستند HTML.",
+    "example": "<html lang=\"ar\"> ... </html>",
+    "explanation": "كل محتوى صفحة HTML يجب أن يكون داخل وسم <html>."
+  },
+  {
+    "name": "<head>",
+    "type": "Tag",
+    "description": "يحتوي على بيانات تعريفية عن الصفحة.",
+    "example": "<head><title>عنوان</title></head>",
+    "explanation": "يوضع داخله الوسوم التي لا تظهر للمستخدم مثل <title> و <meta> و <link>."
+  },
+  {
+    "name": "<body>",
+    "type": "Tag",
+    "description": "يحتوي على المحتوى المرئي للصفحة.",
+    "example": "<body><h1>أهلاً</h1></body>",
+    "explanation": "كل ما يراه المستخدم في الصفحة يوضع داخل <body>."
+  },
+  {
+    "name": "<h1> إلى <h6>",
+    "type": "Tag",
+    "description": "وسوم العناوين بأحجام مختلفة.",
+    "example": "<h1>عنوان رئيسي</h1>",
+    "explanation": "تُستخدم لتحديد العناوين، وكلما زاد الرقم صغر حجم الخط."
+  },
+  {
+    "name": "<p>",
+    "type": "Tag",
+    "description": "يُستخدم لكتابة فقرة.",
+    "example": "<p>هذه فقرة نصية.</p>",
+    "explanation": "كل فقرة نصية في HTML تُوضع داخل هذا الوسم."
+  },
+  {
+    "name": "<a>",
+    "type": "Tag",
+    "description": "يُستخدم لإنشاء رابط تشعبي.",
+    "example": "<a href=\"https://example.com\">زر رابط</a>",
+    "explanation": "يستخدم للربط بين الصفحات أو المواقع عبر الخاصية href."
+  },
+  {
+    "name": "<img>",
+    "type": "Tag",
+    "description": "يُستخدم لعرض صورة.",
+    "example": "<img src=\"image.jpg\" alt=\"وصف\">",
+    "explanation": "لعرض صورة باستخدام src، ويُفضّل وضع alt كنص بديل للصورة."
+  },
+  {
+    "name": "<ul>, <ol>, <li>",
+    "type": "Tag",
+    "description": "قوائم غير مرتبة ومرتبة وعناصرها.",
+    "example": "<ul><li>عنصر</li></ul>",
+    "explanation": "تُستخدم لإنشاء القوائم باستخدام <ul> للقوائم النقطية و<ol> للمرقمة و<li> للعناصر."
+  },
+  {
+    "name": "<table>, <tr>, <td>, <th>",
+    "type": "Tag",
+    "description": "عناصر بناء الجداول.",
+    "example": "<table><tr><th>عنوان</th></tr><tr><td>قيمة</td></tr></table>",
+    "explanation": "تُستخدم لبناء الجداول وعرض البيانات بشكل منظم."
+  },
+  {
+    "name": "<form>, <input>, <button>, <label>",
+    "type": "Tag",
+    "description": "عناصر النماذج لجمع البيانات من المستخدم.",
+    "example": "<form><label>اسم</label><input type=\"text\"><button>إرسال</button></form>",
+    "explanation": "يُستخدم لجمع معلومات من المستخدم مثل الاسم أو البريد عبر النموذج."
+  },
+  {
+    "name": "<div> و <span>",
+    "type": "Tag",
+    "description": "عناصر تقسيم وتنسيق بدون دلالة معنوية.",
+    "example": "<div><span>نص</span></div>",
+    "explanation": "<div> عنصر حاوي للبلوكات، <span> عنصر داخلي للنصوص."
+  },
+  {
+    "name": "<br> و <hr>",
+    "type": "Tag",
+    "description": "عناصر للإنتقال لسطر جديد أو لفصل المحتوى.",
+    "example": "سطر أول<br>سطر جديد<hr>",
+    "explanation": "<br> لفصل الأسطر، <hr> لرسم خط أفقي يفصل بين الأقسام."
+  },
+  {
+    "name": "<meta>",
+    "type": "Tag",
+    "description": "يحتوي على معلومات وبيانات وصفية عن الصفحة.",
+    "example": "<meta charset=\"UTF-8\">",
+    "explanation": "يُستخدم لتعريف الترميز أو إعدادات SEO أو عرض الصفحة على الأجهزة."
+  }
+]

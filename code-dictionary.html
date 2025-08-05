@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>موسوعة أكواد HTML / CSS / JS</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f5f5f5; }
+    header { background: #333; color: white; text-align: center; padding: 1rem; }
+    nav { background: #444; display: flex; justify-content: center; }
+    nav button { flex: 1; padding: 1rem; border: none; background: #444; color: white; cursor: pointer; transition: 0.3s; }
+    nav button:hover, nav button.active { background: #222; }
+    section { display: none; padding: 2rem; }
+    section.active { display: block; }
+    table { width: 100%; border-collapse: collapse; margin-top: 1rem; background: white; }
+    th, td { padding: 0.75rem; border: 1px solid #ccc; text-align: start; }
+    th { background: #eee; }
+    tr:hover { background: #f0f0f0; cursor: pointer; }
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 1000; }
+    .modal-content { background: white; padding: 2rem; border-radius: 8px; width: 90%; max-width: 600px; position: relative; }
+    .close-btn { position: absolute; top: 1rem; left: 1rem; background: red; color: white; border: none; padding: 0.5rem 1rem; cursor: pointer; }
+    pre { background: #f0f0f0; padding: 1rem; overflow-x: auto; border-radius: 6px; }
+    #copy-btn { background: #4caf50; color: white; border: none; padding: 0.5rem 1rem; cursor: pointer; margin-top: 1rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>موسوعة أكواد HTML / CSS / JavaScript</h1>
+  </header>
+  <nav>
+    <button class="active" data-target="html">HTML</button>
+    <button data-target="css">CSS</button>
+    <button data-target="js">JavaScript</button>
+  </nav>
+
+  <main>
+    <section id="html" class="active"></section>
+    <section id="css"></section>
+    <section id="js"></section>
+  </main>
+
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <button class="close-btn">X</button>
+      <h2 id="modal-name"></h2>
+      <p id="modal-desc"></p>
+      <pre id="modal-example"></pre>
+      <button id="copy-btn">نسخ الكود</button>
+    </div>
+  </div>
+
+  <script>
+    const navButtons = document.querySelectorAll('nav button');
+    const sections = document.querySelectorAll('main section');
+
+    navButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        navButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        sections.forEach(s => s.classList.remove('active'));
+        document.getElementById(btn.dataset.target).classList.add('active');
+      });
+    });
+
+    const modal = document.getElementById('modal');
+    const modalName = document.getElementById('modal-name');
+    const modalDesc = document.getElementById('modal-desc');
+    const modalExample = document.getElementById('modal-example');
+    const copyBtn = document.getElementById('copy-btn');
+    const closeModal = document.querySelector('.close-btn');
+    closeModal.addEventListener('click', () => modal.style.display = 'none');
+
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(modalExample.textContent);
+      alert('تم نسخ الكود');
+    });
+
+    function loadJSON(lang) {
+      fetch(`${lang}.json`)
+        .then(res => res.json())
+        .then(data => {
+          const container = document.getElementById(lang);
+          const table = document.createElement('table');
+          table.innerHTML = `
+            <thead>
+              <tr><th>الاسم</th><th>النوع</th><th>الشرح</th></tr>
+            </thead>
+            <tbody>
+              ${data.map((cmd, i) => `
+                <tr data-i="${i}" data-lang="${lang}">
+                  <td><code>${cmd.name}</code></td>
+                  <td>${cmd.type}</td>
+                  <td>${cmd.description}</td>
+                </tr>`).join('')}
+            </tbody>
+          `;
+          container.appendChild(table);
+
+          table.querySelectorAll('tr[data-i]').forEach(row => {
+            row.addEventListener('click', () => {
+              const index = row.dataset.i;
+              const cmd = data[index];
+              modalName.textContent = cmd.name;
+              modalDesc.textContent = cmd.explanation || cmd.description;
+              modalExample.textContent = cmd.example;
+              modal.style.display = 'flex';
+            });
+          });
+        });
+    }
+
+    ['html', 'css', 'js'].forEach(loadJSON);
+  </script>
+</body>
+</html>

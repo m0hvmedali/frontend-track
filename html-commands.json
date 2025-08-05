@@ -1,0 +1,408 @@
+{
+  "html_commands": [
+    {
+      "name": "<!DOCTYPE>",
+      "type": "Declaration",
+      "description": "يحدد نوع المستند ونسخة HTML المستخدمة. يجب أن يكون أول عنصر في المستند.",
+      "syntax": "<!DOCTYPE html>",
+      "example": "<!DOCTYPE html>\n<html>\n<head>\n    <title>صفحة ويب</title>\n</head>\n<body>\n    <h1>مرحباً بالعالم!</h1>\n</body>\n</html>",
+      "explanation": "يخبر المتصفح أن هذا مستند HTML5. بدونه قد يعمل المتصفح في وضع التوافق القديم."
+    },
+    {
+      "name": "<html>",
+      "type": "Root Element",
+      "description": "العنصر الجذر الذي يحتوي على جميع عناصر الصفحة الأخرى.",
+      "syntax": "<html lang=\"ar\">...</html>",
+      "example": "<html lang=\"ar\" dir=\"rtl\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>موقع عربي</title>\n</head>\n<body>\n    <h1>أهلاً وسهلاً</h1>\n    <p>هذا نص باللغة العربية</p>\n</body>\n</html>",
+      "explanation": "خاصية lang تحدد لغة المحتوى، وdir تحدد اتجاه النص (rtl للعربية)."
+    },
+    {
+      "name": "<head>",
+      "type": "Metadata",
+      "description": "يحتوي على معلومات وصفية عن المستند مثل العنوان والروابط للملفات الخارجية.",
+      "syntax": "<head>...</head>",
+      "example": "<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>عنوان الصفحة</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n    <script src=\"script.js\"></script>\n</head>",
+      "explanation": "يحتوي على metadata غير مرئي للمستخدم لكنه مهم للمتصفحات ومحركات البحث."
+    },
+    {
+      "name": "<title>",
+      "type": "Metadata",
+      "description": "يحدد عنوان الصفحة الذي يظهر في شريط العنوان أو تبويب المتصفح.",
+      "syntax": "<title>عنوان الصفحة</title>",
+      "example": "<title>متجر الكتب الإلكترونية - الصفحة الرئيسية</title>",
+      "explanation": "مهم جداً لمحركات البحث وتجربة المستخدم. يجب أن يكون وصفياً ومختصراً."
+    },
+    {
+      "name": "<body>",
+      "type": "Content",
+      "description": "يحتوي على المحتوى المرئي للصفحة مثل النصوص والصور والروابط.",
+      "syntax": "<body>...</body>",
+      "example": "<body>\n    <header>\n        <h1>موقع الأخبار</h1>\n        <nav>\n            <ul>\n                <li><a href=\"#home\">الرئيسية</a></li>\n                <li><a href=\"#news\">الأخبار</a></li>\n                <li><a href=\"#contact\">اتصل بنا</a></li>\n            </ul>\n        </nav>\n    </header>\n    <main>\n        <article>\n            <h2>خبر مهم</h2>\n            <p>محتوى الخبر هنا...</p>\n        </article>\n    </main>\n    <footer>\n        <p>&copy; 2024 جميع الحقوق محفوظة</p>\n    </footer>\n</body>",
+      "explanation": "يحتوي على كامل المحتوى المرئي ويمكن تنسيقه باستخدام CSS."
+    },
+    {
+      "name": "<h1> - <h6>",
+      "type": "Heading",
+      "description": "عناوين بمستويات مختلفة من الأهمية، h1 الأكبر وh6 الأصغر.",
+      "syntax": "<h1>العنوان الرئيسي</h1>",
+      "example": "<h1>العنوان الرئيسي</h1>\n<h2>عنوان فرعي</h2>\n<h3>عنوان فرعي من المستوى الثالث</h3>\n<h4>عنوان فرعي من المستوى الرابع</h4>\n<h5>عنوان فرعي من المستوى الخامس</h5>\n<h6>عنوان فرعي من المستوى السادس</h6>",
+      "explanation": "مهمة لتنظيم المحتوى وتحسين SEO. يجب استخدامها بترتيب هرمي منطقي."
+    },
+    {
+      "name": "<p>",
+      "type": "Text",
+      "description": "يحدد فقرة من النص. يضيف المتصفح تلقائياً مسافة قبل وبعد الفقرة.",
+      "syntax": "<p>نص الفقرة</p>",
+      "example": "<p>هذه فقرة تحتوي على نص عادي. يمكن أن تحتوي على <strong>نص مهم</strong> أو <em>نص مائل</em> أو حتى <a href=\"#\">روابط</a>.</p>\n<p>هذه فقرة أخرى منفصلة عن الأولى بمسافة تلقائية.</p>",
+      "explanation": "العنصر الأساسي لعرض النصوص في فقرات منظمة ومقروءة."
+    },
+    {
+      "name": "<a>",
+      "type": "Link",
+      "description": "ينشئ رابط تشعبي إلى صفحة أخرى أو موقع أو ملف أو موقع في نفس الصفحة.",
+      "syntax": "<a href=\"URL\">نص الرابط</a>",
+      "example": "<a href=\"https://www.example.com\">زيارة الموقع</a>\n<a href=\"mailto:info@example.com\">إرسال إيميل</a>\n<a href=\"tel:+1234567890\">اتصل بنا</a>\n<a href=\"#section1\">الانتقال للقسم الأول</a>\n<a href=\"document.pdf\" download>تحميل الملف</a>",
+      "explanation": "يمكن ربط صفحات، ملفات، إيميلات، أرقام هواتف، أو أقسام داخل نفس الصفحة."
+    },
+    {
+      "name": "<img>",
+      "type": "Media",
+      "description": "يعرض صورة في الصفحة. عنصر فارغ لا يحتاج إلى إغلاق.",
+      "syntax": "<img src=\"path/to/image.jpg\" alt=\"وصف الصورة\">",
+      "example": "<img src=\"images/logo.png\" alt=\"شعار الشركة\" width=\"200\" height=\"100\">\n<img src=\"https://via.placeholder.com/300x200\" alt=\"صورة تجريبية\" loading=\"lazy\">\n<figure>\n    <img src=\"chart.jpg\" alt=\"رسم بياني للمبيعات\">\n    <figcaption>رسم بياني يوضح نمو المبيعات في 2024</figcaption>\n</figure>",
+      "explanation": "خاصية alt مهمة للوصولية ومحركات البحث. loading='lazy' يحسن الأداء."
+    },
+    {
+      "name": "<div>",
+      "type": "Container",
+      "description": "حاوي عام لتجميع العناصر وتنسيقها. لا يحمل معنى دلالي خاص.",
+      "syntax": "<div>المحتوى</div>",
+      "example": "<div class=\"container\">\n    <div class=\"header\">\n        <h1>العنوان</h1>\n    </div>\n    <div class=\"content\">\n        <p>المحتوى الرئيسي</p>\n    </div>\n    <div class=\"sidebar\">\n        <ul>\n            <li>عنصر جانبي 1</li>\n            <li>عنصر جانبي 2</li>\n        </ul>\n    </div>\n</div>",
+      "explanation": "مفيد لتخطيط الصفحة وتطبيق التنسيقات عبر CSS. استخدم العناصر الدلالية عند الإمكان."
+    },
+    {
+      "name": "<span>",
+      "type": "Inline Container",
+      "description": "حاوي مضمن لتنسيق جزء من النص أو العناصر المضمنة.",
+      "syntax": "<span>النص</span>",
+      "example": "<p>هذا نص عادي مع <span style=\"color: red; font-weight: bold;\">نص ملون ومميز</span> في نفس الفقرة.</p>\n<p>السعر: <span class=\"price\">100</span> ريال</p>",
+      "explanation": "مفيد لتنسيق أجزاء صغيرة من النص دون كسر التدفق الطبيعي للمحتوى."
+    },
+    {
+      "name": "<ul>",
+      "type": "List",
+      "description": "قائمة غير مرتبة (بنقاط). تحتوي على عناصر li.",
+      "syntax": "<ul><li>عنصر</li></ul>",
+      "example": "<ul>\n    <li>التفاح</li>\n    <li>البرتقال</li>\n    <li>الموز</li>\n    <li>العنب\n        <ul>\n            <li>العنب الأحمر</li>\n            <li>العنب الأخضر</li>\n        </ul>\n    </li>\n</ul>",
+      "explanation": "مفيدة لعرض قوائم العناصر غير المرتبة. يمكن تداخلها لإنشاء قوائم فرعية."
+    },
+    {
+      "name": "<ol>",
+      "type": "List",
+      "description": "قائمة مرتبة (بأرقام أو حروف). تحتوي على عناصر li.",
+      "syntax": "<ol><li>عنصر</li></ol>",
+      "example": "<ol>\n    <li>افتح المتصفح</li>\n    <li>اذهب إلى الموقع</li>\n    <li>أدخل بياناتك</li>\n    <li>اضغط على تسجيل الدخول</li>\n</ol>\n<ol type=\"A\">\n    <li>الخيار الأول</li>\n    <li>الخيار الثاني</li>\n</ol>",
+      "explanation": "مثالية للخطوات المرتبة والتعليمات. يمكن تغيير نوع الترقيم باستخدام type."
+    },
+    {
+      "name": "<li>",
+      "type": "List Item",
+      "description": "عنصر في قائمة مرتبة أو غير مرتبة.",
+      "syntax": "<li>محتوى العنصر</li>",
+      "example": "<ul>\n    <li>عنصر بسيط</li>\n    <li>عنصر يحتوي على <a href=\"#\">رابط</a></li>\n    <li>\n        <h4>عنصر معقد</h4>\n        <p>يمكن أن يحتوي على فقرات وعناصر أخرى</p>\n        <img src=\"image.jpg\" alt=\"صورة\">\n    </li>\n</ul>",
+      "explanation": "يمكن أن يحتوي على أي محتوى HTML آخر، ليس فقط النص البسيط."
+    },
+    {
+      "name": "<table>",
+      "type": "Table",
+      "description": "ينشئ جدول لعرض البيانات في صفوف وأعمدة.",
+      "syntax": "<table>...</table>",
+      "example": "<table border=\"1\">\n    <caption>جدول المبيعات الشهرية</caption>\n    <thead>\n        <tr>\n            <th>الشهر</th>\n            <th>المبيعات</th>\n            <th>الربح</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>يناير</td>\n            <td>50,000</td>\n            <td>10,000</td>\n        </tr>\n        <tr>\n            <td>فبراير</td>\n            <td>60,000</td>\n            <td>12,000</td>\n        </tr>\n    </tbody>\n    <tfoot>\n        <tr>\n            <td>المجموع</td>\n            <td>110,000</td>\n            <td>22,000</td>\n        </tr>\n    </tfoot>\n</table>",
+      "explanation": "يجب استخدامه فقط للبيانات الجدولية، ليس للتخطيط. استخدم thead وtbody وtfoot للتنظيم."
+    },
+    {
+      "name": "<tr>",
+      "type": "Table Row",
+      "description": "يحدد صف في الجدول.",
+      "syntax": "<tr>...</tr>",
+      "example": "<table>\n    <tr>\n        <th>الاسم</th>\n        <th>العمر</th>\n        <th>المدينة</th>\n    </tr>\n    <tr>\n        <td>أحمد</td>\n        <td>25</td>\n        <td>الرياض</td>\n    </tr>\n    <tr>\n        <td>فاطمة</td>\n        <td>30</td>\n        <td>جدة</td>\n    </tr>\n</table>",
+      "explanation": "يحتوي على خلايا الجدول (th أو td). كل صف يمثل سجل بيانات واحد."
+    },
+    {
+      "name": "<td>",
+      "type": "Table Data",
+      "description": "خلية بيانات في الجدول.",
+      "syntax": "<td>البيانات</td>",
+      "example": "<table>\n    <tr>\n        <td>خلية عادية</td>\n        <td colspan=\"2\">خلية تمتد عبر عمودين</td>\n    </tr>\n    <tr>\n        <td rowspan=\"2\">خلية تمتد عبر صفين</td>\n        <td>خلية عادية</td>\n        <td>خلية أخرى</td>\n    </tr>\n    <tr>\n        <td>خلية في الصف الثاني</td>\n        <td>خلية أخيرة</td>\n    </tr>\n</table>",
+      "explanation": "يمكن دمج الخلايا باستخدام colspan (أفقياً) أو rowspan (عمودياً)."
+    },
+    {
+      "name": "<th>",
+      "type": "Table Header",
+      "description": "خلية رأس في الجدول. عادة ما تكون مميزة بصرياً.",
+      "syntax": "<th>عنوان العمود</th>",
+      "example": "<table>\n    <thead>\n        <tr>\n            <th scope=\"col\">المنتج</th>\n            <th scope=\"col\">السعر</th>\n            <th scope=\"col\">الكمية</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <th scope=\"row\">لابتوب</th>\n            <td>2000 ريال</td>\n            <td>5</td>\n        </tr>\n    </tbody>\n</table>",
+      "explanation": "خاصية scope تحدد ما إذا كان الرأس للعمود أم الصف. مهمة للوصولية."
+    },
+    {
+      "name": "<form>",
+      "type": "Form",
+      "description": "ينشئ نموذج لجمع بيانات المستخدم وإرسالها للخادم.",
+      "syntax": "<form action=\"URL\" method=\"POST\">...</form>",
+      "example": "<form action=\"/submit\" method=\"POST\" enctype=\"multipart/form-data\">\n    <fieldset>\n        <legend>معلومات شخصية</legend>\n        <label for=\"name\">الاسم:</label>\n        <input type=\"text\" id=\"name\" name=\"name\" required>\n        \n        <label for=\"email\">البريد الإلكتروني:</label>\n        <input type=\"email\" id=\"email\" name=\"email\" required>\n        \n        <label for=\"phone\">رقم الهاتف:</label>\n        <input type=\"tel\" id=\"phone\" name=\"phone\">\n    </fieldset>\n    \n    <fieldset>\n        <legend>تفضيلات</legend>\n        <input type=\"checkbox\" id=\"newsletter\" name=\"newsletter\">\n        <label for=\"newsletter\">اشتراك في النشرة الإخبارية</label>\n    </fieldset>\n    \n    <button type=\"submit\">إرسال</button>\n    <button type=\"reset\">إعادة تعيين</button>\n</form>",
+      "explanation": "action يحدد وجهة الإرسال، method يحدد طريقة الإرسال (GET أو POST)."
+    },
+    {
+      "name": "<input>",
+      "type": "Form Control",
+      "description": "عنصر إدخال متعدد الأنواع لجمع بيانات المستخدم.",
+      "syntax": "<input type=\"text\" name=\"fieldname\">",
+      "example": "<input type=\"text\" name=\"username\" placeholder=\"اسم المستخدم\" required>\n<input type=\"password\" name=\"password\" placeholder=\"كلمة المرور\" minlength=\"8\">\n<input type=\"email\" name=\"email\" placeholder=\"البريد الإلكتروني\">\n<input type=\"number\" name=\"age\" min=\"18\" max=\"100\">\n<input type=\"date\" name=\"birthdate\">\n<input type=\"file\" name=\"avatar\" accept=\"image/*\">\n<input type=\"checkbox\" name=\"agree\" id=\"agree\">\n<input type=\"radio\" name=\"gender\" value=\"male\" id=\"male\">\n<input type=\"range\" name=\"volume\" min=\"0\" max=\"100\" value=\"50\">\n<input type=\"color\" name=\"favorite-color\" value=\"#ff0000\">",
+      "explanation": "أنواع مختلفة لأغراض مختلفة. HTML5 أضاف أنواع جديدة مع تحقق تلقائي."
+    },
+    {
+      "name": "<textarea>",
+      "type": "Form Control",
+      "description": "منطقة نص متعددة الأسطر لإدخال نصوص طويلة.",
+      "syntax": "<textarea name=\"fieldname\">النص الافتراضي</textarea>",
+      "example": "<textarea name=\"message\" rows=\"5\" cols=\"50\" placeholder=\"اكتب رسالتك هنا...\" maxlength=\"500\" required></textarea>\n\n<textarea name=\"bio\" rows=\"10\" cols=\"80\" wrap=\"soft\">\nاكتب نبذة عنك هنا...\nيمكن أن تكون متعددة الأسطر.\n</textarea>",
+      "explanation": "rows وcols تحدد الحجم الافتراضي. wrap يحدد كيفية التعامل مع النص الطويل."
+    },
+    {
+      "name": "<select>",
+      "type": "Form Control",
+      "description": "قائمة منسدلة للاختيار من بين خيارات متعددة.",
+      "syntax": "<select name=\"fieldname\"><option>خيار</option></select>",
+      "example": "<select name=\"country\" required>\n    <option value=\"\">اختر الدولة</option>\n    <option value=\"sa\">السعودية</option>\n    <option value=\"ae\">الإمارات</option>\n    <option value=\"eg\">مصر</option>\n</select>\n\n<select name=\"skills\" multiple size=\"4\">\n    <optgroup label=\"لغات البرمجة\">\n        <option value=\"html\">HTML</option>\n        <option value=\"css\">CSS</option>\n        <option value=\"js\">JavaScript</option>\n    </optgroup>\n    <optgroup label=\"قواعد البيانات\">\n        <option value=\"mysql\">MySQL</option>\n        <option value=\"mongodb\">MongoDB</option>\n    </optgroup>\n</select>",
+      "explanation": "multiple يسمح بالاختيار المتعدد. optgroup ينظم الخيارات في مجموعات."
+    },
+    {
+      "name": "<button>",
+      "type": "Form Control",
+      "description": "زر قابل للنقر لتنفيذ إجراءات مختلفة.",
+      "syntax": "<button type=\"button\">النص</button>",
+      "example": "<button type=\"submit\">إرسال النموذج</button>\n<button type=\"reset\">إعادة تعيين</button>\n<button type=\"button\" onclick=\"alert('مرحباً!')\">اضغط هنا</button>\n\n<button disabled>زر معطل</button>\n\n<button type=\"button\">\n    <img src=\"icon.png\" alt=\"أيقونة\"> حفظ الملف\n</button>",
+      "explanation": "أنواع مختلفة: submit لإرسال النماذج، reset للإعادة، button للإجراءات المخصصة."
+    },
+    {
+      "name": "<label>",
+      "type": "Form Control",
+      "description": "تسمية لعناصر النموذج. تحسن الوصولية وتجربة المستخدم.",
+      "syntax": "<label for=\"input-id\">النص</label>",
+      "example": "<label for=\"username\">اسم المستخدم:</label>\n<input type=\"text\" id=\"username\" name=\"username\">\n\n<label>\n    <input type=\"checkbox\" name=\"remember\"> تذكرني\n</label>\n\n<label for=\"age\">العمر (18-65):</label>\n<input type=\"number\" id=\"age\" name=\"age\" min=\"18\" max=\"65\">",
+      "explanation": "ربط التسمية بالعنصر يسمح بالنقر على التسمية لتفعيل العنصر."
+    },
+    {
+      "name": "<header>",
+      "type": "Semantic",
+      "description": "يمثل رأس الصفحة أو القسم. يحتوي عادة على العنوان والتنقل.",
+      "syntax": "<header>...</header>",
+      "example": "<header>\n    <div class=\"logo\">\n        <img src=\"logo.png\" alt=\"شعار الشركة\">\n        <h1>اسم الشركة</h1>\n    </div>\n    <nav>\n        <ul>\n            <li><a href=\"#home\">الرئيسية</a></li>\n            <li><a href=\"#about\">من نحن</a></li>\n            <li><a href=\"#services\">خدماتنا</a></li>\n            <li><a href=\"#contact\">اتصل بنا</a></li>\n        </ul>\n    </nav>\n</header>",
+      "explanation": "عنصر دلالي يساعد محركات البحث وقارئات الشاشة في فهم بنية الصفحة."
+    },
+    {
+      "name": "<nav>",
+      "type": "Semantic",
+      "description": "يحتوي على روابط التنقل الرئيسية في الموقع.",
+      "syntax": "<nav>...</nav>",
+      "example": "<nav aria-label=\"التنقل الرئيسي\">\n    <ul>\n        <li><a href=\"/\" aria-current=\"page\">الرئيسية</a></li>\n        <li><a href=\"/products\">المنتجات</a></li>\n        <li><a href=\"/about\">من نحن</a></li>\n        <li><a href=\"/contact\">اتصل بنا</a></li>\n    </ul>\n</nav>\n\n<nav aria-label=\"فتات الخبز\">\n    <ol>\n        <li><a href=\"/\">الرئيسية</a></li>\n        <li><a href=\"/category\">الفئة</a></li>\n        <li>المنتج الحالي</li>\n    </ol>\n</nav>",
+      "explanation": "يمكن استخدامه للتنقل الرئيسي، فتات الخبز، أو أي مجموعة روابط تنقل."
+    },
+    {
+      "name": "<main>",
+      "type": "Semantic",
+      "description": "يحتوي على المحتوى الرئيسي للصفحة. يجب أن يكون فريد في كل صفحة.",
+      "syntax": "<main>...</main>",
+      "example": "<main>\n    <h1>عنوان الصفحة الرئيسي</h1>\n    <section>\n        <h2>قسم المقالات</h2>\n        <article>\n            <h3>عنوان المقال</h3>\n            <p>محتوى المقال...</p>\n        </article>\n    </section>\n    <section>\n        <h2>قسم الأخبار</h2>\n        <article>\n            <h3>خبر مهم</h3>\n            <p>تفاصيل الخبر...</p>\n        </article>\n    </section>\n</main>",
+      "explanation": "يساعد قارئات الشاشة في الانتقال مباشرة للمحتوى الرئيسي تجاوزاً للتنقل."
+    },
+    {
+      "name": "<section>",
+      "type": "Semantic",
+      "description": "يمثل قسم مواضيعي من المحتوى، عادة مع عنوان.",
+      "syntax": "<section>...</section>",
+      "example": "<section>\n    <h2>خدماتنا</h2>\n    <div class=\"services-grid\">\n        <div class=\"service\">\n            <h3>تطوير المواقع</h3>\n            <p>نقوم بتطوير مواقع حديثة ومتجاوبة</p>\n        </div>\n        <div class=\"service\">\n            <h3>التسويق الرقمي</h3>\n            <p>استراتيجيات تسويق فعالة لنمو أعمالك</p>\n        </div>\n    </div>\n</section>",
+      "explanation": "يجب أن يحتوي على عنوان ومحتوى مترابط مواضيعياً."
+    },
+    {
+      "name": "<article>",
+      "type": "Semantic",
+      "description": "محتوى مستقل يمكن توزيعه أو إعادة استخدامه بشكل منفصل.",
+      "syntax": "<article>...</article>",
+      "example": "<article>\n    <header>\n        <h2>كيفية تعلم البرمجة</h2>\n        <p>بواسطة: أحمد محمد | <time datetime=\"2024-01-15\">15 يناير 2024</time></p>\n    </header>\n    <p>البرمجة مهارة مهمة في العصر الحديث...</p>\n    <section>\n        <h3>الخطوات الأساسية</h3>\n        <ol>\n            <li>اختيار لغة البرمجة</li>\n            <li>تعلم الأساسيات</li>\n            <li>التطبيق العملي</li>\n        </ol>\n    </section>\n    <footer>\n        <p>الكلمات المفتاحية: برمجة، تعلم، تطوير</p>\n    </footer>\n</article>",
+      "explanation": "مثالي للمقالات، المنشورات، التعليقات، أو أي محتوى مستقل."
+    },
+    {
+      "name": "<aside>",
+      "type": "Semantic",
+      "description": "محتوى جانبي مرتبط بالمحتوى الرئيسي لكنه منفصل عنه.",
+      "syntax": "<aside>...</aside>",
+      "example": "<main>\n    <article>\n        <h1>مقال عن الذكاء الاصطناعي</h1>\n        <p>محتوى المقال الرئيسي...</p>\n    </article>\n    <aside>\n        <h3>مقالات ذات صلة</h3>\n        <ul>\n            <li><a href=\"#\">تطبيقات الذكاء الاصطناعي</a></li>\n            <li><a href=\"#\">مستقبل التكنولوجيا</a></li>\n        </ul>\n    </aside>\n</main>\n\n<aside class=\"sidebar\">\n    <section>\n        <h3>إعلان</h3>\n        <p>محتوى إعلاني...</p>\n    </section>\n</aside>",
+      "explanation": "يمكن استخدامه للشريط الجانبي، الإعلانات، أو المحتوى التكميلي."
+    },
+    {
+      "name": "<footer>",
+      "type": "Semantic",
+      "description": "تذييل الصفحة أو القسم. يحتوي عادة على معلومات حقوق النشر والروابط.",
+      "syntax": "<footer>...</footer>",
+      "example": "<footer>\n    <div class=\"footer-content\">\n        <div class=\"company-info\">\n            <h3>شركة التقنية</h3>\n            <p>نقدم حلول تقنية متطورة لنمو أعمالك</p>\n        </div>\n        <div class=\"quick-links\">\n            <h4>روابط سريعة</h4>\n            <ul>\n                <li><a href=\"/privacy\">سياسة الخصوصية</a></li>\n                <li><a href=\"/terms\">شروط الاستخدام</a></li>\n                <li><a href=\"/support\">الدعم الفني</a></li>\n            </ul>\n        </div>\n        <div class=\"contact\">\n            <h4>تواصل معنا</h4>\n            <p>البريد: info@company.com</p>\n            <p>الهاتف: +966 11 123 4567</p>\n        </div>\n    </div>\n    <div class=\"copyright\">\n        <p>&copy; 2024 شركة التقنية. جميع الحقوق محفوظة.</p>\n    </div>\n</footer>",
+      "explanation": "يمكن أن يحتوي على معلومات الاتصال، الروابط، حقوق النشر، أو أي معلومات ختامية."
+    },
+    
+        {
+          "name": "<meta>",
+          "type": "Metadata",
+          "description": "يوفر بيانات وصفية عن المستند مثل ترميز الأحرف ووصف الصفحة وإعدادات العرض.",
+          "syntax": "<meta charset=\"UTF-8\">\n<meta name=\"description\" content=\"وصف الصفحة\">",
+          "example": "<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <meta name=\"keywords\" content=\"HTML, CSS, تعليم\">\n</head>",
+          "explanation": "مهم لمحركات البحث والتوافق مع الأجهزة المختلفة. charset يحدد ترميز النصوص، viewport يتحكم بعرض الصفحة على الأجهزة المحمولة."
+        },
+        {
+          "name": "<link>",
+          "type": "Metadata",
+          "description": "يربط المستند بموارد خارجية مثل ملفات CSS أو الأيقونات.",
+          "syntax": "<link rel=\"stylesheet\" href=\"styles.css\">",
+          "example": "<head>\n  <link rel=\"stylesheet\" href=\"main.css\">\n  <link rel=\"icon\" href=\"favicon.ico\" type=\"image/x-icon\">\n  <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n</head>",
+          "explanation": "يستخدم بشكل رئيسي لاستيراد أنماط التصميم (CSS) أو تعريف الأيقونات (favicon) أو تحسين أداء تحميل الموارد."
+        },
+        {
+          "name": "<style>",
+          "type": "Metadata",
+          "description": "يحتوي على قواعد CSS لتنسيق العناصر داخل المستند.",
+          "syntax": "<style>selector { property: value; }</style>",
+          "example": "<style>\n  body {\n    font-family: 'Segoe UI', Tahoma, sans-serif;\n    line-height: 1.6;\n  }\n  h1 {\n    color: #2c3e50;\n    border-bottom: 2px solid #3498db;\n  }\n</style>",
+          "explanation": "يُفضل استخدامه للأنماط الخاصة بصفحة واحدة، بينما يُستخدم <link> للأنماط المشتركة بين عدة صفحات."
+        },
+        {
+          "name": "<script>",
+          "type": "Metadata",
+          "description": "يُدرج كود JavaScript للتنفيذ في الصفحة.",
+          "syntax": "<script>// كود جافاسكريبت</script>",
+          "example": "<script>\n  function showMessage() {\n    alert('مرحباً!');\n  }\n</script>\n\n<script src=\"app.js\" defer></script>",
+          "explanation": "يمكن وضعه في <head> أو نهاية <body>. خاصية defer تؤجل التنفيذ حتى انتهاء تحميل الصفحة."
+        },
+        {
+          "name": "<iframe>",
+          "type": "Embedded Content",
+          "description": "يُضمّن مستند أو صفحة ويب أخرى داخل الصفحة الحالية.",
+          "syntax": "<iframe src=\"URL\" title=\"وصف\"></iframe>",
+          "example": "<iframe \n  src=\"https://www.example.com\" \n  title=\"موقع مثال\"\n  width=\"600\" \n  height=\"400\"\n  sandbox=\"allow-same-origin\"\n></iframe>",
+          "explanation": "مفيد لعرض محتوى خارجي مثل خرائط Google أو مقاطع الفيديو. يجب توخي الحذر لأسباب أمنية باستخدام sandbox."
+        },
+        {
+          "name": "<audio>",
+          "type": "Media",
+          "description": "يعرض مشغل صوتي لتشغيل ملفات صوتية.",
+          "syntax": "<audio controls>\n  <source src=\"audio.mp3\" type=\"audio/mpeg\">\n</audio>",
+          "example": "<audio controls>\n  <source src=\"quran.mp3\" type=\"audio/mpeg\">\n  <source src=\"quran.ogg\" type=\"audio/ogg\">\n  المتصفح لا يدعم العنصر الصوتي.\n</audio>",
+          "explanation": "خاصية controls تظهر عناصر التحكم. يُفضل توفير تنسيقات متعددة لتوافق المتصفحات."
+        },
+        {
+          "name": "<video>",
+          "type": "Media",
+          "description": "يعرض مشغل فيديو لتشغيل ملفات فيديو.",
+          "syntax": "<video controls width=\"500\">\n  <source src=\"video.mp4\" type=\"video/mp4\">\n</video>",
+          "example": "<video controls width=\"100%\" poster=\"thumbnail.jpg\">\n  <source src=\"tutorial.mp4\" type=\"video/mp4\">\n  <source src=\"tutorial.webm\" type=\"video/webm\">\n  المتصفح لا يدعم عنصر الفيديو.\n</video>",
+          "explanation": "خاصية poster تحدد صورة عرض أولي. يمكن إضافة الترجمة باستخدام <track>."
+        },
+        {
+          "name": "<canvas>",
+          "type": "Graphics",
+          "description": "منطقة رسم ثنائية الأبعاد باستخدام JavaScript.",
+          "syntax": "<canvas id=\"myCanvas\" width=\"200\" height=\"100\"></canvas>",
+          "example": "<canvas id=\"drawingBoard\" width=\"400\" height=\"200\"></canvas>\n<script>\n  const canvas = document.getElementById('drawingBoard');\n  const ctx = canvas.getContext('2d');\n  ctx.fillStyle = 'green';\n  ctx.fillRect(10, 10, 150, 80);\n</script>",
+          "explanation": "يُستخدم لإنشاء الرسوم البيانية، الألعاب، التعديلات على الصور، والرسوم المتحركة."
+        },
+        {
+          "name": "<svg>",
+          "type": "Graphics",
+          "description": "يعرض رسومات متجهية قابلة للتكبير دون فقدان الجودة.",
+          "syntax": "<svg width=\"100\" height=\"100\">...</svg>",
+          "example": "<svg width=\"200\" height=\"200\">\n  <circle cx=\"100\" cy=\"100\" r=\"80\" fill=\"#3498db\" />\n  <text x=\"100\" y=\"110\" text-anchor=\"middle\" fill=\"white\">SVG</text>\n</svg>",
+          "explanation": "مثالي للشعارات والرسوم التوضيحية والأيقونات التي تحتاج للتكبير بجودة عالية."
+        },
+        {
+          "name": "<figure>",
+          "type": "Semantic",
+          "description": "يجمّع محتوى متعدد الوسائط مع شرحه (<figcaption>).",
+          "syntax": "<figure>\n  <img src=\"image.jpg\" alt=\"وصف\">\n  <figcaption>شرح الصورة</figcaption>\n</figure>",
+          "example": "<figure>\n  <img src=\"chart.png\" alt=\"مبيعات الربع الأول\">\n  <figcaption>الشكل ١: توزيع المبيعات حسب المناطق (يناير - مارس ٢٠٢٤)</figcaption>\n</figure>",
+          "explanation": "يعزز إمكانية الوصول وسيو عن طريق ربط الوسائط بشرحها الوصفي."
+        },
+        {
+          "name": "<code>",
+          "type": "Text",
+          "description": "يعرض نصاً كمقتطف كود برمجي.",
+          "syntax": "<code>كود</code>",
+          "example": "<p>استخدم الدالة <code>print()</code> لعرض النتائج في بايثون.</p>\n\n<pre><code>\nfunction greet(name) {\n  return `مرحباً ${name}!`;\n}\n</code></pre>",
+          "explanation": "يُظهر النص بخط ثابت العرض. غالباً ما يُستخدم مع <pre> لعرض كود متعدد الأسطر."
+        },
+        {
+          "name": "<pre>",
+          "type": "Text",
+          "description": "يحافظ على التنسيق الأصلي للنص (المسافات، الأسطر، المسافات البيضاء).",
+          "syntax": "<pre>نص مسبق التنسيق</pre>",
+          "example": "<pre>\n  +----------------------+\n  |   جدول المحتويات    |\n  +----------------------+\n  | 1. المقدمة       |\n  | 2. الفصل الأول   |\n  | 3. الخاتمة       |\n  +----------------------+\n</pre>",
+          "explanation": "مفيد لعرض الكود البرمجي، الشعر، أو أي محتوى يحتاج للحفاظ على تنسيمه الأصلي."
+        },
+        {
+          "name": "<blockquote>",
+          "type": "Text",
+          "description": "يُميّز اقتباس طويل من مصدر خارجي.",
+          "syntax": "<blockquote cite=\"المصدر\">نص الاقتباس</blockquote>",
+          "example": "<blockquote cite=\"https://example.com/article\">\n  <p>الحضارة ليست رفاهية، بل ضرورة لتقدم البشرية</p>\n  <footer>— طه حسين، <cite>مستقبل الثقافة في مصر</cite></footer>\n</blockquote>",
+          "explanation": "يُظهر عادةً بمسافة بادئة. cite لتحديد مصدر الاقتباس (غير ظاهر للمستخدم)."
+        },
+        {
+          "name": "<mark>",
+          "type": "Text",
+          "description": "يُظلل النص بعلامة مميزة لأغراض التمييز البصري.",
+          "syntax": "<mark>نص مميز</mark>",
+          "example": "<p>بحثك عن <mark>HTML5</mark> أعاد ٥٠ نتيجة. ركز على أحدث معايير <mark>HTML5</mark>.</p>",
+          "explanation": "مفيد لإبراز الكلمات المفتاحية أو النتائج في البحث. لونه الافتراضي أصفر."
+        },
+        {
+          "name": "<time>",
+          "type": "Semantic",
+          "description": "يُمثّل تاريخاً و/أو وقتاً بطريقة قابلة للقراءة الآلية.",
+          "syntax": "<time datetime=\"YYYY-MM-DD\">التاريخ</time>",
+          "example": "<p>نُشر المقال في \n  <time datetime=\"2024-03-15T19:00\">١٥ مارس ٢٠٢٤ الساعة ٧ مساءً</time>\n</p>",
+          "explanation": "datetime يحفظ التاريخ/الوقت بصيغة قياسية للمتصفحات والتطبيقات."
+        },
+        {
+          "name": "<datalist>",
+          "type": "Form",
+          "description": "يوفر قائمة خيارات مسبقة لحقول الإدخال.",
+          "syntax": "<input list=\"listId\">\n<datalist id=\"listId\">\n  <option value=\"خيار\">\n</datalist>",
+          "example": "<label for=\"browser\">المتصفح المفضل:</label>\n<input list=\"browsers\" id=\"browser\">\n<datalist id=\"browsers\">\n  <option value=\"كروم\">\n  <option value=\"فايرفوكس\">\n  <option value=\"سفاري\">\n  <option value=\"إيدج\">\n</datalist>",
+          "explanation": "يظهر كمربع اقتراحات أثناء الكتابة في حقل الإدخال المرتبط به."
+        },
+        {
+          "name": "<progress>",
+          "type": "Form",
+          "description": "يعرض شريط تقدم لإكمال مهمة ما.",
+          "syntax": "<progress value=\"70\" max=\"100\"></progress>",
+          "example": "<label>استكمال الملف: <progress id=\"fileProgress\" value=\"32\" max=\"100\"> 32% </progress></label>",
+          "explanation": "value يمثل التقدم الحالي، max يمثل القيمة الكلية للإكمال."
+        },
+        {
+          "name": "<details>",
+          "type": "Interactive",
+          "description": "ينشئ قسماً قابلاً للطي لإظهار/إخفاء المحتوى.",
+          "syntax": "<details>\n  <summary>العنوان</summary>\n  المحتوى\n</details>",
+          "example": "<details>\n  <summary>أسئلة شائعة</summary>\n  <p>س: كيف أتعلم HTML؟</p>\n  <p>ج: ابدأ بالأساسيات ثم تدرب على مشاريع عملية.</p>\n</details>",
+          "explanation": "المحتوى داخله مخفي افتراضياً. <summary> يعطي عنواناً قابلاً للنقر للفتح/الإغلاق."
+        },
+        {
+          "name": "<dialog>",
+          "type": "Interactive",
+          "description": "ينشئ نافذة حوار أو مربع تفاعلي.",
+          "syntax": "<dialog open>نص الحوار</dialog>",
+          "example": "<dialog id=\"contactDialog\">\n  <h2>اتصل بنا</h2>\n  <form>\n    <!-- محتوى النموذج -->\n  </form>\n  <button onclick=\"document.getElementById('contactDialog').close()\">\n    إغلاق\n  </button>\n</dialog>\n<button onclick=\"document.getElementById('contactDialog').showModal()\">\n  فتح الحوار\n</button>",
+          "explanation": "يُستخدم للتنبيهات، تأكيد الإجراءات، أو النماذج المنبثقة. open يظهره افتراضياً."
+        }
+      
+    
+  ]
+}
+

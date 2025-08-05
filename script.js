@@ -1,839 +1,715 @@
-// تهيئة الصفحة
-document.addEventListener('DOMContentLoaded', function() {
-    initializeHero();
-    initializeNavigation();
-    initializeProgressBar();
-    initializePlayground();
-    initializeSyntaxHighlighting();
-    initializeAnimations();
-});
+// دليل مرجع تطوير الويب - JavaScript
+// ملف JavaScript محدث للتصميم الجديد بالجدول
 
-// تهيئة القسم الرئيسي
-function initializeHero() {
-    const heroCode = document.getElementById('hero-code');
-    const codeText = `// مرحباً بك في عالم JavaScript!
-function welcomeMessage() {
-    const name = 'المطور الجديد';
-    const message = \`أهلاً وسهلاً \${name}!\`;
-    
-    console.log(message);
-    console.log('🚀 لنبدأ رحلة التعلم!');
-}
+// المتغيرات العامة
+let htmlCommands = [];
+let cssCommands = [];
+let javascriptCommands = [];
+let currentTab = 'html';
+let filteredCommands = [];
 
-welcomeMessage();
-
-// إنشاء كائن للمستخدم
-const user = {
-    name: 'أحمد',
-    level: 'مبتدئ',
-    progress: 0,
-    
-    updateProgress(newProgress) {
-        this.progress = newProgress;
-        console.log(\`التقدم: \${this.progress}%\`);
-    }
+// عناصر DOM الرئيسية
+const elements = {
+    navButtons: null,
+    tabContents: null,
+    searchInput: null,
+    clearSearchBtn: null,
+    typeFilter: null,
+    modalOverlay: null,
+    modalClose: null,
+    copyBtn: null,
+    loadingSpinner: null,
+    htmlCount: null,
+    cssCount: null,
+    jsCount: null
 };
 
-user.updateProgress(25);`;
+// تهيئة التطبيق عند تحميل الصفحة
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('تم تحميل الصفحة، بدء التهيئة...');
+    initializeElements();
+    initializeApp();
+});
 
-    typeWriter(heroCode, codeText, 50);
+// تهيئة عناصر DOM
+function initializeElements() {
+    elements.navButtons = document.querySelectorAll('.nav-btn');
+    elements.tabContents = document.querySelectorAll('.tab-content');
+    elements.searchInput = document.getElementById('search-input');
+    elements.clearSearchBtn = document.getElementById('clear-search');
+    elements.typeFilter = document.getElementById('type-filter');
+    elements.modalOverlay = document.getElementById('modal-overlay');
+    elements.modalClose = document.getElementById('modal-close');
+    elements.copyBtn = document.getElementById('copy-btn');
+    elements.loadingSpinner = document.getElementById('loading-spinner');
+    elements.htmlCount = document.getElementById('html-count');
+    elements.cssCount = document.getElementById('css-count');
+    elements.jsCount = document.getElementById('js-count');
+    
+    console.log('تم تهيئة عناصر DOM');
 }
 
-// تأثير الكتابة
-function typeWriter(element, text, speed) {
-    let i = 0;
-    element.textContent = '';
-    
-    function type() {
-        if (i < text.length) {
-            element.textContent += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
-        } else {
-            // تطبيق تمييز الكود بعد انتهاء الكتابة
-            Prism.highlightElement(element);
-        }
-    }
-    
-    type();
-}
-
-// تهيئة شريط التنقل
-function initializeNavigation() {
-    const navbar = document.querySelector('.navbar');
-    const navToggle = document.querySelector('.nav-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    
-    // تأثير الشفافية عند التمرير
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 100) {
-            navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-        } else {
-            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-        }
-    });
-    
-    // قائمة الهاتف المحمول
-    navToggle.addEventListener('click', function() {
-        navMenu.classList.toggle('active');
-        navToggle.classList.toggle('active');
-    });
-    
-    // التنقل السلس
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            scrollToSection(targetId);
-        });
-    });
-}
-
-// التنقل إلى قسم معين
-function scrollToSection(sectionId) {
-    const section = document.getElementById(sectionId);
-    if (section) {
-        const offsetTop = section.offsetTop - 70;
-        window.scrollTo({
-            top: offsetTop,
-            behavior: 'smooth'
-        });
-    }
-}
-
-// تهيئة شريط التقدم
-function initializeProgressBar() {
-    const progressFill = document.querySelector('.progress-fill');
-    
-    window.addEventListener('scroll', function() {
-        const scrollTop = window.pageYOffset;
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const scrollPercent = (scrollTop / docHeight) * 100;
-        
-        progressFill.style.width = scrollPercent + '%';
-    });
-}
-
-// تهيئة ساحة التجريب
-function initializePlayground() {
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    const tabContents = document.querySelectorAll('.tab-content');
-    
-    // تبديل التبويبات
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            const tabName = this.getAttribute('data-tab');
-            
-            // إزالة الفئة النشطة من جميع التبويبات
-            tabBtns.forEach(b => b.classList.remove('active'));
-            tabContents.forEach(c => c.classList.remove('active'));
-            
-            // إضافة الفئة النشطة للتبويب المحدد
-            this.classList.add('active');
-            document.getElementById(tabName + '-tab').classList.add('active');
-        });
-    });
-}
-
-// تشغيل الأمثلة
-function runExample(exampleId) {
-    const codeElement = document.getElementById(exampleId);
-    const outputElement = document.getElementById('output-' + exampleId);
-    
-    if (!codeElement || !outputElement) return;
-    
-    const code = codeElement.textContent;
-    outputElement.innerHTML = '';
-    
-    // إنشاء console مخصص لالتقاط النتائج
-    const originalConsole = window.console;
-    const outputs = [];
-    
-    window.console = {
-        log: function(...args) {
-            outputs.push(args.map(arg => 
-                typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg)
-            ).join(' '));
-            originalConsole.log(...args);
-        },
-        error: function(...args) {
-            outputs.push('❌ خطأ: ' + args.join(' '));
-            originalConsole.error(...args);
-        },
-        warn: function(...args) {
-            outputs.push('⚠️ تحذير: ' + args.join(' '));
-            originalConsole.warn(...args);
-        }
-    };
-    
+// تهيئة التطبيق الرئيسية
+async function initializeApp() {
     try {
-        // تنفيذ الكود
-        eval(code);
+        showLoading();
+        console.log('بدء تحميل البيانات...');
         
-        // عرض النتائج
-        if (outputs.length > 0) {
-            outputElement.textContent = outputs.join('\n');
-        } else {
-            outputElement.textContent = '✅ تم تنفيذ الكود بنجاح (لا توجد مخرجات)';
-        }
+        // تحميل جميع البيانات
+        await loadAllData();
         
-        // تأثير بصري للنجاح
-        outputElement.style.borderLeft = '4px solid #4ecdc4';
+        // تحديث الإحصائيات
+        updateStatistics();
+        
+        // إعداد مستمعي الأحداث
+        setupEventListeners();
+        
+        // عرض المحتوى الأولي
+        displayCommands('html');
+        
+        // إعداد خيارات التصفية
+        setupFilterOptions();
+        
+        console.log('تم تحميل التطبيق بنجاح');
         
     } catch (error) {
-        outputElement.textContent = '❌ خطأ: ' + error.message;
-        outputElement.style.borderLeft = '4px solid #ff6b6b';
+        console.error('خطأ في تهيئة التطبيق:', error);
+        showError('حدث خطأ في تحميل البيانات. يرجى إعادة تحميل الصفحة.');
     } finally {
-        // استعادة console الأصلي
-        window.console = originalConsole;
+        hideLoading();
     }
-    
-    // تأثير الرسوم المتحركة
-    outputElement.style.opacity = '0';
-    outputElement.style.transform = 'translateY(20px)';
-    
-    setTimeout(() => {
-        outputElement.style.transition = 'all 0.3s ease';
-        outputElement.style.opacity = '1';
-        outputElement.style.transform = 'translateY(0)';
-    }, 100);
 }
 
-// تشغيل كود ساحة التجريب
-function runPlaygroundCode() {
-    const jsEditor = document.getElementById('js-editor');
-    const htmlEditor = document.getElementById('html-editor');
-    const cssEditor = document.getElementById('css-editor');
-    const consoleOutput = document.getElementById('console-output');
-    const previewOutput = document.getElementById('preview-output');
+// تحميل جميع البيانات
+async function loadAllData() {
+    const promises = [
+        loadHTMLCommands(),
+        loadCSSCommands(),
+        loadJavaScriptCommands()
+    ];
     
-    // مسح النتائج السابقة
-    consoleOutput.innerHTML = '';
-    previewOutput.innerHTML = '';
-    
-    const jsCode = jsEditor.value;
-    const htmlCode = htmlEditor.value;
-    const cssCode = cssEditor.value;
-    
-    // إنشاء console مخصص
-    const outputs = [];
-    const originalConsole = window.console;
-    
-    window.console = {
-        log: function(...args) {
-            const output = args.map(arg => 
-                typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg)
-            ).join(' ');
-            outputs.push('> ' + output);
-            consoleOutput.textContent = outputs.join('\n');
-            originalConsole.log(...args);
-        },
-        error: function(...args) {
-            outputs.push('❌ ' + args.join(' '));
-            consoleOutput.textContent = outputs.join('\n');
-            originalConsole.error(...args);
-        },
-        warn: function(...args) {
-            outputs.push('⚠️ ' + args.join(' '));
-            consoleOutput.textContent = outputs.join('\n');
-            originalConsole.warn(...args);
-        }
-    };
-    
+    await Promise.all(promises);
+    console.log('تم تحميل جميع البيانات');
+}
+
+// تحميل أوامر HTML
+async function loadHTMLCommands() {
     try {
-        // تنفيذ JavaScript
-        if (jsCode.trim()) {
-            eval(jsCode);
+        console.log('تحميل بيانات HTML...');
+        const response = await fetch('html-commands.json');
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
         
-        // إنشاء معاينة HTML/CSS
-        if (htmlCode.trim() || cssCode.trim()) {
-            const iframe = document.createElement('iframe');
-            iframe.style.width = '100%';
-            iframe.style.height = '100%';
-            iframe.style.border = 'none';
-            
-            previewOutput.appendChild(iframe);
-            
-            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-            const fullHtml = `
-                <!DOCTYPE html>
-                <html lang="ar" dir="rtl">
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <style>${cssCode}</style>
-                </head>
-                <body>
-                    ${htmlCode}
-                    <script>
-                        // ربط console بالنافذة الرئيسية
-                        window.parent.console = window.parent.console;
-                        ${jsCode}
-                    </script>
-                </body>
-                </html>
-            `;
-            
-            iframeDoc.open();
-            iframeDoc.write(fullHtml);
-            iframeDoc.close();
-        }
+        const data = await response.json();
+        htmlCommands = data.html_commands || [];
+        console.log(`تم تحميل ${htmlCommands.length} عنصر HTML`);
         
     } catch (error) {
-        outputs.push('❌ خطأ: ' + error.message);
-        consoleOutput.textContent = outputs.join('\n');
-    } finally {
-        window.console = originalConsole;
+        console.error('خطأ في تحميل بيانات HTML:', error);
+        htmlCommands = [];
     }
 }
 
-// مسح المحرر
-function clearEditor() {
-    const activeTab = document.querySelector('.tab-content.active textarea');
-    if (activeTab) {
-        activeTab.value = '';
-    }
-}
-
-// تنسيق الكود
-function formatCode() {
-    const activeTab = document.querySelector('.tab-content.active textarea');
-    if (activeTab) {
-        // تنسيق بسيط للكود
-        let code = activeTab.value;
+// تحميل أوامر CSS
+async function loadCSSCommands() {
+    try {
+        console.log('تحميل بيانات CSS...');
+        const response = await fetch('css-commands.json');
         
-        // إضافة مسافات بادئة بسيطة
-        const lines = code.split('\n');
-        let indentLevel = 0;
-        const formattedLines = lines.map(line => {
-            const trimmedLine = line.trim();
-            
-            if (trimmedLine.includes('}')) {
-                indentLevel = Math.max(0, indentLevel - 1);
-            }
-            
-            const formattedLine = '    '.repeat(indentLevel) + trimmedLine;
-            
-            if (trimmedLine.includes('{')) {
-                indentLevel++;
-            }
-            
-            return formattedLine;
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        cssCommands = data.css_commands || [];
+        console.log(`تم تحميل ${cssCommands.length} خاصية CSS`);
+        
+    } catch (error) {
+        console.error('خطأ في تحميل بيانات CSS:', error);
+        cssCommands = [];
+    }
+}
+
+// تحميل أوامر JavaScript
+async function loadJavaScriptCommands() {
+    try {
+        console.log('تحميل بيانات JavaScript...');
+        const response = await fetch('javascript-commands.json');
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        javascriptCommands = data.javascript_commands || [];
+        console.log(`تم تحميل ${javascriptCommands.length} دالة JavaScript`);
+        
+    } catch (error) {
+        console.error('خطأ في تحميل بيانات JavaScript:', error);
+        javascriptCommands = [];
+    }
+}
+
+// تحديث الإحصائيات
+function updateStatistics() {
+    if (elements.htmlCount) {
+        animateCounter(elements.htmlCount, htmlCommands.length);
+    }
+    if (elements.cssCount) {
+        animateCounter(elements.cssCount, cssCommands.length);
+    }
+    if (elements.jsCount) {
+        animateCounter(elements.jsCount, javascriptCommands.length);
+    }
+    
+    console.log('تم تحديث الإحصائيات');
+}
+
+// تحريك العداد
+function animateCounter(element, target) {
+    let current = 0;
+    const increment = target / 50;
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            current = target;
+            clearInterval(timer);
+        }
+        element.textContent = Math.floor(current);
+    }, 30);
+}
+
+// إعداد مستمعي الأحداث
+function setupEventListeners() {
+    // أزرار التنقل
+    if (elements.navButtons) {
+        elements.navButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tab = btn.dataset.tab;
+                switchTab(tab);
+            });
         });
-        
-        activeTab.value = formattedLines.join('\n');
-    }
-}
-
-// مسح النتائج
-function clearOutput() {
-    document.getElementById('console-output').innerHTML = '';
-    document.getElementById('preview-output').innerHTML = '';
-}
-
-// تحميل الأمثلة السريعة
-function loadExample(exampleType) {
-    const jsEditor = document.getElementById('js-editor');
-    const htmlEditor = document.getElementById('html-editor');
-    const cssEditor = document.getElementById('css-editor');
-    
-    // تفعيل تبويب JavaScript
-    document.querySelector('.tab-btn[data-tab="js"]').click();
-    
-    const examples = {
-        calculator: {
-            js: `// آلة حاسبة بسيطة
-function calculator() {
-    const num1 = parseFloat(prompt('أدخل الرقم الأول:'));
-    const operator = prompt('أدخل العملية (+, -, *, /):');
-    const num2 = parseFloat(prompt('أدخل الرقم الثاني:'));
-    
-    let result;
-    
-    switch(operator) {
-        case '+':
-            result = num1 + num2;
-            break;
-        case '-':
-            result = num1 - num2;
-            break;
-        case '*':
-            result = num1 * num2;
-            break;
-        case '/':
-            result = num2 !== 0 ? num1 / num2 : 'لا يمكن القسمة على صفر';
-            break;
-        default:
-            result = 'عملية غير صحيحة';
     }
     
-    console.log(\`النتيجة: \${num1} \${operator} \${num2} = \${result}\`);
-    return result;
-}
-
-// تشغيل الآلة الحاسبة
-calculator();`,
-            html: '',
-            css: ''
-        },
-        
-        todo: {
-            js: `// قائمة المهام
-let tasks = [];
-
-function addTask(taskText) {
-    const task = {
-        id: Date.now(),
-        text: taskText,
-        completed: false,
-        createdAt: new Date().toLocaleString('ar-SA')
-    };
-    
-    tasks.push(task);
-    console.log(\`✅ تمت إضافة المهمة: "\${taskText}"\`);
-    displayTasks();
-}
-
-function completeTask(taskId) {
-    const task = tasks.find(t => t.id === taskId);
-    if (task) {
-        task.completed = true;
-        console.log(\`✅ تم إنجاز المهمة: "\${task.text}"\`);
-        displayTasks();
+    // البحث
+    if (elements.searchInput) {
+        elements.searchInput.addEventListener('input', handleSearch);
     }
-}
-
-function deleteTask(taskId) {
-    const taskIndex = tasks.findIndex(t => t.id === taskId);
-    if (taskIndex > -1) {
-        const deletedTask = tasks.splice(taskIndex, 1)[0];
-        console.log(\`🗑️ تم حذف المهمة: "\${deletedTask.text}"\`);
-        displayTasks();
-    }
-}
-
-function displayTasks() {
-    console.log('\\n📋 قائمة المهام:');
-    console.log('================');
     
-    if (tasks.length === 0) {
-        console.log('لا توجد مهام');
+    if (elements.clearSearchBtn) {
+        elements.clearSearchBtn.addEventListener('click', clearSearch);
+    }
+    
+    // التصفية
+    if (elements.typeFilter) {
+        elements.typeFilter.addEventListener('change', handleFilter);
+    }
+    
+    // النافذة المنبثقة
+    if (elements.modalClose) {
+        elements.modalClose.addEventListener('click', closeModal);
+    }
+    
+    if (elements.modalOverlay) {
+        elements.modalOverlay.addEventListener('click', (e) => {
+            if (e.target === elements.modalOverlay) {
+                closeModal();
+            }
+        });
+    }
+    
+    // زر النسخ
+    if (elements.copyBtn) {
+        elements.copyBtn.addEventListener('click', copyCode);
+    }
+    
+    // اختصارات لوحة المفاتيح
+    document.addEventListener('keydown', handleKeyboard);
+    
+    console.log('تم إعداد مستمعي الأحداث');
+}
+
+// تبديل التبويبات
+function switchTab(tab) {
+    console.log(`التبديل إلى تبويب: ${tab}`);
+    
+    // تحديث أزرار التنقل
+    if (elements.navButtons) {
+        elements.navButtons.forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.tab === tab);
+        });
+    }
+    
+    // تحديث المحتوى
+    if (elements.tabContents) {
+        elements.tabContents.forEach(content => {
+            content.classList.toggle('active', content.id === `${tab}-tab`);
+        });
+    }
+    
+    currentTab = tab;
+    displayCommands(tab);
+    setupFilterOptions();
+    clearSearch();
+}
+
+// عرض الأوامر
+function displayCommands(tab) {
+    const container = document.getElementById(`${tab}-commands`);
+    if (!container) {
+        console.error(`لم يتم العثور على حاوية ${tab}`);
         return;
     }
     
-    tasks.forEach((task, index) => {
-        const status = task.completed ? '✅' : '⏳';
-        console.log(\`\${index + 1}. \${status} \${task.text}\`);
+    let commands = [];
+    
+    switch(tab) {
+        case 'html':
+            commands = htmlCommands;
+            break;
+        case 'css':
+            commands = cssCommands;
+            break;
+        case 'javascript':
+            commands = javascriptCommands;
+            break;
+        default:
+            console.error(`تبويب غير معروف: ${tab}`);
+            return;
+    }
+    
+    filteredCommands = commands;
+    renderCommandsTable(container, commands);
+    console.log(`تم عرض ${commands.length} أمر في تبويب ${tab}`);
+}
+
+// رسم جدول الأوامر
+function renderCommandsTable(container, commands) {
+    if (!container) return;
+    
+    container.innerHTML = '';
+    
+    if (commands.length === 0) {
+        container.innerHTML = `
+            <div class="no-results">
+                <i class="fas fa-search"></i>
+                <h3>لا توجد نتائج</h3>
+                <p>لم يتم العثور على أوامر تطابق البحث</p>
+            </div>
+        `;
+        return;
+    }
+    
+    // إنشاء الجدول
+    const table = document.createElement('table');
+    table.className = 'commands-table';
+    
+    // إنشاء رأس الجدول
+    const thead = document.createElement('thead');
+    thead.innerHTML = `
+        <tr>
+            <th>اسم الأمر</th>
+            <th>النوع</th>
+        </tr>
+    `;
+    table.appendChild(thead);
+    
+    // إنشاء جسم الجدول
+    const tbody = document.createElement('tbody');
+    
+    commands.forEach((command, index) => {
+        const row = createTableRow(command, index);
+        tbody.appendChild(row);
     });
     
-    const completedCount = tasks.filter(t => t.completed).length;
-    console.log(\`\\nالمهام المكتملة: \${completedCount}/\${tasks.length}\`);
+    table.appendChild(tbody);
+    container.appendChild(table);
 }
 
-// إضافة بعض المهام للتجربة
-addTask('تعلم JavaScript');
-addTask('بناء مشروع ويب');
-addTask('قراءة كتاب برمجة');
-
-// إنجاز مهمة
-completeTask(tasks[0].id);`,
-            html: '',
-            css: ''
-        },
-        
-        clock: {
-            js: `// ساعة رقمية
-function updateClock() {
-    const now = new Date();
+// إنشاء صف في الجدول
+function createTableRow(command, index) {
+    const row = document.createElement('tr');
+    row.style.animationDelay = `${index * 0.05}s`;
+    row.setAttribute('tabindex', '0');
     
-    const time = {
-        hours: now.getHours().toString().padStart(2, '0'),
-        minutes: now.getMinutes().toString().padStart(2, '0'),
-        seconds: now.getSeconds().toString().padStart(2, '0')
-    };
+    row.innerHTML = `
+        <td class="command-name-cell">${escapeHtml(command.name)}</td>
+        <td class="command-type-cell">
+            <span class="command-type-badge">${escapeHtml(command.type)}</span>
+        </td>
+    `;
     
-    const date = {
-        day: now.getDate(),
-        month: now.getMonth() + 1,
-        year: now.getFullYear(),
-        weekday: ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'][now.getDay()]
-    };
+    // إضافة مستمع النقر
+    row.addEventListener('click', () => {
+        showModal(command);
+    });
     
-    const timeString = \`\${time.hours}:\${time.minutes}:\${time.seconds}\`;
-    const dateString = \`\${date.weekday}, \${date.day}/\${date.month}/\${date.year}\`;
-    
-    console.clear();
-    console.log('🕐 الساعة الرقمية');
-    console.log('==================');
-    console.log(\`⏰ الوقت: \${timeString}\`);
-    console.log(\`📅 التاريخ: \${dateString}\`);
-    
-    // معلومات إضافية
-    const period = time.hours >= 12 ? 'مساءً' : 'صباحاً';
-    const hour12 = time.hours % 12 || 12;
-    console.log(\`🌅 الوقت (12 ساعة): \${hour12}:\${time.minutes} \${period}\`);
-    
-    // حالة اليوم
-    const hour = parseInt(time.hours);
-    let dayPeriod;
-    if (hour >= 5 && hour < 12) dayPeriod = '🌅 صباح الخير';
-    else if (hour >= 12 && hour < 17) dayPeriod = '☀️ ظهيرة سعيدة';
-    else if (hour >= 17 && hour < 21) dayPeriod = '🌆 مساء الخير';
-    else dayPeriod = '🌙 ليلة سعيدة';
-    
-    console.log(dayPeriod);
-}
-
-// تحديث الساعة كل ثانية
-updateClock();
-setInterval(updateClock, 1000);
-
-console.log('\\n⚡ الساعة تعمل الآن! ستتحدث كل ثانية.');`,
-            html: '',
-            css: ''
-        },
-        
-        colors: {
-            js: `// مولد الألوان العشوائية
-class ColorGenerator {
-    constructor() {
-        this.colors = [];
-    }
-    
-    // توليد لون عشوائي بصيغة HEX
-    generateHexColor() {
-        const hex = Math.floor(Math.random() * 16777215).toString(16);
-        return '#' + hex.padStart(6, '0');
-    }
-    
-    // توليد لون عشوائي بصيغة RGB
-    generateRgbColor() {
-        const r = Math.floor(Math.random() * 256);
-        const g = Math.floor(Math.random() * 256);
-        const b = Math.floor(Math.random() * 256);
-        return \`rgb(\${r}, \${g}, \${b})\`;
-    }
-    
-    // توليد لون عشوائي بصيغة HSL
-    generateHslColor() {
-        const h = Math.floor(Math.random() * 360);
-        const s = Math.floor(Math.random() * 100);
-        const l = Math.floor(Math.random() * 100);
-        return \`hsl(\${h}, \${s}%, \${l}%)\`;
-    }
-    
-    // توليد مجموعة ألوان متناسقة
-    generatePalette(count = 5) {
-        const palette = [];
-        const baseHue = Math.floor(Math.random() * 360);
-        
-        for (let i = 0; i < count; i++) {
-            const hue = (baseHue + (i * 360 / count)) % 360;
-            const saturation = 70 + Math.random() * 30;
-            const lightness = 40 + Math.random() * 40;
-            palette.push(\`hsl(\${Math.floor(hue)}, \${Math.floor(saturation)}%, \${Math.floor(lightness)}%)\`);
+    // إضافة دعم لوحة المفاتيح
+    row.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            showModal(command);
         }
-        
-        return palette;
+    });
+    
+    return row;
+}
+
+// عرض النافذة المنبثقة
+function showModal(command) {
+    const modalTitle = document.getElementById('modal-title');
+    const modalType = document.getElementById('modal-type');
+    const modalSyntax = document.getElementById('modal-syntax');
+    const modalDescription = document.getElementById('modal-description');
+    const modalExample = document.getElementById('modal-example');
+    const modalExplanation = document.getElementById('modal-explanation');
+    
+    if (modalTitle) modalTitle.textContent = command.name;
+    if (modalType) modalType.textContent = command.type;
+    if (modalSyntax) modalSyntax.textContent = command.syntax;
+    if (modalDescription) modalDescription.textContent = command.description;
+    if (modalExample) modalExample.textContent = command.example;
+    if (modalExplanation) modalExplanation.textContent = command.explanation;
+    
+    if (elements.modalOverlay) {
+        elements.modalOverlay.classList.add('show');
     }
     
-    // عرض الألوان
-    displayColors() {
-        console.log('🎨 مولد الألوان العشوائية');
-        console.log('==========================');
-        
-        console.log('\\n🔸 ألوان فردية:');
-        console.log('HEX:', this.generateHexColor());
-        console.log('RGB:', this.generateRgbColor());
-        console.log('HSL:', this.generateHslColor());
-        
-        console.log('\\n🎭 مجموعة ألوان متناسقة:');
-        const palette = this.generatePalette();
-        palette.forEach((color, index) => {
-            console.log(\`اللون \${index + 1}: \${color}\`);
-        });
-        
-        console.log('\\n💡 نصائح الألوان:');
-        this.showColorTips();
+    document.body.style.overflow = 'hidden';
+    
+    // التركيز على زر الإغلاق للوصولية
+    setTimeout(() => {
+        if (elements.modalClose) {
+            elements.modalClose.focus();
+        }
+    }, 100);
+    
+    console.log(`تم عرض النافذة المنبثقة للأمر: ${command.name}`);
+}
+
+// إغلاق النافذة المنبثقة
+function closeModal() {
+    if (elements.modalOverlay) {
+        elements.modalOverlay.classList.remove('show');
     }
     
-    showColorTips() {
-        const tips = [
-            'استخدم الألوان المتناسقة لتصميم أفضل',
-            'الألوان الدافئة تعطي شعوراً بالطاقة',
-            'الألوان الباردة تعطي شعوراً بالهدوء',
-            'تجنب استخدام ألوان كثيرة في التصميم الواحد',
-            'اختبر الألوان على خلفيات مختلفة'
-        ];
-        
-        const randomTip = tips[Math.floor(Math.random() * tips.length)];
-        console.log('💡', randomTip);
+    document.body.style.overflow = 'auto';
+    
+    // إعادة تعيين زر النسخ
+    if (elements.copyBtn) {
+        elements.copyBtn.classList.remove('copied');
+        elements.copyBtn.innerHTML = '<i class="fas fa-copy"></i> نسخ الكود';
+    }
+    
+    console.log('تم إغلاق النافذة المنبثقة');
+}
+
+// نسخ الكود
+async function copyCode() {
+    const codeElement = document.getElementById('modal-example');
+    if (!codeElement) return;
+    
+    const code = codeElement.textContent;
+    
+    try {
+        await navigator.clipboard.writeText(code);
+        showCopySuccess();
+        console.log('تم نسخ الكود بنجاح');
+    } catch (err) {
+        console.warn('فشل في استخدام Clipboard API، استخدام الطريقة البديلة');
+        fallbackCopyTextToClipboard(code);
     }
 }
 
-// إنشاء مولد الألوان
-const colorGen = new ColorGenerator();
-
-// عرض الألوان
-colorGen.displayColors();
-
-// توليد ألوان جديدة كل 3 ثوان
-console.log('\\n⚡ سيتم توليد ألوان جديدة كل 3 ثوان...');
-setInterval(() => {
-    console.log('\\n' + '='.repeat(50));
-    colorGen.displayColors();
-}, 3000);`,
-            html: '',
-            css: ''
-        }
-    };
-    
-    if (examples[exampleType]) {
-        const example = examples[exampleType];
-        jsEditor.value = example.js;
-        htmlEditor.value = example.html;
-        cssEditor.value = example.css;
+// عرض رسالة نجاح النسخ
+function showCopySuccess() {
+    if (elements.copyBtn) {
+        elements.copyBtn.classList.add('copied');
+        elements.copyBtn.innerHTML = '<i class="fas fa-check"></i> تم النسخ';
         
-        // تشغيل المثال تلقائياً
         setTimeout(() => {
-            runPlaygroundCode();
-        }, 500);
+            elements.copyBtn.classList.remove('copied');
+            elements.copyBtn.innerHTML = '<i class="fas fa-copy"></i> نسخ الكود';
+        }, 2000);
     }
 }
 
-// تهيئة تمييز الكود
-function initializeSyntaxHighlighting() {
-    // تطبيق تمييز الكود على جميع العناصر
-    Prism.highlightAll();
+// طريقة بديلة لنسخ النص
+function fallbackCopyTextToClipboard(text) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-999999px';
+    textArea.style.top = '-999999px';
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    
+    try {
+        const successful = document.execCommand('copy');
+        if (successful) {
+            showCopySuccess();
+            console.log('تم نسخ الكود باستخدام الطريقة البديلة');
+        } else {
+            console.error('فشل في نسخ الكود');
+        }
+    } catch (err) {
+        console.error('خطأ في نسخ الكود:', err);
+    }
+    
+    document.body.removeChild(textArea);
 }
 
-// تهيئة الرسوم المتحركة
-function initializeAnimations() {
-    // مراقب التقاطع للرسوم المتحركة
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
+// معالجة البحث
+function handleSearch() {
+    const query = elements.searchInput ? elements.searchInput.value.toLowerCase().trim() : '';
     
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
-                observer.unobserve(entry.target);
+    if (elements.clearSearchBtn) {
+        if (query) {
+            elements.clearSearchBtn.classList.add('show');
+        } else {
+            elements.clearSearchBtn.classList.remove('show');
+        }
+    }
+    
+    filterCommands();
+}
+
+// مسح البحث
+function clearSearch() {
+    if (elements.searchInput) {
+        elements.searchInput.value = '';
+    }
+    
+    if (elements.clearSearchBtn) {
+        elements.clearSearchBtn.classList.remove('show');
+    }
+    
+    if (elements.typeFilter) {
+        elements.typeFilter.value = '';
+    }
+    
+    filterCommands();
+}
+
+// معالجة التصفية
+function handleFilter() {
+    filterCommands();
+}
+
+// تصفية الأوامر
+function filterCommands() {
+    let commands = [];
+    
+    switch(currentTab) {
+        case 'html':
+            commands = htmlCommands;
+            break;
+        case 'css':
+            commands = cssCommands;
+            break;
+        case 'javascript':
+            commands = javascriptCommands;
+            break;
+    }
+    
+    const query = elements.searchInput ? elements.searchInput.value.toLowerCase().trim() : '';
+    const typeValue = elements.typeFilter ? elements.typeFilter.value : '';
+    
+    let filtered = commands;
+    
+    // تصفية حسب البحث
+    if (query) {
+        filtered = filtered.filter(command => 
+            command.name.toLowerCase().includes(query) ||
+            command.description.toLowerCase().includes(query) ||
+            command.type.toLowerCase().includes(query)
+        );
+    }
+    
+    // تصفية حسب النوع
+    if (typeValue) {
+        filtered = filtered.filter(command => command.type === typeValue);
+    }
+    
+    filteredCommands = filtered;
+    const container = document.getElementById(`${currentTab}-commands`);
+    renderCommandsTable(container, filtered);
+    
+    console.log(`تم تصفية ${filtered.length} أمر من أصل ${commands.length}`);
+}
+
+// إعداد خيارات التصفية
+function setupFilterOptions() {
+    if (!elements.typeFilter) return;
+    
+    let commands = [];
+    
+    switch(currentTab) {
+        case 'html':
+            commands = htmlCommands;
+            break;
+        case 'css':
+            commands = cssCommands;
+            break;
+        case 'javascript':
+            commands = javascriptCommands;
+            break;
+    }
+    
+    const types = [...new Set(commands.map(cmd => cmd.type))];
+    
+    elements.typeFilter.innerHTML = '<option value="">جميع الأنواع</option>';
+    types.forEach(type => {
+        const option = document.createElement('option');
+        option.value = type;
+        option.textContent = type;
+        elements.typeFilter.appendChild(option);
+    });
+}
+
+// معالجة اختصارات لوحة المفاتيح
+function handleKeyboard(e) {
+    // مفتاح Escape لإغلاق النافذة المنبثقة
+    if (e.key === 'Escape' && elements.modalOverlay && elements.modalOverlay.classList.contains('show')) {
+        closeModal();
+    }
+    
+    // Ctrl/Cmd + K للتركيز على البحث
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        if (elements.searchInput) {
+            elements.searchInput.focus();
+        }
+    }
+    
+    // اختصارات التنقل
+    if (e.altKey) {
+        switch(e.key) {
+            case '1':
+                e.preventDefault();
+                switchTab('html');
+                break;
+            case '2':
+                e.preventDefault();
+                switchTab('css');
+                break;
+            case '3':
+                e.preventDefault();
+                switchTab('javascript');
+                break;
+        }
+    }
+}
+
+// دوال مساعدة
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+function showLoading() {
+    if (elements.loadingSpinner) {
+        elements.loadingSpinner.classList.add('show');
+    }
+}
+
+function hideLoading() {
+    if (elements.loadingSpinner) {
+        elements.loadingSpinner.classList.remove('show');
+    }
+}
+
+function showError(message) {
+    console.error('خطأ:', message);
+    
+    // إنشاء رسالة خطأ
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message';
+    errorDiv.innerHTML = `
+        <div class="error-content">
+            <i class="fas fa-exclamation-triangle"></i>
+            <h3>خطأ</h3>
+            <p>${message}</p>
+            <button onclick="location.reload()" class="retry-btn">
+                <i class="fas fa-redo"></i> إعادة المحاولة
+            </button>
+        </div>
+    `;
+    
+    document.body.appendChild(errorDiv);
+    
+    // إضافة أنماط الخطأ
+    if (!document.getElementById('error-styles')) {
+        const style = document.createElement('style');
+        style.id = 'error-styles';
+        style.textContent = `
+            .error-message {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 4000;
             }
-        });
-    }, observerOptions);
-    
-    // مراقبة العناصر للرسوم المتحركة
-    document.querySelectorAll('.intro-card, .example-item, .quick-example').forEach(el => {
-        observer.observe(el);
-    });
-    
-    // تأثيرات الماوس للبطاقات
-    document.querySelectorAll('.intro-card, .example-item').forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px) scale(1.02)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
-    
-    // تأثير الجسيمات للخلفية
-    createParticles();
-}
-
-// إنشاء تأثير الجسيمات
-function createParticles() {
-    const hero = document.querySelector('.hero');
-    const particlesContainer = document.createElement('div');
-    particlesContainer.className = 'particles-container';
-    particlesContainer.style.cssText = `
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: 1;
-    `;
-    
-    hero.appendChild(particlesContainer);
-    
-    // إنشاء الجسيمات
-    for (let i = 0; i < 50; i++) {
-        createParticle(particlesContainer);
+            .error-content {
+                background: white;
+                padding: 2rem;
+                border-radius: 15px;
+                text-align: center;
+                max-width: 400px;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            }
+            .error-content i {
+                font-size: 3rem;
+                color: #e53e3e;
+                margin-bottom: 1rem;
+            }
+            .error-content h3 {
+                font-size: 1.5rem;
+                color: #333;
+                margin-bottom: 1rem;
+            }
+            .error-content p {
+                color: #666;
+                margin-bottom: 1.5rem;
+            }
+            .retry-btn {
+                background: #667eea;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 8px;
+                cursor: pointer;
+                font-family: inherit;
+                font-size: 1rem;
+                transition: all 0.3s ease;
+            }
+            .retry-btn:hover {
+                background: #5a67d8;
+                transform: translateY(-2px);
+            }
+        `;
+        document.head.appendChild(style);
     }
 }
 
-function createParticle(container) {
-    const particle = document.createElement('div');
-    particle.style.cssText = `
-        position: absolute;
-        width: 4px;
-        height: 4px;
-        background: rgba(255, 255, 255, 0.6);
-        border-radius: 50%;
-        pointer-events: none;
-    `;
-    
-    // موضع عشوائي
-    particle.style.left = Math.random() * 100 + '%';
-    particle.style.top = Math.random() * 100 + '%';
-    
-    // حركة عشوائية
-    const duration = 3000 + Math.random() * 4000;
-    const delay = Math.random() * 2000;
-    
-    particle.style.animation = `particleFloat ${duration}ms ${delay}ms infinite linear`;
-    
-    container.appendChild(particle);
-}
+// تصدير الدوال للاستخدام العام (إذا لزم الأمر)
+window.webReferenceGuide = {
+    switchTab,
+    showModal,
+    closeModal,
+    copyCode,
+    clearSearch,
+    filterCommands
+};
 
-// إضافة CSS للجسيمات
-const particleStyles = document.createElement('style');
-particleStyles.textContent = `
-    @keyframes particleFloat {
-        0% {
-            transform: translateY(100vh) translateX(0);
-            opacity: 0;
-        }
-        10% {
-            opacity: 1;
-        }
-        90% {
-            opacity: 1;
-        }
-        100% {
-            transform: translateY(-100px) translateX(${Math.random() * 200 - 100}px);
-            opacity: 0;
-        }
-    }
-`;
-document.head.appendChild(particleStyles);
-
-// تأثيرات إضافية للتفاعل
-document.addEventListener('mousemove', function(e) {
-    const shapes = document.querySelectorAll('.shape');
-    const mouseX = e.clientX / window.innerWidth;
-    const mouseY = e.clientY / window.innerHeight;
-    
-    shapes.forEach((shape, index) => {
-        const speed = (index + 1) * 0.5;
-        const x = (mouseX - 0.5) * speed;
-        const y = (mouseY - 0.5) * speed;
-        
-        shape.style.transform = `translate(${x}px, ${y}px)`;
-    });
-});
-
-// تأثير الكتابة للعناوين
-function animateText(element) {
-    const text = element.textContent;
-    element.textContent = '';
-    element.style.borderRight = '2px solid';
-    
-    let i = 0;
-    const timer = setInterval(() => {
-        element.textContent += text[i];
-        i++;
-        
-        if (i === text.length) {
-            clearInterval(timer);
-            setTimeout(() => {
-                element.style.borderRight = 'none';
-            }, 500);
-        }
-    }, 100);
-}
-
-// تطبيق تأثيرات إضافية عند التحميل
-window.addEventListener('load', function() {
-    // تأثير ظهور تدريجي للصفحة
-    document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.5s ease';
-    
-    setTimeout(() => {
-        document.body.style.opacity = '1';
-    }, 100);
-    
-    // تأثيرات صوتية (اختيارية)
-    addSoundEffects();
-});
-
-// إضافة تأثيرات صوتية
-function addSoundEffects() {
-    // يمكن إضافة أصوات للنقرات والتفاعلات
-    document.querySelectorAll('.btn, .run-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            // تأثير بصري للنقر
-            this.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                this.style.transform = '';
-            }, 150);
-        });
-    });
-}
-
-// وظائف مساعدة إضافية
-function showNotification(message, type = 'info') {
-    const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    notification.textContent = message;
-    notification.style.cssText = `
-        position: fixed;
-        top: 100px;
-        right: 20px;
-        background: ${type === 'success' ? '#4ecdc4' : type === 'error' ? '#ff6b6b' : '#667eea'};
-        color: white;
-        padding: 15px 25px;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        z-index: 10000;
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
-    `;
-    
-    document.body.appendChild(notification);
-    
-    setTimeout(() => {
-        notification.style.transform = 'translateX(0)';
-    }, 100);
-    
-    setTimeout(() => {
-        notification.style.transform = 'translateX(100%)';
-        setTimeout(() => {
-            document.body.removeChild(notification);
-        }, 300);
-    }, 3000);
-}
-
-// حفظ التقدم في التخزين المحلي
-function saveProgress(section, completed = true) {
-    const progress = JSON.parse(localStorage.getItem('jsLearningProgress') || '{}');
-    progress[section] = {
-        completed,
-        timestamp: new Date().toISOString()
-    };
-    localStorage.setItem('jsLearningProgress', JSON.stringify(progress));
-}
-
-function getProgress() {
-    return JSON.parse(localStorage.getItem('jsLearningProgress') || '{}');
-}
-
-// تهيئة نظام التقدم
-function initializeProgressSystem() {
-    const progress = getProgress();
-    
-    // عرض التقدم في واجهة المستخدم
-    Object.keys(progress).forEach(section => {
-        const element = document.querySelector(`[data-section="${section}"]`);
-        if (element && progress[section].completed) {
-            element.classList.add('completed');
-        }
-    });
-}
+console.log('تم تحميل ملف JavaScript المحدث بنجاح');
 
