@@ -102,60 +102,77 @@ body {
 }
 
 /* Navigation Styles */
+.
+/* التعديلات على عناصر التنقل */
 .main-nav .nav-list {
     display: flex;
     list-style: none;
     gap: 0.6rem;
     flex-wrap: wrap;
     justify-content: center;
+    padding: 0;
+    margin: 0;
 }
 
 .nav-btn {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
+    padding: 0.5rem 1rem; /* تقليل الحشو */
     background: transparent;
     border: 2px solid #e0e0e0;
     border-radius: 50px;
     color: #666;
     font-family: inherit;
-    font-size: clamp(0.875rem, 2vw, 1rem);
+    font-size: 0.875rem; /* حجم خط أصغر */
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    width: fit-content;
+    width: auto; /* تغيير من fit-content إلى auto */
+    min-width: 80px; /* عرض أدنى للأزرار */
 }
 
-.nav-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, #667eea, #764ba2);
-    transition: left 0.3s ease;
-    z-index: -1;
+/* تعديلات للهاتف */
+@media (max-width: 768px) {
+    .main-nav .nav-list {
+        flex-wrap: nowrap; /* منع الانتقال لسطر جديد */
+        overflow-x: auto; /* تمكين التمرير الأفقي إذا لزم الأمر */
+        justify-content: flex-start; /* المحاذاة لليسار */
+        padding-bottom: 5px; /* مساحة للتمرير */
+        -webkit-overflow-scrolling: touch; /* تمرير سلس على الأجهزة اللوحية */
+    }
+    
+    .nav-btn {
+        padding: 0.5rem 0.8rem; /* تقليل الحشو أكثر */
+        font-size: 0.8rem; /* حجم خط أصغر */
+        white-space: nowrap; /* منع التفاف النص */
+        flex-shrink: 0; /* منع انكماش الأزرار */
+    }
+    
+    .nav-btn i {
+        font-size: 1rem; /* تقليل حجم الأيقونات */
+    }
+    
+    .header .container {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.5rem;
+    }
 }
 
-.nav-btn:hover::before,
-.nav-btn.active::before {
-    left: 0;
-}
-
-.nav-btn:hover,
-.nav-btn.active {
-    color: white;
-    border-color: #667eea;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
-}
-
-.nav-btn i {
-    font-size: clamp(1rem, 2.5vw, 1.2rem);
+/* للأجهزة الصغيرة جدًا */
+@media (max-width: 480px) {
+    .nav-btn {
+        min-width: 70px; /* عرض أصغر */
+        padding: 0.4rem 0.6rem;
+        font-size: 0.7rem;
+    }
+    
+    .nav-btn i {
+        font-size: 0.8rem;
+    }
 }
 
 /* Main Content */
@@ -985,3 +1002,4 @@ body {
     }
   }
   
+
