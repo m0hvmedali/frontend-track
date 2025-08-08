@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تمارين تطبيقية في HTML وCSS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --danger: #f72585;
+            --warning: #ff9e00;
+            --card-bg: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 20px var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .category-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 6px 15px var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .category-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+        }
+
+        .category-card h2 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .category-card h2 i {
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+        }
+
+        .exercises-list {
+            list-style-type: none;
+        }
+
+        .exercises-list li {
+            padding: 15px;
+            margin-bottom: 12px;
+            background-color: rgba(67, 97, 238, 0.05);
+            border-radius: 10px;
+            border-left: 4px solid var(--accent);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .exercises-list li:hover {
+            background-color: rgba(67, 97, 238, 0.1);
+            transform: translateX(5px);
+        }
+
+        .exercises-list li i {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .exercise-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .exercise-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .exercise-card:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .exercise-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .preview-content {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+            border: 1px solid #eaeaea;
+            min-height: 200px;
+        }
+
+        .restaurant-menu {
+            background: linear-gradient(to bottom, #fff5e6, #ffffff);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .restaurant-menu h4 {
+            color: #8b4513;
+            text-align: center;
+            margin-bottom: 15px;
+            padding: 8px;
+            background-color: #ffebcd;
+            border-radius: 5px;
+        }
+
+        .restaurant-menu ul {
+            list-style-type: none;
+        }
+
+        .restaurant-menu li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed #e0c9a6;
+        }
+
+        .restaurant-menu .price {
+            font-weight: bold;
+            color: #8b4513;
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .schedule-table th {
+            background-color: #f0f0f0;
+            padding: 10px;
+            text-align: right;
+        }
+
+        .schedule-table td {
+            padding: 10px;
+            border-bottom: 1px solid #e0e0e0;
+            text-align: right;
+        }
+
+        .schedule-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .personal-card {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 250px;
+            margin: 0 auto;
+        }
+
+        .personal-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .personal-card h4 {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .personal-card p {
+            color: #666;
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: center;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 30px;
+            padding: 10px;
+            margin: 15px 0;
+        }
+
+        .nav-bar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 20px;
+            transition: background 0.3s ease;
+        }
+
+        .nav-bar a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .three-columns {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .column {
+            flex: 1;
+            padding: 15px;
+            background: #eef7ff;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .column:nth-child(2) {
+            background: #e6f7ee;
+        }
+
+        .column:nth-child(3) {
+            background: #f7eef7;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            margin-top: 15px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            color: #666;
+            border-top: 1px solid #eaeaea;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .three-columns {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-laptop-code"></i> تمارين تطبيقية في HTML و CSS</h1>
+            <p>مجموعة شاملة من التمارين العملية لتعلم وتطوير مهاراتك في تطوير الويب</p>
+        </header>
+
+        <div class="categories">
+            <div class="category-card">
+                <h2><i class="fas fa-bas"></i> التمارين الأساسية (HTML فقط)</h2>
+                <ul class="exercises-list">
+                    <li><i class="fas fa-check-circle"></i> صفحة ترحيبية بسيطة</li>
+                    <li><i class="fas fa-check-circle"></i> قائمة طعام مطعم</li>
+                    <li><i class="fas fa-check-circle"></i> جدول مواعيد الدروس</li>
+                    <li><i class="fas fa-check-circle"></i> صفحة معلومات شخصية</li>
+                    <li><i class="fas fa-check-circle"></i> قائمة روابط مفيدة</li>
+                </ul>
+            </div>
+
+            <div class="category-card">
+                <h2><i class="fas fa-paint-brush"></i> تمارين التصميم (CSS)</h2>
+                <ul class="exercises-list">
+                    <li><i class="fas fa-check-circle"></i> تنسيق الصفحة الترحيبية</li>
+                    <li><i class="fas fa-check-circle"></i> تلوين قائمة الطعام</li>
+                    <li><i class="fas fa-check-circle"></i> تزيين الجدول</li>
+                    <li><i class="fas fa-check-circle"></i> إنشاء بطاقة شخصية</li>
+                    <li><i class="fas fa-check-circle"></i> تنسيق النماذج</li>
+                </ul>
+            </div>
+
+            <div class="category-card">
+                <h2><i class="fas fa-th-large"></i> تمارين التخطيط</h2>
+                <ul class="exercises-list">
+                    <li><i class="fas fa-check-circle"></i> شريط تنقل بسيط</li>
+                    <li><i class="fas fa-check-circle"></i> تخطيط بثلاثة أعمدة</li>
+                    <li><i class="fas fa-check-circle"></i> تخطيط شبكي (Grid)</li>
+                    <li><i class="fas fa-check-circle"></i> تخطيط مرن (Flexbox)</li>
+                    <li><i class="fas fa-check-circle"></i> تخطيط متجاوب (Responsive)</li>
+                </ul>
+            </div>
+
+            <div class="category-card">
+                <h2><i class="fas fa-magic"></i> تمارين تفاعلية</h2>
+                <ul class="exercises-list">
+                    <li><i class="fas fa-check-circle"></i> أزرار متغيرة الألوان</li>
+                    <li><i class="fas fa-check-circle"></i> قوائم منسدلة</li>
+                    <li><i class="fas fa-check-circle"></i> تأثيرات التمرير</li>
+                    <li><i class="fas fa-check-circle"></i> تحويلات وعناصر متحركة</li>
+                    <li><i class="fas fa-check-circle"></i> نماذج تفاعلية</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 style="text-align: center; color: var(--secondary); margin: 40px 0 30px;">
+            <i class="fas fa-eye"></i> نماذج من التمارين
+        </h2>
+
+        <div class="exercise-preview">
+            <div class="exercise-card">
+                <h3><i class="fas fa-utensils"></i> قائمة طعام مطعم</h3>
+                <p>تصميم قائمة طعام باستخدام HTML مع تنسيقات CSS جذابة</p>
+                <div class="preview-content">
+                    <div class="restaurant-menu">
+                        <h4>المقبلات</h4>
+                        <ul>
+                            <li>حمص بالطحينة <span class="price">15 ر.س</span></li>
+                            <li>تبولة <span class="price">12 ر.س</span></li>
+                            <li>سمبوسة لحم <span class="price">18 ر.س</span></li>
+                        </ul>
+
+                        <h4>الأطباق الرئيسية</h4>
+                        <ul>
+                            <li>مكبوس دجاج <span class="price">45 ر.س</span></li>
+                            <li>كوسا محشي <span class="price">38 ر.س</span></li>
+                            <li>مسكوف عراقي <span class="price">50 ر.س</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exercise-card">
+                <h3><i class="fas fa-table"></i> جدول مواعيد الدروس</h3>
+                <p>إنشاء جدول بمواعيد الدروس مع تنسيقات متناوبة</p>
+                <div class="preview-content">
+                    <table class="schedule-table">
+                        <tr>
+                            <th>اليوم</th>
+                            <th>المادة</th>
+                            <th>الوقت</th>
+                        </tr>
+                        <tr>
+                            <td>الأحد</td>
+                            <td>اللغة العربية</td>
+                            <td>8:00 - 9:30</td>
+                        </tr>
+                        <tr>
+                            <td>الإثنين</td>
+                            <td>الرياضيات</td>
+                            <td>10:00 - 11:30</td>
+                        </tr>
+                        <tr>
+                            <td>الثلاثاء</td>
+                            <td>العلوم</td>
+                            <td>9:00 - 10:30</td>
+                        </tr>
+                        <tr>
+                            <td>الأربعاء</td>
+                            <td>الحاسوب</td>
+                            <td>11:00 - 12:30</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="exercise-card">
+                <h3><i class="fas fa-id-card"></i> بطاقة شخصية</h3>
+                <p>تصميم بطاقة شخصية باستخدام HTML وCSS مع تأثيرات جذابة</p>
+                <div class="preview-content">
+                    <div class="personal-card">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="صورة شخصية">
+                        <h4>سارة أحمد</h4>
+                        <p>مطورة واجهات أمامية</p>
+                        <p>متخصصة في HTML, CSS, JavaScript</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exercise-card">
+                <h3><i class="fas fa-bars"></i> شريط التنقل</h3>
+                <p>إنشاء شريط تنقل أفقي باستخدام تقنية Flexbox</p>
+                <div class="preview-content">
+                    <div class="nav-bar">
+                        <a href="#"><i class="fas fa-home"></i> الرئيسية</a>
+                        <a href="#"><i class="fas fa-info-circle"></i> عنا</a>
+                        <a href="#"><i class="fas fa-concierge-bell"></i> الخدمات</a>
+                        <a href="#"><i class="fas fa-envelope"></i> اتصل بنا</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exercise-card">
+                <h3><i class="fas fa-columns"></i> تخطيط بثلاثة أعمدة</h3>
+                <p>تصميم تخطيط بثلاثة أعمدة متجاوبة مع الشاشات</p>
+                <div class="preview-content">
+                    <div class="three-columns">
+                        <div class="column">
+                            <h4>العمود الأول</h4>
+                            <p>هذا العمود يحتوي على محتوى رئيسي أو روابط جانبية</p>
+                        </div>
+                        <div class="column">
+                            <h4>العمود الرئيسي</h4>
+                            <p>هذا هو العمود الرئيسي الذي يعرض المحتوى الأساسي للصفحة</p>
+                        </div>
+                        <div class="column">
+                            <h4>العمود الثالث</h4>
+                            <p>هذا العمود يمكن أن يحتوي على إعلانات أو معلومات إضافية</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exercise-card">
+                <h3><i class="fas fa-mouse-pointer"></i> أزرار تفاعلية</h3>
+                <p>تصميم أزرار بتأثيرات تفاعلية عند التمرير والنقر</p>
+                <div class="preview-content" style="text-align: center; padding: 40px 0;">
+                    <button class="btn">زر تجريبي</button>
+                    <button class="btn" style="background: var(--success);">نجاح</button>
+                    <button class="btn" style="background: var(--warning);">تحذير</button>
+                    <button class="btn" style="background: var(--danger);">خطر</button>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 50px 0;">
+            <h2 style="color: var(--primary); margin-bottom: 20px;">ابدأ رحلتك في تطوير الويب اليوم!</h2>
+            <p style="max-width: 700px; margin: 0 auto 25px; font-size: 1.1rem;">
+                هذه التمارين التطبيقية هي نقطة انطلاق ممتازة لتعلم HTML وCSS. جربها بنفسك، عدل عليها، وطور مهاراتك خطوة بخطوة.
+            </p>
+            <a href="#" class="btn"><i class="fas fa-download"></i> تنزيل جميع التمارين</a>
+        </div>
+
+        <footer>
+            <p>تمارين تطبيقية في HTML وCSS &copy; 2025 | مصممة للمبتدئين والمتقدمين</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">
+                <i class="fas fa-code"></i> باستخدام HTML, CSS, JavaScript
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // تأثيرات تفاعلية للأزرار
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px)';
+            });
+            
+            button.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+            
+            button.addEventListener('mousedown', function() {
+                this.style.transform = 'translateY(2px)';
+            });
+            
+            button.addEventListener('mouseup', function() {
+                this.style.transform = 'translateY(-3px)';
+            });
+        });
+    </script>
+</body>
+</html>
